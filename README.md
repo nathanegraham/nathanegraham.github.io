@@ -1,2 +1,2 @@
-# nathanegraham.github.io
+# Info
 Github site for guide
