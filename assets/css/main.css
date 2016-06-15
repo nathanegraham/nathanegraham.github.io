@@ -759,13 +759,13 @@
 
 		}
 
-		body.is-loading #main {
+	/*	body.is-loading #main {
 			opacity: 0;
 			-moz-transform: rotateX(15deg);
 			-webkit-transform: rotateX(15deg);
 			-ms-transform: rotateX(15deg);
 			transform: rotateX(15deg);
-		}
+		} */
 
 /* Footer */
 
