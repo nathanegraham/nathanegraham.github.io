@@ -5,6 +5,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+        <script src="assets/js/vue.min.js"></script>
+        <script src="assets/js/vue-resource.min.js"></script>
+        <script src="assets/js/script.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -68,6 +71,22 @@
 							</ul>
 						</footer>
 					</section>
+                <footer>
+                <div id="post_feed">
+ <!-- <div class="loading" v-show="loading">loading...</div> -->
+
+  <div class="item" v-for="item in items | more showed">
+    <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div>
+
+    <a href="{{item.link}}" target="_blank" class="title">{{item.title.rendered}}</a>
+    <div class="date">{{item.date | formatDate}}</div>
+    <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div>
+  </div>
+
+  <button class="more" @click="showMore" v-show="items.length > showed">show more</button>
+
+</div>
+                </footer>
 
 				<!-- Footer -->
 					<footer id="footer">
