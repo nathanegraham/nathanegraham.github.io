@@ -95,7 +95,7 @@
 
     <a href="{{item.link}}" target="_blank" class="title">{{item.title.rendered}}</a>
     <div class="date">{{item.date | formatDate}}</div>
-    <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div>
+ <!--   <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div> -->
   </div>
 
   <button class="more" @click="showMore" v-show="items.length > showed">show more</button>
