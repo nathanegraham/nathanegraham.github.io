@@ -96,14 +96,14 @@
   <div class="item" v-for="item in items | more showed">
     <!-- <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div> -->
 
-      <div class="prow"><span class="pdate">{{item.date | formatDate}}</span> | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
+      <div class="prow"><span class="pdate"><a href="{{item.link}}" target="_blank">{{item.date | formatDate}}</a></span> | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
     
  <!--   <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div> -->
 </div>
   <button class="more" @click="showMore" v-show="items.length > showed">show more</button>
 
 </div>
-                        <script src="assets/js/vue.min.js"></script>
+        <script src="assets/js/vue.min.js"></script>
         <script src="assets/js/vue-resource.min.js"></script>
         <script src="assets/js/script.js"></script>
                 </footer>
