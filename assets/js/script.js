@@ -1,6 +1,6 @@
 (function(){
   var endpoint = "http://digitalborn.org/wp-json/wp/v2",
-      itemsPerPage = 2,
+      itemsPerPage = 3,
       vm;
 
 
