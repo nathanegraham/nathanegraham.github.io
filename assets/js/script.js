@@ -20,10 +20,12 @@
   });
 
   Vue.filter('formatDate', function (date_str) {
-    var date = new Date(date_str),
-      months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    return months[date.getMonth()] + " " + date.getDay() + ", "+date.getFullYear();
-  });
+var year = date_str.substr(0,4),
+month = parseInt(date_str.substr(5,2)),
+day = date_str.substr(8,2),
+months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+return months[month] + " " + day + ", "+year;
+});
 
   Vue.filter('more', function (value, param) {
     return value.slice(0, param);
