@@ -23,11 +23,13 @@
 
     .more {margin-top:20px;}
     
-    .item {text-align:left; margin-bottom: 20px; clear:both;}
+    .item {text-align:left; margin-bottom: 20px; clear:both;font-size:13px;}
              
     a.ptitle {text-transform:none;}
              
-    div.pdate {text-transform:none;}
+    div.prow {text-transform:none;}
+             
+    span.pdate {color:#e05038;}
              
   </style>
 	</head>
@@ -94,7 +96,7 @@
   <div class="item" v-for="item in items | more showed">
     <!-- <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div> -->
 
-   <div class="pdate">{{item.date | formatDate}} | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
+      <div class="prow"><span class="pdate">{{item.date | formatDate}}</span> | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
     
  <!--   <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div> -->
 </div>
