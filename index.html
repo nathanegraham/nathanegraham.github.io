@@ -25,7 +25,9 @@
     
     .item {text-align:left;}
              
-             a.title {text-transform:none;}
+             a.ptitle {text-transform:none;}
+             
+             #pdate (text-transform:none;)
              
   </style>
 	</head>
@@ -93,8 +95,8 @@
   <div class="item" v-for="item in items | more showed">
     <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div>
 
-    <a href="{{item.link}}" target="_blank" class="title">{{item.title.rendered}}</a>
-    <div class="date">{{item.date | formatDate}}</div>
+    <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a>
+    <div class="pdate">{{item.date | formatDate}}</div>
  <!--   <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div> -->
   </div>
 
