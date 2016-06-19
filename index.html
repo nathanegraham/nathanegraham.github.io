@@ -11,7 +11,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         
          <style>
-    .item .thumb{
+    .item .thumb {
       background-size: cover;
       width: 60px;
       height: 60px;
@@ -19,15 +19,15 @@
       margin-right: 10px;
       border-radius: 50%;
     }
-    .item .date{color:#888;}
+    .item .date {color:#888;}
 
-    .more{margin-top:20px;}
+    .more {margin-top:20px;}
     
-    .item {text-align:left;}
+    .item {text-align:left; margin-bottom: 20px; clear:both;}
              
-             a.ptitle {text-transform:none;}
+    a.ptitle {text-transform:none;}
              
-             div.pdate (text-transform:none;)
+    div.pdate {text-transform:none;}
              
   </style>
 	</head>
@@ -91,15 +91,13 @@
 					
                 <div id="post_feed">
  <!-- <div class="loading" v-show="loading">loading...</div> -->
-
   <div class="item" v-for="item in items | more showed">
-    <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div>
+    <!-- <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div> -->
 
-    <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a>
-    <div class="pdate">{{item.date | formatDate}}</div>
+   <div class="pdate">{{item.date | formatDate}} | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
+    
  <!--   <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div> -->
-  </div>
-
+</div>
   <button class="more" @click="showMore" v-show="items.length > showed">show more</button>
 
 </div>
