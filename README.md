@@ -1,2 +1,2 @@
 # Info
-Github site for guide
+Nathan Graham's Github site
