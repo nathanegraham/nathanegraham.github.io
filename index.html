@@ -25,16 +25,28 @@
     
     .item {margin-bottom: 20px; clear:both;font-size:13px;}
              
-    .slide-fade-enter-active {
-  transition: all .3s ease;
+@-webkit-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+             
+             .fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:.7s;
+	-moz-animation-duration:.7s;
+	animation-duration:.7s;
+                 -webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
 }
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-active {
-  padding-left: 10px;
-  opacity: 0;
-}
+
              
     a.ptitle {text-transform:none;}
              
@@ -67,16 +79,14 @@
 					
                 <div id="postfeed">
  <!-- <div class="loading" v-show="loading">loading...</div> -->
-                    <transition name="slide-fade">
-  <div class="item" v-for="item in items | more showed">
+  <div class="item" v-for="item in items | more show">
     <!-- <div class="thumb" v-thumb="item.featured_media" v-show="item.featured_media"></div> -->
 
-      <div class="prow"><span class="pdate"><a href="{{item.link}}" target="_blank">{{item.date | formatDate}}</a></span> | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
-      </transition>
+      <div class="prow fade-in"><span class="pdate"><a href="{{item.link}}" target="_blank">{{item.date | formatDate}}</a></span> | <a href="{{item.link}}" target="_blank" class="ptitle">{{item.title.rendered}}</a> </div>
     
  <!--   <div class="desc">{{{item.excerpt.rendered | removeMoreLink}}}</div> -->
 </div>
-  <button class="more" @click="showMore" v-show="items.length > showed">show more</button>
+  <button class="more fade-in" @click="showMore" v-show="items.length > show">show more</button>
 
 </div>
         <script src="assets/js/vue.min.js"></script>

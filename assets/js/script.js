@@ -1,6 +1,6 @@
 (function(){
   var endpoint = "http://digitalborn.org/wp-json/wp/v2",
-      itemsPerPage = 3,
+      itemsPerPage = 4,
       vm;
 
 
@@ -37,11 +37,11 @@ return months[month] + " " + day + ", "+year;
     data: {
       items: [],
       loading: true,
-      showed: itemsPerPage
+      show: itemsPerPage
     },
     methods:{
       showMore:function(){
-        this.showed+=itemsPerPage;
+        this.show+=itemsPerPage;
       }
     },
     ready:function(){
