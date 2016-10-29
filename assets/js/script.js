@@ -33,7 +33,7 @@ return months[month] + " " + day + ", "+year;
 
 
   vm = new Vue({
-    el: '#post-feed',
+    el: '#postfeed',
     data: {
       items: [],
       loading: true,
