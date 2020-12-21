@@ -1,5 +1,5 @@
 (function(){
-  var endpoint = "http://digitalborn.org/wp-json/wp/v2",
+  var endpoint = "https://digitalborn.org/wp-json/wp/v2",
       itemsPerPage = 4,
       vm;
 
