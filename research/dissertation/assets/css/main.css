@@ -3318,6 +3318,8 @@ input, select, textarea {
 
 	}
 
+.sigPad .clearButton {display:none !important;}
+
 @media print {
  
     #header {display:none;}
