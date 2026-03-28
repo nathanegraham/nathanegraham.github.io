@@ -92,8 +92,8 @@ a:focus-visible {
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   margin: 0 auto var(--space-md);
   opacity: 0;
@@ -101,7 +101,7 @@ a:focus-visible {
 }
 
 .name {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 600;
   color: var(--color-heading);
   letter-spacing: 0.02em;
@@ -112,7 +112,7 @@ a:focus-visible {
 }
 
 .tagline {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--color-muted);
   max-width: 30rem;
   margin: 0 auto var(--space-md);
