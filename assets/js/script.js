@@ -1,55 +1,78 @@
-(function(){
-  var endpoint = "https://digitalborn.org/wp-json/wp/v2",
-      itemsPerPage = 4,
-      vm;
+/* ==========================================================================
+   Blog feed – fetches posts from digitalborn.org via WP REST API
+   Zero dependencies – vanilla JS with fetch()
+   ========================================================================== */
 
+(function () {
+  "use strict";
 
-  Vue.directive('thumb', function (val) {
+  const ENDPOINT = "https://digitalborn.org/wp-json/wp/v2/posts";
+  const PER_PAGE = 100;       // fetch all, paginate client-side
+  const ITEMS_PER_VIEW = 4;   // show this many at a time
 
-    if(!val) return;
-    var el = this.el;
+  const container = document.getElementById("postfeed");
+  if (!container) return;
 
-    Vue.http.jsonp(endpoint+"/media", {include:val},{jsonp: "_jsonp"}).then(function (response) {
-      if(!response.data[0]) return;
-      el.style.backgroundImage = "url("+response.data[0].media_details.sizes.thumbnail.source_url+")";
-    });
+  let allPosts = [];
+  let visible = ITEMS_PER_VIEW;
 
-  });
-  Vue.filter('removeMoreLink', function (value) {
-    return value.replace(/<span class="more">.+?<\/span>/, '');
-  });
+  // --- Helpers -----------------------------------------------------------
 
-  Vue.filter('formatDate', function (date_str) {
-var year = date_str.substr(0,4),
-month = parseInt(date_str.substr(5,2)),
-day = date_str.substr(8,2),
-months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-return months[month] + " " + day + ", "+year;
-});
+  function formatDate(isoString) {
+    const d = new Date(isoString);
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  }
 
-  Vue.filter('more', function (value, param) {
-    return value.slice(0, param);
-  });
+  function renderPosts() {
+    const slice = allPosts.slice(0, visible);
 
+    const html = slice.map((post, i) => `
+      <article class="post-item" style="animation-delay: ${i * 0.06}s">
+        <time class="post-date" datetime="${post.date}">${formatDate(post.date)}</time>
+        <p class="post-title">
+          <a href="${post.link}" target="_blank" rel="noopener">${post.title.rendered}</a>
+        </p>
+      </article>
+    `).join("");
 
-  vm = new Vue({
-    el: '#postfeed',
-    data: {
-      items: [],
-      loading: true,
-      show: itemsPerPage
-    },
-    methods:{
-      showMore:function(){
-        this.show+=itemsPerPage;
-      }
-    },
-    ready:function(){
-      this.$http.jsonp(endpoint+"/posts", {per_page:100},{jsonp: "_jsonp"}).then(function (response) {
-          vm.items = response.data;
-          vm.loading = false;
+    const button = visible < allPosts.length
+      ? `<button class="show-more" type="button">Show more</button>`
+      : "";
+
+    container.innerHTML = html + button;
+
+    // Re-attach listener
+    const btn = container.querySelector(".show-more");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        visible += ITEMS_PER_VIEW;
+        renderPosts();
       });
     }
-  });
+  }
 
+  // --- Fetch & boot ------------------------------------------------------
+
+  fetch(`${ENDPOINT}?per_page=${PER_PAGE}&_fields=id,date,title,link`)
+    .then(function (res) {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
+    .then(function (posts) {
+      allPosts = posts;
+      if (posts.length === 0) {
+        container.innerHTML = '<p class="posts-error">No posts found.</p>';
+        return;
+      }
+      renderPosts();
+    })
+    .catch(function () {
+      container.innerHTML =
+        '<p class="posts-error">Couldn\u2019t load posts. ' +
+        'Visit <a href="https://digitalborn.org" target="_blank" rel="noopener">digitalborn.org</a> instead.</p>';
+    });
 })();
