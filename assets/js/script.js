@@ -28,45 +28,107 @@
     return months[d.getMonth()] + " \u2019" + String(d.getFullYear()).slice(2);
   }
 
+  function getTitleText(html) {
+    var temp = document.createElement("textarea");
+    temp.innerHTML = String(html || "").replace(/<[^>]*>/g, "");
+    return temp.value;
+  }
+
+  function buildStatusItem(message) {
+    var item = document.createElement("li");
+    item.className = "posts-status";
+    item.textContent = message;
+    return item;
+  }
+
+  function buildPostItem(post, index) {
+    var item = document.createElement("li");
+    var time = document.createElement("time");
+    var title = document.createElement("p");
+    var link = document.createElement("a");
+
+    item.className = "post-item";
+    item.style.animationDelay = (index * 0.06) + "s";
+
+    time.className = "post-date";
+    time.dateTime = post.date;
+    time.textContent = formatDate(post.date);
+
+    title.className = "post-title";
+
+    link.href = post.link;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = getTitleText(post.title.rendered);
+
+    title.appendChild(link);
+    item.appendChild(time);
+    item.appendChild(title);
+
+    return item;
+  }
+
+  function buildShowMoreButton() {
+    var button = document.createElement("button");
+    var arrow = document.createElement("span");
+
+    button.className = "show-more";
+    button.type = "button";
+    button.appendChild(document.createTextNode("More posts "));
+
+    arrow.className = "arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "\u2192";
+    button.appendChild(arrow);
+
+    button.addEventListener("click", function () {
+      visible += ITEMS_PER_VIEW;
+      renderPosts();
+    });
+
+    return button;
+  }
+
   function renderPosts() {
     var slice = allPosts.slice(0, visible);
+    var fragment = document.createDocumentFragment();
 
-    var html = slice.map(function (post, i) {
-      return '<li class="post-item" style="animation-delay: ' + (i * 0.06) + 's">' +
-        '<time class="post-date" datetime="' + post.date + '">' + formatDate(post.date) + '</time>' +
-        '<p class="post-title">' +
-        '<a href="' + post.link + '" target="_blank" rel="noopener">' + post.title.rendered + '</a>' +
-        '</p></li>';
-    }).join("");
+    slice.forEach(function (post, index) {
+      fragment.appendChild(buildPostItem(post, index));
+    });
 
-    var button = visible < allPosts.length
-      ? '<button class="show-more" type="button">More posts <span class="arrow" aria-hidden="true">\u2192</span></button>'
-      : "";
-
-    container.innerHTML = html + button;
-
-    var btn = container.querySelector(".show-more");
-    if (btn) {
-      btn.addEventListener("click", function () {
-        visible += ITEMS_PER_VIEW;
-        renderPosts();
-      });
+    if (visible < allPosts.length) {
+      fragment.appendChild(buildShowMoreButton());
     }
+
+    container.textContent = "";
+    container.appendChild(fragment);
   }
 
   function handlePosts(posts) {
     allPosts = posts;
     if (posts.length === 0) {
-      container.innerHTML = '<li class="posts-status">No posts found.</li>';
+      container.textContent = "";
+      container.appendChild(buildStatusItem("No posts found."));
       return;
     }
     renderPosts();
   }
 
   function showError() {
-    container.innerHTML =
-      '<li class="posts-status">Couldn\u2019t load posts. ' +
-      'Visit <a href="https://digitalborn.org" target="_blank" rel="noopener">digitalborn.org</a> instead.</li>';
+    var item = buildStatusItem("Couldn\u2019t load posts. Visit ");
+    var link = document.createElement("a");
+
+    link.href = "https://digitalborn.org";
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "digitalborn.org";
+
+    item.appendChild(link);
+    item.appendChild(document.createTextNode(" instead."));
+
+    container.textContent = "";
+    container.appendChild(item);
   }
 
   // --- JSONP fallback ----------------------------------------------------
