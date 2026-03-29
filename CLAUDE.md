@@ -88,8 +88,22 @@ Nathan has decided on a **full rebuild** with the following parameters:
 
 ## Working with This Site
 
+### Local Path
+The repo lives on Nathan's Mac at:
+```
+/Users/nathangraham/Documents/projects/nathan website/nathanegraham.github.io
+```
+
 ### Deployment
-Push to the `main` branch triggers automatic GitHub Pages deployment. No build step required — files are served as-is.
+Push to the `master` branch triggers automatic GitHub Pages deployment. No build step required — files are served as-is.
+
+To push from the terminal:
+```bash
+cd "/Users/nathangraham/Documents/projects/nathan website/nathanegraham.github.io"
+git push origin master
+```
+
+Note: The Cowork sandbox cannot push directly (no GitHub credentials), so Nathan needs to run `git push` from his local machine after changes are committed.
 
 ### Editing Content
 - **Homepage:** Edit `index.html` directly

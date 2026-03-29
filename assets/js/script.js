@@ -22,25 +22,25 @@
   function formatDate(isoString) {
     var d = new Date(isoString);
     var months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
-    return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+    return months[d.getMonth()] + " \u2019" + String(d.getFullYear()).slice(2);
   }
 
   function renderPosts() {
     var slice = allPosts.slice(0, visible);
 
     var html = slice.map(function (post, i) {
-      return '<article class="post-item" style="animation-delay: ' + (i * 0.06) + 's">' +
+      return '<li class="post-item" style="animation-delay: ' + (i * 0.06) + 's">' +
         '<time class="post-date" datetime="' + post.date + '">' + formatDate(post.date) + '</time>' +
         '<p class="post-title">' +
         '<a href="' + post.link + '" target="_blank" rel="noopener">' + post.title.rendered + '</a>' +
-        '</p></article>';
+        '</p></li>';
     }).join("");
 
     var button = visible < allPosts.length
-      ? '<button class="show-more" type="button">Show more</button>'
+      ? '<button class="show-more" type="button">More posts <span class="arrow" aria-hidden="true">\u2192</span></button>'
       : "";
 
     container.innerHTML = html + button;
@@ -57,7 +57,7 @@
   function handlePosts(posts) {
     allPosts = posts;
     if (posts.length === 0) {
-      container.innerHTML = '<p class="posts-error">No posts found.</p>';
+      container.innerHTML = '<li class="posts-status">No posts found.</li>';
       return;
     }
     renderPosts();
@@ -65,8 +65,8 @@
 
   function showError() {
     container.innerHTML =
-      '<p class="posts-error">Couldn\u2019t load posts. ' +
-      'Visit <a href="https://digitalborn.org" target="_blank" rel="noopener">digitalborn.org</a> instead.</p>';
+      '<li class="posts-status">Couldn\u2019t load posts. ' +
+      'Visit <a href="https://digitalborn.org" target="_blank" rel="noopener">digitalborn.org</a> instead.</li>';
   }
 
   // --- JSONP fallback ----------------------------------------------------
