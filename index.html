@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/main.css?v=3" />
+  <link rel="stylesheet" href="assets/css/main.css?v=4" />
 </head>
 <body>
 
@@ -22,13 +22,27 @@
     <!-- Header / Hero -->
     <header class="hero">
       <div class="hero-inner">
-        <img
-          src="https://avatars.githubusercontent.com/u/647384?v=4"
-          alt="Nathan Graham"
-          class="avatar"
-          width="120"
-          height="120"
-        />
+        <div class="avatar-wrap">
+          <img
+            src="https://avatars.githubusercontent.com/u/647384?v=4"
+            alt="Nathan Graham"
+            class="avatar"
+            width="140"
+            height="140"
+          />
+          <picture>
+            <source srcset="images/avatar-fun.webp" type="image/webp">
+            <img
+              src="images/avatar-fun.png"
+              alt=""
+              class="avatar avatar-fun"
+              width="140"
+              height="140"
+              loading="lazy"
+              aria-hidden="true"
+            />
+          </picture>
+        </div>
         <h1 class="name">Nathan Graham</h1>
         <p class="tagline">
           Assistant Dean of the Center for Media &amp; Technology Solutions at JHU.
