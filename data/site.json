@@ -1,0 +1,201 @@
+{
+  "lenses": [
+    {
+      "id": "overview",
+      "label": "Overview"
+    },
+    {
+      "id": "builder",
+      "label": "Builder"
+    },
+    {
+      "id": "leader",
+      "label": "Leader"
+    },
+    {
+      "id": "scholar",
+      "label": "Scholar"
+    },
+    {
+      "id": "hiring",
+      "label": "Hiring"
+    }
+  ],
+  "home": {
+    "heroByLens": {
+      "overview": "My work sits between institutional AI enablement, media and web systems, DIY making, and digital humanities.",
+      "builder": "I move between infrastructure, interface, and object-making, using each one to pressure-test the others.",
+      "leader": "I build programs, platforms, and operating structures that let institutions use technology deliberately instead of reactively.",
+      "scholar": "The practice joins technical implementation with questions about media history, publishing systems, and knowledge work.",
+      "hiring": "This is a portfolio of strategic delivery across academic technology, AI enablement, media systems, and cross-functional leadership."
+    },
+    "tiles": [
+      {
+        "id": "running",
+        "title": "Running now",
+        "meta": "Systems / institution",
+        "copy": {
+          "overview": "Institutional AI enablement, academic technology operations, and platform design inside university systems.",
+          "builder": "Workflow design, policy translation, tooling, and interfaces treated as one build surface.",
+          "leader": "Programs and systems that need governance, coordination, and resilient operational structure.",
+          "scholar": "How institutions absorb new technical media and turn them into administrative and pedagogical practice.",
+          "hiring": "Evidence of large-scale responsibility where strategy and implementation have to meet."
+        }
+      },
+      {
+        "id": "bench",
+        "title": "On the bench",
+        "meta": "Builds / tool and object",
+        "copy": {
+          "overview": "Small tools, hardware/software prototypes, and utility work that keep the larger practice grounded.",
+          "builder": "Experiments where I can move quickly, test ideas, and learn through constraints instead of presentation.",
+          "leader": "A live making practice that sharpens implementation judgment and keeps management close to materials.",
+          "scholar": "Prototype work as method: a way to think with systems by building and revising artifacts.",
+          "hiring": "Shows hands-on fluency rather than leadership detached from actual tools."
+        }
+      },
+      {
+        "id": "notebook",
+        "title": "In the notebook",
+        "meta": "Writing / essay and note",
+        "copy": {
+          "overview": "Essays and notes on software, media, publishing, digital humanities, and technology as culture.",
+          "builder": "Writing used to clarify implementation decisions, technical history, and the shape of the work.",
+          "leader": "Public thinking that explains not just what was built, but why the framing matters.",
+          "scholar": "A writing practice grounded in software studies, digital humanities, and the history of the web.",
+          "hiring": "Signals clear communication, conceptual range, and a durable point of view."
+        }
+      }
+    ],
+    "featuredIds": [
+      "faculty-studios",
+      "wp-rest-api-post-getter",
+      "crankgpt",
+      "books-to-json"
+    ],
+    "constellations": [
+      {
+        "title": "Teaching media from room to file",
+        "items": [
+          "faculty-studios",
+          "lightboard-template"
+        ],
+        "reason": "The studio build and the template artifact both sit inside a broader teaching-media system rather than outside it."
+      },
+      {
+        "title": "Publishing between platforms",
+        "items": [
+          "wp-rest-api-post-getter",
+          "digital-born"
+        ],
+        "reason": "One artifact is the writing archive itself; the other is a tool for moving WordPress content across site boundaries."
+      },
+      {
+        "title": "Publishing as data transformation",
+        "items": [
+          "books-to-json",
+          "wp-ebookit"
+        ],
+        "reason": "Both artifacts treat publishing as a formatting and transformation problem rather than only a writing problem."
+      }
+    ],
+    "prompts": [
+      {
+        "label": "Show me media systems work",
+        "href": "/work/?theme=media%20systems&lens=leader"
+      },
+      {
+        "label": "Show me publishing infrastructure",
+        "href": "/work/?theme=publishing&lens=builder"
+      },
+      {
+        "label": "Start with AI and interfaces",
+        "href": "/work/?theme=AI&lens=scholar"
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "systems",
+      "title": "Systems",
+      "href": "/systems/",
+      "deck": "AI enablement, academic technology, media systems, operational design, and institutional tooling."
+    },
+    {
+      "id": "builds",
+      "title": "Builds",
+      "href": "/builds/",
+      "deck": "DIY hardware/software, prototypes, utilities, and bench-scale experiments."
+    },
+    {
+      "id": "studio",
+      "title": "Studio",
+      "href": "/studio/",
+      "deck": "Aesthetic technology work, interfaces as form, and experiments in data and computation."
+    },
+    {
+      "id": "writing",
+      "title": "Writing",
+      "href": "/writing/",
+      "deck": "Digital Born, digital humanities, software studies, publishing history, notes, and essays."
+    }
+  ],
+  "pageIntroByLens": {
+    "systems": {
+      "overview": "AI enablement, academic technology, media operations, and service design.",
+      "builder": "Systems where policy, workflow, tooling, and interface decisions all have to line up.",
+      "leader": "Institution-scale delivery work across teams, programs, and technical platforms.",
+      "scholar": "Institutional systems understood as media environments and knowledge infrastructure.",
+      "hiring": "Strategic technical leadership with operational depth and delivery accountability."
+    },
+    "builds": {
+      "overview": "Small tools, hardware/software experiments, and objects made to learn by making.",
+      "builder": "A live prototyping practice focused on utility, constraints, and iteration.",
+      "leader": "Hands-on making that keeps larger leadership work grounded in real implementation.",
+      "scholar": "Artifacts used as a way to think through technical culture, not just solve tasks.",
+      "hiring": "Signals direct technical fluency and the ability to move from concept to working thing."
+    },
+    "studio": {
+      "overview": "Data aesthetics, interface objects, and controlled generative structures.",
+      "builder": "A place to test layout, interaction, and visual systems as technical material.",
+      "leader": "Design judgment carried by someone who also understands systems and production constraints.",
+      "scholar": "Technology approached as medium, not just instrument.",
+      "hiring": "Shows taste, experimentation, and the ability to make technical work feel intentional."
+    },
+    "writing": {
+      "overview": "Writing that sits between digital humanities, software studies, web history, and practice.",
+      "builder": "Essays and notes that clarify implementation, tooling, and technical history.",
+      "leader": "Public thinking that turns complex work into language other people can act on.",
+      "scholar": "A writing practice rooted in software, media, archives, and publishing.",
+      "hiring": "Signals communication range, conceptual rigor, and editorial discipline."
+    },
+    "work": {
+      "overview": "Filter by track or theme, then use the lens switcher to change the framing rather than the archive itself.",
+      "builder": "Use the archive to find tools, prototypes, workflows, and implementation patterns.",
+      "leader": "Use the archive to find institution-scale work, cross-functional systems, and service design patterns.",
+      "scholar": "Use the archive to trace themes across writing, building, and systems practice.",
+      "hiring": "Use the archive to find the strongest evidence of fit for leadership, strategy, and delivery."
+    },
+    "about": {
+      "overview": "A builder-leader-scholar practice organized across institutional systems, bench work, studio experiments, and writing.",
+      "builder": "A technical practice that moves between platforms, objects, and publishing systems instead of staying in one lane.",
+      "leader": "Leadership grounded in implementation, service design, and systems that have to hold up in real use.",
+      "scholar": "A practice shaped by media history, digital humanities, software studies, and the material life of technical systems.",
+      "hiring": "A concise frame for role fit, scope, and the through-line connecting leadership, making, and writing."
+    },
+    "now": {
+      "overview": "A current-state snapshot across institutional systems work, active experiments, and writing.",
+      "builder": "What is actively being made, tested, and revised right now across tools, interfaces, and prototypes.",
+      "leader": "Where operational attention is currently focused across institutional AI, academic technology, and service design.",
+      "scholar": "The questions and lines of inquiry currently shaping the archive and the practice around it.",
+      "hiring": "A fast view of current priorities, current domains, and where attention is actively invested."
+    },
+    "contact": {
+      "overview": "The best routes for reaching me about systems work, collaboration, writing, or roles.",
+      "builder": "Reach out about tools, prototypes, publishing systems, and practical technical work.",
+      "leader": "Reach out about institutional AI, academic technology, media systems, or organizational design.",
+      "scholar": "Reach out about digital humanities, software studies, media history, and public writing.",
+      "hiring": "Reach out about leadership roles, advisory work, and strategic technical collaboration."
+    }
+  }
+}

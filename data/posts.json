@@ -1,0 +1,98 @@
+[
+  {
+    "id": 3286,
+    "date": "2024-04-06T12:35:29",
+    "link": "https://digitalborn.org/converting-books-to-json-a-digital-humanities-project/",
+    "title": {
+      "rendered": "Converting Books to JSON: A Digital Humanities Project"
+    }
+  },
+  {
+    "id": 3209,
+    "date": "2024-01-03T15:52:17",
+    "link": "https://digitalborn.org/echo-show-15-poe-setup/",
+    "title": {
+      "rendered": "Power over Ethernet for Amazon Echo Show 15"
+    }
+  },
+  {
+    "id": 3192,
+    "date": "2020-08-28T10:23:00",
+    "link": "https://digitalborn.org/building-studios-for-teachers-johns-hopkins-university-instructional-studios/",
+    "title": {
+      "rendered": "Building Studios for Faculty: Johns Hopkins University Instructional Studios"
+    }
+  },
+  {
+    "id": 3125,
+    "date": "2017-10-27T11:12:12",
+    "link": "https://digitalborn.org/post-requests-excel-power-bi/",
+    "title": {
+      "rendered": "Excel Web Services and POST Requests"
+    }
+  },
+  {
+    "id": 3117,
+    "date": "2017-10-04T22:36:41",
+    "link": "https://digitalborn.org/post-from-mastodon-to-twitter-and-facebook/",
+    "title": {
+      "rendered": "Post from Mastodon to Twitter: Using Mastodon to Tweet"
+    }
+  },
+  {
+    "id": 3087,
+    "date": "2017-03-22T17:34:12",
+    "link": "https://digitalborn.org/data-analysts-get-data-from-the-airtable-api/",
+    "title": {
+      "rendered": "Get Data from the Airtable API the Easy Way"
+    }
+  },
+  {
+    "id": 3076,
+    "date": "2016-11-18T17:13:50",
+    "link": "https://digitalborn.org/get-survey-monkey-data-using-the-rest-api/",
+    "title": {
+      "rendered": "Get Survey Monkey Data Using the REST API"
+    }
+  },
+  {
+    "id": 3044,
+    "date": "2016-07-05T16:00:18",
+    "link": "https://digitalborn.org/unlock-form-data-formidable-zapier-webhooks/",
+    "title": {
+      "rendered": "Unlock Form Data: Formidable and Webhooks by Zapier"
+    }
+  },
+  {
+    "id": 3030,
+    "date": "2016-06-27T12:36:34",
+    "link": "https://digitalborn.org/send-wordpress-multisite-emails-mailgun/",
+    "title": {
+      "rendered": "How to Send WordPress Multisite Emails with Mailgun"
+    }
+  },
+  {
+    "id": 3017,
+    "date": "2016-06-20T14:01:51",
+    "link": "https://digitalborn.org/display-wp-posts-rest-api/",
+    "title": {
+      "rendered": "Display WordPress Posts on Another Site with WP REST API"
+    }
+  },
+  {
+    "id": 2985,
+    "date": "2016-05-01T21:39:03",
+    "link": "https://digitalborn.org/integrating-mediawiki-opensearch-api-formidable/",
+    "title": {
+      "rendered": "Integrating Wikipedia Opensearch API with a Form Builder"
+    }
+  },
+  {
+    "id": 2940,
+    "date": "2015-10-17T19:11:54",
+    "link": "https://digitalborn.org/data-insights-wordpress-api-power-bi/",
+    "title": {
+      "rendered": "Data Insights with the WordPress REST API"
+    }
+  }
+]

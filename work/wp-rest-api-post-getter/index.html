@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WP REST API Post Getter | Nathan Graham</title>
+  <meta
+    name="description"
+    content="A builds detail page on using the WordPress REST API and vanilla JavaScript to display posts on an external site."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/assets/css/main.css?v=7" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#25453f" />
+</head>
+<body data-page="detail" data-item="wp-rest-api-post-getter" data-nav="work">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="masthead">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <strong>Nathan Graham</strong>
+            <span>Systems Studio</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/systems/">Systems</a>
+          <a href="/builds/">Builds</a>
+          <a href="/studio/">Studio</a>
+          <a href="/writing/">Writing</a>
+          <a href="/work/" aria-current="page">Work</a>
+          <a href="/about/">About</a>
+          <a href="/now/">Now</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+      <div class="lens-bar">
+        <p class="lens-label">Lens</p>
+        <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
+          <button type="button" data-lens="overview">Overview</button>
+          <button type="button" data-lens="builder">Builder</button>
+          <button type="button" data-lens="leader">Leader</button>
+          <button type="button" data-lens="scholar">Scholar</button>
+          <button type="button" data-lens="hiring">Hiring</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <section class="detail-hero panel">
+        <div>
+          <p class="section-kicker">Builds / Artifact / Tool</p>
+          <h1>WP REST API Post Getter</h1>
+          <p class="detail-summary" id="page-intro">
+            A small publishing utility that moves content between systems without a full CMS tie-in.
+          </p>
+          <div class="hero-meta">
+            <span>Vanilla JavaScript</span>
+            <span>WordPress REST API</span>
+            <span>External-site publishing</span>
+          </div>
+        </div>
+
+        <aside class="detail-meta-card">
+          <h2>Project Facts</h2>
+          <ul class="detail-meta-list">
+            <li><span>Track</span><strong>Builds</strong></li>
+            <li><span>Language</span><strong>JavaScript</strong></li>
+            <li><span>Function</span><strong>Pull titles, dates, excerpts, media, and pagination from WP</strong></li>
+            <li><span>Connection</span><strong>Originally used on the personal site as a minimalist external feed</strong></li>
+          </ul>
+          <div class="detail-actions">
+            <a class="prompt-chip" href="https://github.com/nathanegraham/wp-rest-api-post-getter" target="_blank" rel="noopener">Open GitHub repo</a>
+            <a class="prompt-chip" href="/builds/">Back to Builds</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="detail-layout">
+        <article class="story-stack">
+          <section class="story-block panel">
+            <h2>What it does</h2>
+            <p>
+              The project shows how to display WordPress posts on an external site using the
+              REST API and plain JavaScript. It pulls the title, link, date, excerpt, and
+              featured media, then exposes a simple “show more” pattern to extend the feed.
+            </p>
+            <p>
+              The value here is not scale. It is the pattern: keep the destination site light,
+              let WordPress remain the publishing backend, and use a narrow client-side bridge
+              rather than a heavier integration stack.
+            </p>
+          </section>
+
+          <section class="story-block panel">
+            <h2>Why this artifact still matters</h2>
+            <p>
+              This is a small but durable expression of a larger publishing instinct in the work:
+              separate source of truth from presentation surface, then connect them through a clear,
+              inspectable interface. That shows up again in this current site rebuild.
+            </p>
+            <p>
+              It also reflects a preference for vanilla implementation where a framework would not
+              materially improve the outcome.
+            </p>
+          </section>
+        </article>
+
+        <aside class="fact-grid">
+          <article class="fact-card panel">
+            <h2>Core Behavior</h2>
+            <p>Fetches featured image, title, date, excerpt, and progressively reveals more posts.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>System Idea</h2>
+            <p>Decouple the publishing source from the display site while keeping the front end minimal.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Why It Fits Here</h2>
+            <p>A build artifact that sits directly between publishing infrastructure and front-end implementation.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <p class="section-kicker">Related Work</p>
+          <h2>Other artifacts connected by publishing systems, interfaces, and API thinking.</h2>
+        </div>
+        <div class="artifact-grid" id="related-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/work/">Back to work index</a></p>
+    </footer>
+  </div>
+
+  <script src="/assets/js/script.js?v=3"></script>
+</body>
+</html>

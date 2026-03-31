@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Excel Web Services and POST Requests | Nathan Graham</title>
+  <meta
+    name="description"
+    content="A systems detail page on using Excel and Power BI with REST APIs through a less common POST-based workflow."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/assets/css/main.css?v=7" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#25453f" />
+</head>
+<body data-page="detail" data-item="excel-post-requests" data-nav="work">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="masthead">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <strong>Nathan Graham</strong>
+            <span>Systems Studio</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/systems/">Systems</a>
+          <a href="/builds/">Builds</a>
+          <a href="/studio/">Studio</a>
+          <a href="/writing/">Writing</a>
+          <a href="/work/" aria-current="page">Work</a>
+          <a href="/about/">About</a>
+          <a href="/now/">Now</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+      <div class="lens-bar">
+        <p class="lens-label">Lens</p>
+        <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
+          <button type="button" data-lens="overview">Overview</button>
+          <button type="button" data-lens="builder">Builder</button>
+          <button type="button" data-lens="leader">Leader</button>
+          <button type="button" data-lens="scholar">Scholar</button>
+          <button type="button" data-lens="hiring">Hiring</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <section class="detail-hero panel">
+        <div>
+          <p class="section-kicker">Systems / Essay / Tool</p>
+          <h1>Excel Web Services and POST Requests</h1>
+          <p class="detail-summary" id="page-intro">
+            A practical systems note about connecting business tools to APIs.
+          </p>
+          <div class="hero-meta">
+            <span>Excel</span>
+            <span>Power BI</span>
+            <span>REST APIs</span>
+          </div>
+        </div>
+
+        <aside class="detail-meta-card">
+          <h2>Project Facts</h2>
+          <ul class="detail-meta-list">
+            <li><span>Track</span><strong>Systems</strong></li>
+            <li><span>Form</span><strong>Published systems note</strong></li>
+            <li><span>Tools</span><strong>Excel, Power BI, and REST services</strong></li>
+            <li><span>Key move</span><strong>Use a less common POST-based path to access API data</strong></li>
+          </ul>
+          <div class="detail-actions">
+            <a class="prompt-chip" href="https://digitalborn.org/post-requests-excel-power-bi/" target="_blank" rel="noopener">Read the original article</a>
+            <a class="prompt-chip" href="/systems/">Back to Systems</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="detail-layout">
+        <article class="story-stack">
+          <section class="story-block panel">
+            <h2>What the article demonstrates</h2>
+            <p>
+              The piece documents a less common way of accessing REST API data from Excel and Power
+              BI. Instead of assuming a standard GET-only pattern, it works through a POST-based
+              approach and treats office analytics tools as capable API clients in their own right.
+            </p>
+            <p>
+              That matters because this is exactly where many real institutional workflows live:
+              not inside a custom application, but inside familiar tools that still need reliable
+              access to networked data.
+            </p>
+          </section>
+
+          <section class="story-block panel">
+            <h2>Why it matters</h2>
+            <p>
+              This is a strong Systems artifact because it translates technical integration into a
+              usable pattern for everyday operational environments. It is not a speculative API
+              exercise. It is a way to make existing reporting and analysis tools more capable.
+            </p>
+            <p>
+              The article also shows a recurring instinct in the archive: bridge the tools people
+              already have to the systems they actually need, then explain the bridge clearly enough
+              that others can reproduce it.
+            </p>
+          </section>
+        </article>
+
+        <aside class="fact-grid">
+          <article class="fact-card panel">
+            <h2>Workflow Context</h2>
+            <p>Business and analytics tools often need API access without a bespoke application layer in between.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Technical Angle</h2>
+            <p>The interesting move is the POST-based retrieval pattern rather than a more obvious GET-only example.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Why It Fits Here</h2>
+            <p>A systems note that turns integration knowledge into a practical operational method.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <p class="section-kicker">Related Work</p>
+          <h2>Other artifacts connected by APIs, operational tooling, and pragmatic systems integration.</h2>
+        </div>
+        <div class="artifact-grid" id="related-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/work/">Back to work index</a></p>
+    </footer>
+  </div>
+
+  <script src="/assets/js/script.js?v=3"></script>
+</body>
+</html>

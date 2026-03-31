@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kaltura API Metadata Interface | Nathan Graham</title>
+  <meta
+    name="description"
+    content="A systems detail page on bulk metadata changes in Kaltura through a custom PHP interface built on the Kaltura API."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/assets/css/main.css?v=7" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#25453f" />
+</head>
+<body data-page="detail" data-item="kaltura-api-metadata-interface" data-nav="work">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="masthead">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <strong>Nathan Graham</strong>
+            <span>Systems Studio</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/systems/">Systems</a>
+          <a href="/builds/">Builds</a>
+          <a href="/studio/">Studio</a>
+          <a href="/writing/">Writing</a>
+          <a href="/work/" aria-current="page">Work</a>
+          <a href="/about/">About</a>
+          <a href="/now/">Now</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+      <div class="lens-bar">
+        <p class="lens-label">Lens</p>
+        <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
+          <button type="button" data-lens="overview">Overview</button>
+          <button type="button" data-lens="builder">Builder</button>
+          <button type="button" data-lens="leader">Leader</button>
+          <button type="button" data-lens="scholar">Scholar</button>
+          <button type="button" data-lens="hiring">Hiring</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <section class="detail-hero panel">
+        <div>
+          <p class="section-kicker">Systems / Artifact / Tool</p>
+          <h1>Kaltura API Metadata Interface</h1>
+          <p class="detail-summary" id="page-intro">
+            A systems-facing utility for media-platform metadata work.
+          </p>
+          <div class="hero-meta">
+            <span>Kaltura API</span>
+            <span>PHP</span>
+            <span>Bulk metadata changes</span>
+          </div>
+        </div>
+
+        <aside class="detail-meta-card">
+          <h2>Project Facts</h2>
+          <ul class="detail-meta-list">
+            <li><span>Track</span><strong>Systems</strong></li>
+            <li><span>Platform</span><strong>Kaltura / MediaSpace administration</strong></li>
+            <li><span>Function</span><strong>Apply metadata changes across all videos in a category</strong></li>
+            <li><span>Key move</span><strong>Translate repetitive admin work into a secure, purpose-built interface</strong></li>
+          </ul>
+          <div class="detail-actions">
+            <a class="prompt-chip" href="https://github.com/nathanegraham/kaltura-api-metadata-interface" target="_blank" rel="noopener">Open GitHub repo</a>
+            <a class="prompt-chip" href="/systems/">Back to Systems</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="detail-layout">
+        <article class="story-stack">
+          <section class="story-block panel">
+            <h2>What the tool does</h2>
+            <p>
+              This project uses the Kaltura API to apply bulk metadata changes that the platform
+              does not expose cleanly through its default interface. Instead of editing videos one
+              at a time, an administrator can enter a category identifier and push metadata changes
+              across the relevant media set in one pass.
+            </p>
+            <p>
+              The original example focuses on custom fields that control download behavior and
+              transcoded flavor access, but the larger pattern is the important part: operational
+              media-platform work becomes scriptable once metadata is treated as infrastructure.
+            </p>
+          </section>
+
+          <section class="story-block panel">
+            <h2>Why it matters</h2>
+            <p>
+              This is a strong Systems artifact because it starts from a real administrative pain
+              point and answers it with a targeted internal tool rather than more manual process.
+              The work is not flashy, but it is exactly the kind of intervention that improves a
+              platform team’s leverage.
+            </p>
+            <p>
+              It also makes a hidden layer visible. Metadata rules govern what users can do with
+              media, yet they are often buried inside vendor dashboards. This tool surfaces that
+              layer and makes it tractable.
+            </p>
+          </section>
+        </article>
+
+        <aside class="fact-grid">
+          <article class="fact-card panel">
+            <h2>Operational Gain</h2>
+            <p>Bulk updates replace repetitive item-by-item edits for category-level media management.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Security Constraint</h2>
+            <p>The interface depends on admin credentials and metadata IDs, so it has to live in a protected environment.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Why It Fits Here</h2>
+            <p>A clear example of platform operations turning into custom tooling instead of ongoing manual labor.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <p class="section-kicker">Related Work</p>
+          <h2>Other artifacts connected by media systems, APIs, and internal operational tooling.</h2>
+        </div>
+        <div class="artifact-grid" id="related-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/work/">Back to work index</a></p>
+    </footer>
+  </div>
+
+  <script src="/assets/js/script.js?v=3"></script>
+</body>
+</html>

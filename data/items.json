@@ -1,0 +1,277 @@
+[
+  {
+    "id": "faculty-studios",
+    "title": "Building Studios for Faculty",
+    "track": "systems",
+    "format": "essay",
+    "scale": "institution",
+    "status": "published",
+    "themes": [
+      "media systems",
+      "teaching media",
+      "operations"
+    ],
+    "summary": "A Digital Born essay on building instructional studio infrastructure for faculty work at scale.",
+    "lensSummary": {
+      "overview": "A public artifact about academic media infrastructure built for real institutional use.",
+      "builder": "Focused on implementation under pressure: hardware, workflows, and service design in the same frame.",
+      "leader": "Shows institution-scale delivery across teams, media systems, and operational constraints.",
+      "scholar": "Documents how teaching media systems become part of institutional culture and pedagogy.",
+      "hiring": "A strong public signal of leadership in academic technology and media operations."
+    },
+    "detailUrl": "/work/faculty-studios/",
+    "externalUrl": "https://digitalborn.org/building-studios-for-teachers-johns-hopkins-university-instructional-studios/"
+  },
+  {
+    "id": "kaltura-api-metadata-interface",
+    "title": "Kaltura API Metadata Interface",
+    "track": "systems",
+    "format": "artifact",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "API",
+      "video platforms",
+      "metadata"
+    ],
+    "summary": "A PHP tool for updating custom Kaltura metadata through the API rather than manual interface work.",
+    "lensSummary": {
+      "overview": "A systems-facing utility for media-platform metadata work.",
+      "builder": "Useful because it turns a repetitive platform task into a scriptable process.",
+      "leader": "Represents platform operations translated into tooling instead of manual labor.",
+      "scholar": "Metadata becomes visible here as an infrastructural layer in media systems.",
+      "hiring": "Shows practical API fluency in support of operational platform work."
+    },
+    "detailUrl": "/work/kaltura-api-metadata-interface/",
+    "externalUrl": "https://github.com/nathanegraham/kaltura-api-metadata-interface"
+  },
+  {
+    "id": "excel-post-requests",
+    "title": "Excel Web Services and POST Requests",
+    "track": "systems",
+    "format": "essay",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "API",
+      "data",
+      "analytics"
+    ],
+    "summary": "A writeup on using Excel and Power BI against REST endpoints in a less-common POST-based workflow.",
+    "lensSummary": {
+      "overview": "A practical systems note about connecting business tools to APIs.",
+      "builder": "Focused on making everyday platforms do more through direct API work.",
+      "leader": "Shows a habit of translating technical integrations into clearer operational patterns.",
+      "scholar": "Makes visible the hidden infrastructural links between office software and networked data.",
+      "hiring": "Evidence of technical problem-solving that improves applied data workflows."
+    },
+    "detailUrl": "/work/excel-post-requests/",
+    "externalUrl": "https://digitalborn.org/post-requests-excel-power-bi/"
+  },
+  {
+    "id": "echo-show-poe",
+    "title": "Power over Ethernet for Amazon Echo Show 15",
+    "track": "builds",
+    "format": "guide",
+    "scale": "object",
+    "status": "published",
+    "themes": [
+      "DIY hardware",
+      "utility",
+      "home systems"
+    ],
+    "summary": "A build note about solving visible power and installation constraints with a PoE hardware path.",
+    "lensSummary": {
+      "overview": "A compact hardware build that solves a specific systems problem cleanly.",
+      "builder": "Directly about materials, wiring constraints, and making an object work in a real setting.",
+      "leader": "A reminder that practical making sharpens technical judgment at larger scales.",
+      "scholar": "Small infrastructural objects also carry design choices and social assumptions.",
+      "hiring": "Signals hands-on fluency rather than architecture detached from implementation."
+    },
+    "detailUrl": "/work/echo-show-poe/",
+    "externalUrl": "https://digitalborn.org/echo-show-15-poe-setup/"
+  },
+  {
+    "id": "wp-rest-api-post-getter",
+    "title": "WP REST API Post Getter",
+    "track": "builds",
+    "format": "artifact",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "WordPress",
+      "API",
+      "publishing"
+    ],
+    "summary": "A JavaScript utility for displaying posts from a WordPress site on an external site through the REST API.",
+    "lensSummary": {
+      "overview": "A small publishing utility that moves content between systems without a full CMS tie-in.",
+      "builder": "A straightforward example of building a useful bridge between platforms.",
+      "leader": "Shows a preference for lightweight, maintainable tooling over heavyweight integration layers.",
+      "scholar": "Interesting as a small publishing-system connector: archive, interface, and distribution in one move.",
+      "hiring": "A practical API artifact with public reuse and real utility."
+    },
+    "detailUrl": "/work/wp-rest-api-post-getter/",
+    "externalUrl": "https://github.com/nathanegraham/wp-rest-api-post-getter"
+  },
+  {
+    "id": "lightboard-template",
+    "title": "LaTeX Beamer Lightboard Template",
+    "track": "builds",
+    "format": "template",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "teaching media",
+      "presentation systems",
+      "LaTeX"
+    ],
+    "summary": "A Beamer template and instructions for producing Lightboard presentation materials more cleanly.",
+    "lensSummary": {
+      "overview": "A focused production tool for teaching-media workflows.",
+      "builder": "Turns presentation production into a repeatable technical template rather than a one-off process.",
+      "leader": "A good example of making support practice more scalable through tooling.",
+      "scholar": "A small teaching-media object where form, workflow, and pedagogy meet.",
+      "hiring": "Signals practical tool-building in service of media production and education."
+    },
+    "detailUrl": "/work/lightboard-template/",
+    "externalUrl": "https://github.com/nathanegraham/latex-beamer-lightboard-template"
+  },
+  {
+    "id": "crankgpt",
+    "title": "CrankGPT",
+    "track": "studio",
+    "format": "installation",
+    "scale": "object",
+    "status": "published",
+    "themes": [
+      "AI",
+      "critical AI",
+      "interfaces"
+    ],
+    "summary": "A DIY Jetson Orin Nano kiosk that runs a local LLM, measures answer energy use, and makes you hand-crank that energy to unlock the response.",
+    "lensSummary": {
+      "overview": "An AI object that is simultaneously prototype, interface, and argument.",
+      "builder": "A strong example of hardware, software, and interaction design locked to one concept.",
+      "leader": "Shows experimentation with AI that still has a disciplined point of view and physical implementation.",
+      "scholar": "Probably the clearest studio artifact here: computation used as cultural critique and interface form.",
+      "hiring": "Distinctive evidence of technical range, design judgment, and conceptual ambition."
+    },
+    "detailUrl": "/work/crankgpt/",
+    "externalUrl": "https://github.com/nathanegraham/crankgpt"
+  },
+  {
+    "id": "opensearch-api-autocomplete",
+    "title": "OpenSearch API Autocomplete",
+    "track": "studio",
+    "format": "prototype",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "interfaces",
+      "search",
+      "data"
+    ],
+    "summary": "An interface experiment using Wikipedia data and the OpenSearch API to drive autocomplete behavior.",
+    "lensSummary": {
+      "overview": "A compact interface experiment centered on search and suggestion.",
+      "builder": "The interesting part is the direct use of external data to shape interaction behavior.",
+      "leader": "Shows product-style thinking applied to a small but complete interface slice.",
+      "scholar": "Search behavior becomes visible here as a cultural and interface problem, not only a technical one.",
+      "hiring": "Useful evidence of front-end experimentation with data-backed interaction."
+    },
+    "detailUrl": "/work/opensearch-api-autocomplete/",
+    "externalUrl": "https://github.com/nathanegraham/opensearch-api-autocomplete"
+  },
+  {
+    "id": "tntpstaff-theme",
+    "title": "TNTP Staff Theme",
+    "track": "studio",
+    "format": "theme",
+    "scale": "object",
+    "status": "published",
+    "themes": [
+      "themes",
+      "interface design",
+      "WordPress"
+    ],
+    "summary": "A WordPress theme project that sits close to interface systems, publishing structure, and visual implementation.",
+    "lensSummary": {
+      "overview": "A theme artifact where interface structure and presentation are the work.",
+      "builder": "Shows theme work as a concrete blend of PHP, templates, and front-end decisions.",
+      "leader": "Useful as evidence of shaping publishing systems through the interface layer itself.",
+      "scholar": "Themes are small publishing environments, not just skins, and this makes that visible.",
+      "hiring": "A practical design-and-implementation artifact rather than abstract design talk."
+    },
+    "detailUrl": "/work/tntpstaff-theme/",
+    "externalUrl": "https://github.com/nathanegraham/TNTPstaff-theme"
+  },
+  {
+    "id": "digital-born",
+    "title": "Digital Born",
+    "track": "writing",
+    "format": "publication",
+    "scale": "archive",
+    "status": "published",
+    "themes": [
+      "publishing",
+      "media",
+      "software studies"
+    ],
+    "summary": "The main writing publication: the essay and notes archive that anchors the Writing track.",
+    "lensSummary": {
+      "overview": "The primary public writing publication tied to the rest of the practice.",
+      "builder": "A place where implementation details, history, and interpretation meet.",
+      "leader": "Public writing that translates complex technical and organizational work into usable language.",
+      "scholar": "The strongest through-line for digital humanities and software-studies adjacent work.",
+      "hiring": "Demonstrates communication range, editorial discipline, and conceptual depth."
+    },
+    "externalUrl": "https://digitalborn.org/"
+  },
+  {
+    "id": "books-to-json",
+    "title": "Converting Books to JSON",
+    "track": "writing",
+    "format": "essay",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "digital humanities",
+      "data",
+      "publishing"
+    ],
+    "summary": "A Digital Born post about scanning, cleaning, and structuring publishing directories as machine-readable JSON.",
+    "lensSummary": {
+      "overview": "A writing artifact that also reads as a workflow and data-conversion case study.",
+      "builder": "Moves from print source material to structured data through scripts, cleanup, and extraction logic.",
+      "leader": "Shows the ability to explain a multi-stage technical process clearly to a broader audience.",
+      "scholar": "Strongly aligned with archives, publishing history, and digital humanities method.",
+      "hiring": "A concrete artifact where technical implementation and communication are both visible."
+    },
+    "detailUrl": "/work/books-to-json/",
+    "externalUrl": "https://digitalborn.org/converting-books-to-json-a-digital-humanities-project/"
+  },
+  {
+    "id": "wp-ebookit",
+    "title": "WP eBookit",
+    "track": "writing",
+    "format": "plugin",
+    "scale": "tool",
+    "status": "published",
+    "themes": [
+      "publishing",
+      "WordPress",
+      "ebooks"
+    ],
+    "summary": "A WordPress plugin project focused on ebook publishing and format transformation inside a publishing workflow.",
+    "lensSummary": {
+      "overview": "A publishing-system artifact rather than a pure essay, but central to the writing track’s infrastructure side.",
+      "builder": "Interesting because it treats publishing as software behavior and output formatting.",
+      "leader": "Shows the instinct to formalize publishing needs as reusable tooling.",
+      "scholar": "Connects writing practice to the systems and formats that make writing travel.",
+      "hiring": "Good evidence of applying software thinking directly to publishing problems."
+    },
+    "detailUrl": "/work/wp-ebookit/",
+    "externalUrl": "https://github.com/nathanegraham/wp_ebookit"
+  }
+]

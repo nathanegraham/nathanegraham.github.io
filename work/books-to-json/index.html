@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Converting Books to JSON | Nathan Graham</title>
+  <meta
+    name="description"
+    content="A writing detail page on converting scanned publishing directories into structured JSON for digital-humanities work."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/assets/css/main.css?v=7" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#25453f" />
+</head>
+<body data-page="detail" data-item="books-to-json" data-nav="work">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="masthead">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <strong>Nathan Graham</strong>
+            <span>Systems Studio</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/systems/">Systems</a>
+          <a href="/builds/">Builds</a>
+          <a href="/studio/">Studio</a>
+          <a href="/writing/">Writing</a>
+          <a href="/work/" aria-current="page">Work</a>
+          <a href="/about/">About</a>
+          <a href="/now/">Now</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+      <div class="lens-bar">
+        <p class="lens-label">Lens</p>
+        <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
+          <button type="button" data-lens="overview">Overview</button>
+          <button type="button" data-lens="builder">Builder</button>
+          <button type="button" data-lens="leader">Leader</button>
+          <button type="button" data-lens="scholar">Scholar</button>
+          <button type="button" data-lens="hiring">Hiring</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <section class="detail-hero panel">
+        <div>
+          <p class="section-kicker">Writing / Essay / Tool</p>
+          <h1>Converting Books to JSON</h1>
+          <p class="detail-summary" id="page-intro">
+            A writing artifact that also reads as a workflow and data-conversion case study.
+          </p>
+          <div class="hero-meta">
+            <span>CLMP directories</span>
+            <span>Digital humanities</span>
+            <span>Data extraction</span>
+          </div>
+        </div>
+
+        <aside class="detail-meta-card">
+          <h2>Project Facts</h2>
+          <ul class="detail-meta-list">
+            <li><span>Track</span><strong>Writing</strong></li>
+            <li><span>Source set</span><strong>CLMP directory PDFs from 1995–2005</strong></li>
+            <li><span>Process</span><strong>PDF-to-text, cleaning, extraction, JSON structuring</strong></li>
+            <li><span>Tools</span><strong>Python scripts plus AI-assisted extraction steps</strong></li>
+          </ul>
+          <div class="detail-actions">
+            <a class="prompt-chip" href="https://digitalborn.org/converting-books-to-json-a-digital-humanities-project/" target="_blank" rel="noopener">Read the original article</a>
+            <a class="prompt-chip" href="/writing/">Back to Writing</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="detail-layout">
+        <article class="story-stack">
+          <section class="story-block panel">
+            <h2>What the project does</h2>
+            <p>
+              The project takes scanned PDF issues of the Council of Literary Magazines and Presses
+              Directory of Literary Magazines and turns them into structured JSON. The work passes
+              through OCR-like text extraction, cleanup, field normalization, and data modeling.
+            </p>
+            <p>
+              That makes it more than a one-off conversion exercise. It becomes a reusable method
+              for translating print-era publishing artifacts into data that can be searched, compared,
+              and reinterpreted.
+            </p>
+          </section>
+
+          <section class="story-block panel">
+            <h2>Why it matters</h2>
+            <p>
+              This is one of the strongest bridge artifacts in the archive because it joins archival
+              research, publishing history, scripting, and structured data work in a single piece.
+            </p>
+            <p>
+              It also shows the Writing track doing something more than commentary: the page records
+              a real transformation pipeline and explains why that pipeline matters for humanities work.
+            </p>
+          </section>
+        </article>
+
+        <aside class="fact-grid">
+          <article class="fact-card panel">
+            <h2>Source Material</h2>
+            <p>Ten years of print directories treated as structured data rather than static scans.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Method</h2>
+            <p>Extraction, cleanup, and field structuring handled through scripts plus AI-assisted interpretation.</p>
+          </article>
+          <article class="fact-card panel">
+            <h2>Why It Fits Here</h2>
+            <p>A writing artifact that also functions as a digital-humanities workflow record.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <p class="section-kicker">Related Work</p>
+          <h2>Other artifacts connected by publishing systems, data structure, and archival thinking.</h2>
+        </div>
+        <div class="artifact-grid" id="related-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/work/">Back to work index</a></p>
+    </footer>
+  </div>
+
+  <script src="/assets/js/script.js?v=3"></script>
+</body>
+</html>
