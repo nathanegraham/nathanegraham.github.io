@@ -7,7 +7,10 @@
     </linearGradient>
   </defs>
   <rect width="100" height="100" rx="22" fill="url(#bg)"/>
-  <path d="M 21 17 L 21 83 M 21 17 L 79 83 M 79 17 L 79 83"
-        stroke="#f2ecdf" stroke-width="14"
-        stroke-linecap="butt" stroke-linejoin="miter" fill="none"/>
+  <path d="M 52 22 L 26 22 L 26 48"
+        stroke="#f2ecdf" stroke-width="10" fill="none"
+        stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M 48 78 L 74 78 L 74 52"
+        stroke="#f2ecdf" stroke-width="10" fill="none"
+        stroke-linecap="square" stroke-linejoin="miter"/>
 </svg>
