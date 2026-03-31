@@ -143,14 +143,37 @@ select {
 }
 
 .brand-mark {
-  width: 1.15rem;
-  height: 1.15rem;
+  position: relative;
+  width: 1.4rem;
+  height: 1.4rem;
   flex: 0 0 auto;
-  border-radius: 0.25rem;
-  background:
-    linear-gradient(135deg, var(--oxide), transparent 65%),
-    linear-gradient(315deg, var(--pine), var(--brass));
+  overflow: hidden;
+  border-radius: 0.35rem;
+  background: linear-gradient(145deg, var(--oxide), var(--brass) 48%, var(--pine));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 2px solid rgba(251, 248, 241, 0.96);
+}
+
+.brand-mark::before {
+  top: 0.28rem;
+  left: 0.28rem;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.brand-mark::after {
+  right: 0.28rem;
+  bottom: 0.28rem;
+  border-left: 0;
+  border-top: 0;
 }
 
 .brand-copy {
@@ -176,6 +199,32 @@ select {
   flex-wrap: wrap;
   gap: 0.55rem 1rem;
   justify-content: flex-end;
+}
+
+.site-nav a[href="/systems/"],
+.site-nav a[href="/builds/"],
+.site-nav a[href="/studio/"] {
+  display: none;
+}
+
+.site-nav a[href="/work/"] {
+  order: 1;
+}
+
+.site-nav a[href="/writing/"] {
+  order: 2;
+}
+
+.site-nav a[href="/about/"] {
+  order: 3;
+}
+
+.site-nav a[href="/now/"] {
+  order: 4;
+}
+
+.site-nav a[href="/contact/"] {
+  order: 5;
 }
 
 .site-nav a {
@@ -206,6 +255,7 @@ select {
 .lens-bar {
   margin-top: var(--space-3);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .lens-label,
@@ -224,6 +274,26 @@ select {
 .filter-label,
 .section-kicker {
   color: var(--ink-muted);
+}
+
+.lens-help,
+.lens-feedback {
+  flex: 0 0 100%;
+  margin: -0.2rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.lens-help {
+  color: var(--ink-muted);
+}
+
+.lens-feedback {
+  color: var(--pine);
+}
+
+.lens-feedback[hidden] {
+  display: none;
 }
 
 .lens-switcher,
@@ -250,6 +320,13 @@ select {
 
 .lens-switcher button {
   padding: 0.55rem 0.85rem;
+}
+
+.lens-switcher:not([data-hydrated="true"]) button[data-lens="overview"] {
+  color: var(--ink);
+  border-color: rgba(161, 77, 52, 0.45);
+  background: rgba(161, 77, 52, 0.12);
+  transform: translateY(-1px);
 }
 
 .lens-switcher button:hover,
@@ -282,9 +359,9 @@ select {
   position: absolute;
   inset: 0 auto auto 0;
   width: 100%;
-  height: 0.35rem;
+  height: 0.42rem;
   background: linear-gradient(90deg, var(--oxide), var(--brass), var(--pine));
-  opacity: 0.7;
+  opacity: 0.92;
 }
 
 .hero-panel,
@@ -322,7 +399,7 @@ select {
 }
 
 .hero-title {
-  max-width: 12ch;
+  max-width: 15ch;
   font-size: clamp(2.7rem, 8vw, 5.7rem);
 }
 
@@ -333,13 +410,19 @@ select {
 
 .hero-body,
 .detail-summary,
-.section-intro,
+.section-intro {
+  color: var(--ink-soft);
+}
+
 .signal-card p,
 .artifact-card p,
 .track-card p,
 .constellation-card p,
-.prose-card p {
-  color: var(--ink-soft);
+.prose-card p,
+.profile-note,
+.fact-card p,
+.story-block p {
+  color: var(--ink);
 }
 
 .hero-body {
@@ -577,6 +660,11 @@ select {
 
 .track-card {
   grid-template-rows: auto auto 1fr auto;
+  border-color: rgba(37, 69, 63, 0.24);
+  background:
+    linear-gradient(180deg, rgba(37, 69, 63, 0.12), rgba(255, 255, 255, 0.52)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.36));
+  box-shadow: 0 22px 60px rgba(29, 28, 23, 0.1);
 }
 
 .track-card .track-title a,
@@ -774,6 +862,24 @@ select {
   color: inherit;
 }
 
+body[data-page="track"][data-track="systems"] .site-nav a[href="/work/"],
+body[data-page="track"][data-track="builds"] .site-nav a[href="/work/"],
+body[data-page="track"][data-track="studio"] .site-nav a[href="/work/"] {
+  color: var(--ink);
+}
+
+body[data-page="track"][data-track="systems"] .site-nav a[href="/work/"]::after,
+body[data-page="track"][data-track="builds"] .site-nav a[href="/work/"]::after,
+body[data-page="track"][data-track="studio"] .site-nav a[href="/work/"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--oxide);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .panel,
   .signal-card,
@@ -847,7 +953,7 @@ select {
   }
 
   .hero-title {
-    max-width: 12ch;
+    max-width: 14ch;
   }
 }
 

@@ -75,34 +75,37 @@
     ],
     "constellations": [
       {
-        "title": "Teaching media from room to file",
+        "title": "Teaching media systems",
         "items": [
           "faculty-studios",
-          "lightboard-template"
+          "lightboard-template",
+          "kaltura-api-metadata-interface"
         ],
-        "reason": "The studio build and the template artifact both sit inside a broader teaching-media system rather than outside it."
+        "reason": "Rooms, templates, and metadata workflows all belong to the same teaching-media stack rather than sitting as isolated projects."
       },
       {
-        "title": "Publishing between platforms",
+        "title": "Publishing between systems",
         "items": [
+          "digital-born",
           "wp-rest-api-post-getter",
-          "digital-born"
-        ],
-        "reason": "One artifact is the writing archive itself; the other is a tool for moving WordPress content across site boundaries."
-      },
-      {
-        "title": "Publishing as data transformation",
-        "items": [
-          "books-to-json",
           "wp-ebookit"
         ],
-        "reason": "Both artifacts treat publishing as a formatting and transformation problem rather than only a writing problem."
+        "reason": "The publication, the bridge, and the plugin all treat publishing as something that moves across platforms, formats, and interfaces."
+      },
+      {
+        "title": "Structured data in public",
+        "items": [
+          "books-to-json",
+          "opensearch-api-autocomplete",
+          "excel-post-requests"
+        ],
+        "reason": "Each artifact turns messy or distributed sources into structured data that can be queried, reused, or interpreted."
       }
     ],
     "prompts": [
       {
-        "label": "Show me media systems work",
-        "href": "/work/?theme=media%20systems&lens=leader"
+        "label": "Show me institutional systems work",
+        "href": "/work/?track=systems&lens=leader"
       },
       {
         "label": "Show me publishing infrastructure",
@@ -111,6 +114,18 @@
       {
         "label": "Start with AI and interfaces",
         "href": "/work/?theme=AI&lens=scholar"
+      },
+      {
+        "label": "Show me teaching media work",
+        "href": "/work/?theme=teaching%20media&lens=overview"
+      },
+      {
+        "label": "Show me digital humanities work",
+        "href": "/work/?theme=digital%20humanities&lens=scholar"
+      },
+      {
+        "label": "Show me utility builds",
+        "href": "/work/?track=builds&lens=builder"
       }
     ]
   },
