@@ -415,18 +415,28 @@
     updateLocationForWork();
   }
 
-  function updateLensBadge() {
+  function updateLensBadge(announce) {
     var badge = document.querySelector("[data-lens-current]");
-    if (!badge) {
-      return;
-    }
+    var status = document.getElementById("lens-status");
     var lens = state.site && state.site.lenses
       ? state.site.lenses.find(function (l) { return l.id === state.lens; })
       : null;
-    badge.textContent = lens ? lens.label : titleCase(state.lens);
+    var label = lens ? lens.label : titleCase(state.lens);
+
+    if (!badge && !status) {
+      return;
+    }
+
+    if (badge) {
+      badge.textContent = label;
+    }
+
+    if (status && announce) {
+      status.textContent = "Viewing as " + label + ".";
+    }
   }
 
-  function updateLensButtons() {
+  function updateLensButtons(announce) {
     Array.prototype.forEach.call(document.querySelectorAll("[data-lens-switcher]"), function (switcher) {
       switcher.setAttribute("data-hydrated", "true");
       Array.prototype.forEach.call(switcher.querySelectorAll("button"), function (button) {
@@ -435,7 +445,7 @@
         button.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
     });
-    updateLensBadge();
+    updateLensBadge(announce);
   }
 
   function updateHeroCopy() {
@@ -465,8 +475,8 @@
     }
   }
 
-  function applyLens() {
-    updateLensButtons();
+  function applyLens(announce) {
+    updateLensButtons(announce);
     updateHeroCopy();
     updatePageIntro();
     renderSignalTiles();
@@ -479,21 +489,30 @@
     renderWorkPage();
   }
 
+  function closeLensPanel() {
+    var panel = document.getElementById("lens-panel");
+    var btn = document.getElementById("lens-btn");
+    if (panel) {
+      panel.hidden = true;
+    }
+    if (btn) {
+      btn.setAttribute("aria-expanded", "false");
+    }
+  }
+
   function initLensSwitcher() {
     Array.prototype.forEach.call(document.querySelectorAll("[data-lens-switcher] button"), function (button) {
       button.addEventListener("click", function () {
-        state.lens = button.getAttribute("data-lens") || DEFAULT_LENS;
+        var nextLens = button.getAttribute("data-lens") || DEFAULT_LENS;
+        if (state.lens === nextLens) {
+          closeLensPanel();
+          return;
+        }
+
+        state.lens = nextLens;
         storeLens(state.lens);
-        applyLens();
-        // Close the lens panel after a selection
-        var panel = document.getElementById("lens-panel");
-        var btn = document.getElementById("lens-btn");
-        if (panel) {
-          panel.hidden = true;
-        }
-        if (btn) {
-          btn.setAttribute("aria-expanded", "false");
-        }
+        applyLens(true);
+        closeLensPanel();
       });
     });
   }
@@ -658,7 +677,7 @@
 
         initLensSwitcher();
         initLensToggle();
-        applyLens();
+        applyLens(false);
         loadPostFeeds();
       })
       .catch(function (error) {
