@@ -15,7 +15,7 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=8" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=9" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -32,10 +32,7 @@
       <div class="masthead">
         <a class="brand" href="/">
           <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-copy">
-            <strong>Nathan Graham</strong>
-            <span>Systems Studio</span>
-          </span>
+          <span class="brand-name">Nathan Graham</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="/systems/">Systems</a>
@@ -47,15 +44,22 @@
           <a href="/now/">Now</a>
           <a href="/contact/">Contact</a>
         </nav>
+        <button class="lens-toggle" id="lens-btn" type="button" aria-expanded="false" aria-controls="lens-panel">
+          <span class="lens-dot" aria-hidden="true"></span>
+          <span>Lens: <span data-lens-current>Overview</span> &#9662;</span>
+        </button>
       </div>
-      <div class="lens-bar">
-        <p class="lens-label">Lens</p>
-        <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
-          <button type="button" data-lens="overview">Overview</button>
-          <button type="button" data-lens="builder">Builder</button>
-          <button type="button" data-lens="leader">Leader</button>
-          <button type="button" data-lens="scholar">Scholar</button>
-          <button type="button" data-lens="hiring">Hiring</button>
+      <div class="lens-panel" id="lens-panel" hidden>
+        <div class="lens-panel-inner">
+          <span class="lens-panel-label">Viewing as</span>
+          <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
+            <button type="button" data-lens="overview">Overview</button>
+            <button type="button" data-lens="builder">Builder</button>
+            <button type="button" data-lens="leader">Leader</button>
+            <button type="button" data-lens="scholar">Scholar</button>
+            <button type="button" data-lens="hiring">Hiring</button>
+          </div>
+          <span class="lens-panel-help">Changes framing, not content.</span>
         </div>
       </div>
     </header>
@@ -162,6 +166,6 @@
     </footer>
   </div>
 
-  <script src="/assets/js/script.js?v=4"></script>
+  <script src="/assets/js/script.js?v=5"></script>
 </body>
 </html>

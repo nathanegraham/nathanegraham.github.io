@@ -416,6 +416,17 @@
     updateLocationForWork();
   }
 
+  function updateLensBadge() {
+    var badge = document.querySelector("[data-lens-current]");
+    if (!badge) {
+      return;
+    }
+    var lens = state.site && state.site.lenses
+      ? state.site.lenses.find(function (l) { return l.id === state.lens; })
+      : null;
+    badge.textContent = lens ? lens.label : titleCase(state.lens);
+  }
+
   function updateLensButtons() {
     Array.prototype.forEach.call(document.querySelectorAll("[data-lens-switcher]"), function (switcher) {
       switcher.setAttribute("data-hydrated", "true");
@@ -425,6 +436,7 @@
         button.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
     });
+    updateLensBadge();
   }
 
   function ensureLensContext() {
@@ -517,7 +529,35 @@
         if (previousLens !== state.lens) {
           showLensFeedback();
         }
+        // Close the lens panel after a selection
+        var panel = document.getElementById("lens-panel");
+        var btn = document.getElementById("lens-btn");
+        if (panel) {
+          panel.hidden = true;
+        }
+        if (btn) {
+          btn.setAttribute("aria-expanded", "false");
+        }
       });
+    });
+  }
+
+  function initLensToggle() {
+    var btn = document.getElementById("lens-btn");
+    var panel = document.getElementById("lens-panel");
+    if (!btn || !panel) {
+      return;
+    }
+    btn.addEventListener("click", function () {
+      var isOpen = !panel.hidden;
+      panel.hidden = isOpen;
+      btn.setAttribute("aria-expanded", !isOpen ? "true" : "false");
+    });
+    document.addEventListener("click", function (e) {
+      if (btn && panel && !btn.contains(e.target) && !panel.contains(e.target)) {
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+      }
     });
   }
 
@@ -663,6 +703,7 @@
         state.lens = lensExists ? nextLens : DEFAULT_LENS;
 
         initLensSwitcher();
+        initLensToggle();
         applyLens();
         loadPostFeeds();
       })
