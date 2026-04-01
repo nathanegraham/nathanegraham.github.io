@@ -14,7 +14,6 @@
     site: null,
     items: [],
     posts: [],
-    lensMessageTimer: 0,
     workTrack: "all",
     workTheme: "all"
   };
@@ -439,45 +438,6 @@
     updateLensBadge();
   }
 
-  function ensureLensContext() {
-    Array.prototype.forEach.call(document.querySelectorAll(".lens-bar"), function (bar) {
-      if (!bar.querySelector(".lens-help")) {
-        var help = document.createElement("p");
-        help.className = "lens-help";
-        help.textContent = "This site adapts its framing based on who's reading.";
-        bar.appendChild(help);
-      }
-
-      if (!bar.querySelector(".lens-feedback")) {
-        var feedback = document.createElement("p");
-        feedback.className = "lens-feedback";
-        feedback.hidden = true;
-        feedback.setAttribute("aria-live", "polite");
-        bar.appendChild(feedback);
-      }
-    });
-  }
-
-  function showLensFeedback() {
-    if (state.lensMessageTimer) {
-      window.clearTimeout(state.lensMessageTimer);
-    }
-
-    Array.prototype.forEach.call(document.querySelectorAll(".lens-feedback"), function (feedback) {
-      feedback.hidden = false;
-      feedback.textContent = state.lens === "overview"
-        ? "Back to the general framing."
-        : "Now viewing this through the " + titleCase(state.lens) + " lens.";
-    });
-
-    state.lensMessageTimer = window.setTimeout(function () {
-      Array.prototype.forEach.call(document.querySelectorAll(".lens-feedback"), function (feedback) {
-        feedback.textContent = "";
-        feedback.hidden = true;
-      });
-    }, 2400);
-  }
-
   function updateHeroCopy() {
     var heroBody = document.getElementById("hero-body");
     if (heroBody && state.site.home.heroByLens[state.lens]) {
@@ -522,13 +482,9 @@
   function initLensSwitcher() {
     Array.prototype.forEach.call(document.querySelectorAll("[data-lens-switcher] button"), function (button) {
       button.addEventListener("click", function () {
-        var previousLens = state.lens;
         state.lens = button.getAttribute("data-lens") || DEFAULT_LENS;
         storeLens(state.lens);
         applyLens();
-        if (previousLens !== state.lens) {
-          showLensFeedback();
-        }
         // Close the lens panel after a selection
         var panel = document.getElementById("lens-panel");
         var btn = document.getElementById("lens-btn");
@@ -676,8 +632,6 @@
     if (!document.body) {
       return;
     }
-
-    ensureLensContext();
 
     var shouldLoadPosts = Boolean(document.querySelector("[data-postfeed]"));
     var requests = [

@@ -36,17 +36,17 @@
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="/systems/">Systems</a>
-          <a href="/builds/">Builds</a>
+          <a href="/builds/" aria-current="page">Builds</a>
           <a href="/studio/">Studio</a>
           <a href="/writing/">Writing</a>
-          <a href="/work/" aria-current="page">Work</a>
+          <a href="/work/">Work</a>
           <a href="/about/">About</a>
           <a href="/now/">Now</a>
           <a href="/contact/">Contact</a>
         </nav>
         <button class="lens-toggle" id="lens-btn" type="button" aria-expanded="false" aria-controls="lens-panel">
           <span class="lens-dot" aria-hidden="true"></span>
-          <span>Lens: <span data-lens-current>Overview</span> &#9662;</span>
+          <span>Lens: <span data-lens-current aria-live="polite" aria-atomic="true">Overview</span> &#9662;</span>
         </button>
       </div>
       <div class="lens-panel" id="lens-panel" hidden>

@@ -7,10 +7,6 @@
 :root {
   --bg:          #f7f5f0;
   --white:       #ffffff;
-  --paper:       #f2ecdf;        /* kept for compatibility */
-  --paper-strong: #fbf8f1;
-  --surface:     rgba(255,255,255,0.8);
-  --surface-strong: rgba(255,255,255,0.95);
   --ink:         #161410;
   --ink-soft:    #524e48;
   --ink-muted:   #8a857d;
@@ -18,8 +14,6 @@
   --line-strong: #ccc7bf;
   --pine:        #25453f;
   --oxide:       #a14d34;
-  --brass:       #8b7130;
-  --shadow:      0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
 
   --serif: "Fraunces", Georgia, serif;
   --sans:  "IBM Plex Sans", system-ui, sans-serif;
@@ -160,20 +154,10 @@ button, input, textarea, select { font: inherit; }
   border-top: 0;
 }
 
-.brand-name,
-.brand-copy strong {
+.brand-name {
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-}
-
-/* Hide "SYSTEMS STUDIO" subtext */
-.brand-copy {
-  display: grid;
-  gap: 0;
-}
-.brand-copy span:last-child {
-  display: none;
 }
 
 /* Nav */
@@ -191,6 +175,10 @@ button, input, textarea, select { font: inherit; }
 .site-nav a[href="/builds/"],
 .site-nav a[href="/studio/"] {
   display: none;
+}
+
+.site-nav a[aria-current="page"] {
+  display: inline-flex;
 }
 
 .site-nav a {
@@ -301,12 +289,6 @@ button, input, textarea, select { font: inherit; }
   border-color: rgba(161, 77, 52, 0.4);
   color: var(--ink);
 }
-
-/* Hide old lens bar entirely */
-.lens-bar,
-.lens-label,
-.lens-help,
-.lens-feedback { display: none; }
 
 /* ─── Main ────────────────────────────────────────────────────────────────── */
 .site-main {
@@ -440,7 +422,6 @@ button, input, textarea, select { font: inherit; }
 }
 
 .section-kicker,
-.lens-label,
 .filter-label,
 .signal-label,
 .artifact-meta,
@@ -520,7 +501,6 @@ button, input, textarea, select { font: inherit; }
   border: none;
   border-radius: 0;
   box-shadow: none;
-  transition: background 0.12s;
 }
 
 .signal-card:hover,
@@ -569,6 +549,10 @@ button, input, textarea, select { font: inherit; }
 .artifact-title { margin: 0; }
 .artifact-track { color: var(--pine); font-weight: 500; }
 
+.artifact-grid > .artifact-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .artifact-themes {
   display: flex;
   flex-wrap: wrap;
@@ -601,7 +585,6 @@ button, input, textarea, select { font: inherit; }
   border: none;
   border-radius: 0;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
 }
 .prompt-chip:hover { color: var(--pine); background: #fdfcf9; }
 
@@ -793,7 +776,6 @@ button, input, textarea, select { font: inherit; }
   font-size: 0.85rem;
   color: var(--pine);
   font-weight: 500;
-  transition: background 0.12s, border-color 0.12s;
 }
 .rail-link:hover { background: #fdfcf9; border-color: var(--pine); }
 
@@ -810,7 +792,6 @@ button, input, textarea, select { font: inherit; }
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--pine);
-  transition: background 0.12s, border-color 0.12s;
 }
 .action-link:hover { background: #fdfcf9; border-color: var(--pine); }
 
@@ -841,7 +822,6 @@ button, input, textarea, select { font: inherit; }
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background 0.12s, border-color 0.12s, color 0.12s;
 }
 .filter-chip:hover,
 .filter-chip.is-active {
@@ -901,10 +881,8 @@ button, input, textarea, select { font: inherit; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: gap 0.18s;
 }
 .show-more:hover { gap: 0.75rem; }
-.arrow { transition: transform 0.18s; }
 .show-more:hover .arrow { transform: translateX(3px); }
 
 .posts-status {
@@ -939,8 +917,19 @@ button, input, textarea, select { font: inherit; }
   .prompt-chip,
   .rail-link,
   .action-link {
-    transition: background 0.14s ease;
-    /* No translateY lift — cleaner without it */
+    transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+  }
+
+  .filter-chip {
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  }
+
+  .show-more {
+    transition: gap 0.18s ease;
+  }
+
+  .arrow {
+    transition: transform 0.18s ease;
   }
 }
 

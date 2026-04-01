@@ -46,7 +46,7 @@
         </nav>
         <button class="lens-toggle" id="lens-btn" type="button" aria-expanded="false" aria-controls="lens-panel">
           <span class="lens-dot" aria-hidden="true"></span>
-          <span>Lens: <span data-lens-current>Overview</span> &#9662;</span>
+          <span>Lens: <span data-lens-current aria-live="polite" aria-atomic="true">Overview</span> &#9662;</span>
         </button>
       </div>
       <div class="lens-panel" id="lens-panel" hidden>
@@ -88,8 +88,8 @@
             <li><span>Key move</span><strong>Treat the theme as a publishing environment, not only a visual layer</strong></li>
           </ul>
           <div class="detail-actions">
-            <a class="prompt-chip" href="https://github.com/nathanegraham/TNTPstaff-theme" target="_blank" rel="noopener">Open GitHub repo</a>
-            <a class="prompt-chip" href="/studio/">Back to Studio</a>
+            <a class="action-link" href="https://github.com/nathanegraham/TNTPstaff-theme" target="_blank" rel="noopener">Open GitHub repo</a>
+            <a class="action-link" href="/studio/">Back to Studio</a>
           </div>
         </aside>
       </section>
