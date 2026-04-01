@@ -482,6 +482,10 @@ button, input, textarea, select { font: inherit; }
   grid-template-columns: repeat(3, 1fr);
 }
 
+.constellation-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .track-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
