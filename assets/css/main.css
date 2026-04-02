@@ -312,9 +312,6 @@ button, input, textarea, select { font: inherit; }
   overflow: hidden;
 }
 
-/* Remove old gradient top-bar */
-.panel::before { display: none; }
-
 .hero-panel,
 .page-hero {
   display: grid;

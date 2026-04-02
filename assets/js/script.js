@@ -86,12 +86,6 @@
     }) || null;
   }
 
-  function getTrackMeta(trackId) {
-    return state.site.tracks.find(function (track) {
-      return track.id === trackId;
-    });
-  }
-
   function getItemUrl(item, context) {
     if (item.detailUrl) {
       return item.detailUrl;
@@ -390,8 +384,6 @@
       return;
     }
 
-    setWorkFiltersFromLocation();
-
     var trackEntries = [{ value: "all", label: "All" }].concat(state.site.tracks.map(function (track) {
       return { value: track.id, label: track.title };
     }));
@@ -674,6 +666,10 @@
           return lens.id === nextLens;
         });
         state.lens = lensExists ? nextLens : DEFAULT_LENS;
+
+        if (document.body.dataset.page === "work") {
+          setWorkFiltersFromLocation();
+        }
 
         initLensSwitcher();
         initLensToggle();
