@@ -23,7 +23,7 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=11" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=12" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -44,33 +44,11 @@
         </a>
 
         <nav class="site-nav" aria-label="Primary">
-          <a href="/systems/">Systems</a>
-          <a href="/builds/">Builds</a>
-          <a href="/studio/">Studio</a>
-          <a href="/writing/">Writing</a>
           <a href="/work/">Work</a>
           <a href="/about/">About</a>
           <a href="/now/">Now</a>
           <a href="/contact/">Contact</a>
         </nav>
-        <button class="lens-toggle" id="lens-btn" type="button" aria-expanded="false" aria-controls="lens-panel">
-          <span class="lens-dot" aria-hidden="true"></span>
-          <span>Lens: <span data-lens-current>Overview</span> &#9662;</span>
-        </button>
-        <span class="sr-only" id="lens-status" aria-live="polite" aria-atomic="true"></span>
-      </div>
-      <div class="lens-panel" id="lens-panel" hidden>
-        <div class="lens-panel-inner">
-          <span class="lens-panel-label">Viewing as</span>
-          <div class="lens-switcher" data-lens-switcher role="toolbar" aria-label="Audience lens">
-            <button type="button" data-lens="overview">Overview</button>
-            <button type="button" data-lens="builder">Builder</button>
-            <button type="button" data-lens="leader">Leader</button>
-            <button type="button" data-lens="scholar">Scholar</button>
-            <button type="button" data-lens="hiring">Hiring</button>
-          </div>
-          <span class="lens-panel-help">Changes framing, not content.</span>
-        </div>
       </div>
     </header>
 
@@ -79,7 +57,7 @@
         <div class="hero-copy">
           <p class="section-kicker">Systems Studio</p>
           <h1 class="hero-title">I build systems, tools, and arguments about technology.</h1>
-          <p class="hero-body" id="hero-body">
+          <p class="hero-body">
             My work sits between institutional AI enablement, media and web systems,
             DIY making, and digital humanities.
           </p>
@@ -121,14 +99,6 @@
 
       <section class="section">
         <div class="section-header">
-          <p class="section-kicker">Current Focus</p>
-          <h2>Where the work is active now.</h2>
-        </div>
-        <div class="signal-grid" id="signal-grid"></div>
-      </section>
-
-      <section class="section">
-        <div class="section-header">
           <p class="section-kicker">Browse by Track</p>
           <h2>Choose an entry point into the archive.</h2>
         </div>
@@ -143,26 +113,6 @@
         <div class="artifact-grid" id="featured-grid"></div>
       </section>
 
-      <section class="section">
-        <div class="section-header">
-          <p class="section-kicker">Cross-track Threads</p>
-          <h2>Themes that cut across the archive.</h2>
-        </div>
-        <div class="constellation-grid" id="constellation-grid"></div>
-      </section>
-
-      <section class="section">
-        <div class="section-header">
-          <p class="section-kicker">Recent Writing</p>
-          <h2>Latest from Digital Born.</h2>
-          <p class="section-intro">
-            Recent writing on media, technology, publishing, and digital humanities.
-          </p>
-        </div>
-        <ul class="post-list" data-postfeed data-feed-count="4" aria-live="polite" aria-label="Recent writing from Digital Born">
-          <li class="posts-status">Loading notes...</li>
-        </ul>
-      </section>
     </main>
 
     <footer class="site-footer">
@@ -182,6 +132,6 @@
     </footer>
   </div>
 
-  <script src="/assets/js/script.js?v=7"></script>
+  <script src="/assets/js/script.js?v=9"></script>
 </body>
 </html>
