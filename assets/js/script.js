@@ -152,6 +152,16 @@
     renderArtifactCards("featured-grid", featuredItems, "home");
   }
 
+  function renderPromptGrid() {
+    var container = document.getElementById("prompt-grid");
+    if (!container || !state.site.home || !state.site.home.prompts) { return; }
+
+    container.innerHTML = state.site.home.prompts.map(function (prompt) {
+      return '<a class="prompt-chip" href="' + escapeHtml(prompt.href) + '">'
+        + escapeHtml(prompt.label) + "</a>";
+    }).join("");
+  }
+
   function renderTrackPage() {
     if (document.body.dataset.page !== "track") { return; }
     var track = document.body.dataset.track;
@@ -302,6 +312,7 @@
     updatePageIntro();
     renderTrackCards();
     renderFeaturedItems();
+    renderPromptGrid();
     renderTrackPage();
     renderDetailPage();
     renderWorkPage();

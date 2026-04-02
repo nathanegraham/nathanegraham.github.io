@@ -105,27 +105,27 @@
     "prompts": [
       {
         "label": "Show me institutional systems work",
-        "href": "/work/?track=systems&lens=leader"
+        "href": "/work/?track=systems"
       },
       {
         "label": "Show me publishing infrastructure",
-        "href": "/work/?theme=publishing&lens=builder"
+        "href": "/work/?theme=publishing"
       },
       {
         "label": "Start with AI and interfaces",
-        "href": "/work/?theme=AI&lens=scholar"
+        "href": "/work/?theme=AI"
       },
       {
         "label": "Show me teaching media work",
-        "href": "/work/?theme=teaching%20media&lens=overview"
+        "href": "/work/?theme=teaching%20media"
       },
       {
         "label": "Show me digital humanities work",
-        "href": "/work/?theme=digital%20humanities&lens=scholar"
+        "href": "/work/?theme=digital%20humanities"
       },
       {
         "label": "Show me utility builds",
-        "href": "/work/?track=builds&lens=builder"
+        "href": "/work/?track=builds"
       }
     ]
   },
@@ -185,7 +185,7 @@
       "hiring": "Signals communication range, conceptual rigor, and editorial discipline."
     },
     "work": {
-      "overview": "Filter by track or theme, then use the lens switcher to change the framing rather than the archive itself.",
+      "overview": "Filter by track or theme to move across systems work, builds, studio artifacts, and writing.",
       "builder": "Use the archive to find tools, prototypes, workflows, and implementation patterns.",
       "leader": "Use the archive to find institution-scale work, cross-functional systems, and service design patterns.",
       "scholar": "Use the archive to trace themes across writing, building, and systems practice.",
