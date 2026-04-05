@@ -3,110 +3,146 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nathan Graham | Systems Studio</title>
+  <title>Nathan Graham</title>
   <meta
     name="description"
-    content="Nathan Graham builds systems, tools, and arguments about technology across institutional AI enablement, media systems, DIY making, and digital humanities."
+    content="Nathan Graham writes and builds across academic technology, media systems, publishing, and digital humanities."
   />
   <meta name="author" content="Nathan Graham" />
-  <meta property="og:title" content="Nathan Graham | Systems Studio" />
+  <meta property="og:title" content="Nathan Graham" />
   <meta
     property="og:description"
-    content="A portfolio organized around Systems, Builds, Studio, and Writing."
+    content="Writing, systems work, and a public archive of tools, media, and digital humanities projects."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nathanegraham.github.io/" />
-  <meta property="og:image" content="https://nathanegraham.github.io/images/shaffer-hero.jpg" />
+  <meta property="og:image" content="https://nathanegraham.github.io/images/avatar.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=13" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=14" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0e0c0a" />
+  <meta name="theme-color" content="#1b1923" />
 </head>
 <body data-page="home" data-nav="home">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- Header: full-width sticky -->
-  <header class="site-header">
-    <div class="masthead">
-      <a class="brand" href="/">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">Nathan Graham</span>
-      </a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="/work/">Work</a>
-        <a href="/about/">About</a>
-        <a href="/now/">Now</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="masthead">
+        <a class="brand" href="/">
+          <span class="avatar-wrap">
+            <img
+              src="/images/avatar.png"
+              alt="Nathan Graham"
+              class="avatar"
+              width="64"
+              height="64"
+              loading="eager"
+            />
+            <picture>
+              <source srcset="/images/avatar-fun.webp" type="image/webp" />
+              <img
+                src="/images/avatar-fun.png"
+                alt=""
+                class="avatar-fun"
+                width="64"
+                height="64"
+                loading="lazy"
+                aria-hidden="true"
+              />
+            </picture>
+          </span>
+          <span class="brand-copy">
+            <span class="brand-name">Nathan Graham</span>
+            <span class="brand-tag">Systems, media, and public writing</span>
+          </span>
+        </a>
 
-  <!-- Hero: dark full-width section with photo -->
-  <section class="site-hero" aria-label="Introduction">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-eyebrow">Assistant Dean &middot; Center for Media &amp; Technology Solutions</p>
-        <h1 class="hero-heading">I build systems, tools, and arguments about technology.</h1>
-        <p class="hero-subhead">
-          Working across institutional AI enablement, media systems,
-          DIY making, and digital humanities at Johns Hopkins.
+        <p class="sidebar-role">
+          <strong>Assistant Dean</strong>
+          Center for Media &amp; Technology Solutions,
+          Johns Hopkins University
         </p>
-        <div class="hero-ctas">
-          <a class="hero-cta-primary" href="/work/">Browse the work</a>
-          <a class="hero-cta-secondary" href="/about/">About me</a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/work/">Work</a>
+          <a href="/about/">About</a>
+          <a href="/now/">Now</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+
+        <nav class="sidebar-links" aria-label="External links">
+          <a href="https://digitalborn.org" target="_blank" rel="noopener">Digital Born</a>
+          <a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <div class="home-intro">
+        <p class="eyebrow">Recent Writing</p>
+        <h1 class="home-title">Writing on media, technology &amp; culture.</h1>
+        <p class="home-lede">
+          I work across academic technology, media systems, publishing, and digital humanities.
+          This site is a public archive of writing, systems work, and smaller artifacts that make
+          those larger systems legible.
+        </p>
+      </div>
+
+      <section class="section home-posts">
+        <div class="section-header">
+          <p class="section-kicker">From Digital Born</p>
+          <h2>Notes, essays, and project writing from the archive.</h2>
         </div>
-      </div>
-      <div class="hero-photo">
-        <img
-          src="/images/shaffer-hero.jpg"
-          alt="Nathan Graham reviewing architectural plans with colleagues at a construction site"
-          loading="eager"
-          width="1400"
-          height="934"
-        />
-      </div>
-    </div>
-  </section>
+        <ul class="post-list" data-postfeed data-feed-count="6" aria-live="polite" aria-label="Recent writing from Digital Born">
+          <li class="posts-status">Loading posts...</li>
+        </ul>
+      </section>
 
-  <!-- Main content -->
-  <main id="main-content" class="site-main">
-    <div class="home-section">
-      <p class="section-kicker">Work by track</p>
-      <div class="track-grid" id="track-grid"></div>
-    </div>
+      <section class="section">
+        <div class="section-header">
+          <p class="section-kicker">Selected Work</p>
+          <h2>A few places to begin on the systems and build side.</h2>
+        </div>
+        <div class="artifact-grid" id="featured-grid"></div>
+      </section>
 
-    <div class="home-section">
-      <p class="section-kicker">Selected work</p>
-      <div class="artifact-grid" id="featured-grid"></div>
-    </div>
-  </main>
+      <section class="section">
+        <div class="section-header">
+          <p class="section-kicker">Browse by Track</p>
+          <h2>Move into the archive by practice rather than chronology.</h2>
+        </div>
+        <div class="track-grid" id="track-grid"></div>
+      </section>
+    </main>
 
-  <footer class="site-footer">
-    <p>Nathan Graham</p>
-    <p>Systems studio &mdash; a filterable archive of systems, builds, making, and writing.</p>
-    <p>
-      <a href="/work/">Browse the work index</a>
-      <span aria-hidden="true"> / </span>
-      <a href="https://digitalborn.org" target="_blank" rel="noopener">Read Digital Born</a>
-      <span aria-hidden="true"> / </span>
-      <a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a>
-      <span aria-hidden="true"> / </span>
-      <a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener">LinkedIn</a>
-      <span aria-hidden="true"> / </span>
-      <a href="/contact/">Contact</a>
-    </p>
-  </footer>
+    <footer class="site-footer">
+      <p>Nathan Graham</p>
+      <p>Writing, systems work, and a public archive.</p>
+      <p>
+        <a href="/work/">Browse the work index</a>
+        <span aria-hidden="true">/</span>
+        <a href="https://digitalborn.org" target="_blank" rel="noopener">Read Digital Born</a>
+        <span aria-hidden="true">/</span>
+        <a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a>
+        <span aria-hidden="true">/</span>
+        <a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener">LinkedIn</a>
+        <span aria-hidden="true">/</span>
+        <a href="/contact/">Contact</a>
+      </p>
+    </footer>
+  </div>
 
-  <script src="/assets/js/script.js?v=10"></script>
+  <script src="/assets/js/script.js?v=11"></script>
 </body>
 </html>

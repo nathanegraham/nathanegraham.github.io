@@ -3,12 +3,14 @@
 
   var DATA_PATHS = {
     site:  "/data/site.json",
-    items: "/data/items.json"
+    items: "/data/items.json",
+    posts: "/data/posts.json"
   };
 
   var state = {
     site:       null,
     items:      [],
+    posts:      [],
     workTrack:  "all",
     workTheme:  "all"
   };
@@ -35,6 +37,12 @@
     return String(value || "")
       .replace(/-/g, " ")
       .replace(/\b\w/g, function (char) { return char.toUpperCase(); });
+  }
+
+  function getTitleText(html) {
+    var temp = document.createElement("textarea");
+    temp.innerHTML = String(html || "").replace(/<[^>]*>/g, "");
+    return temp.value;
   }
 
   /* ─── Page helpers ───────────────────────────────────────────────────────── */
@@ -150,6 +158,101 @@
       return state.items.find(function (item) { return item.id === id; });
     }).filter(Boolean);
     renderArtifactCards("featured-grid", featuredItems, "home");
+  }
+
+  function formatDate(isoString) {
+    var date = new Date(isoString);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      year: "numeric"
+    });
+  }
+
+  function buildStatusItem(message) {
+    var item = document.createElement("li");
+    item.className = "posts-status";
+    item.textContent = message;
+    return item;
+  }
+
+  function buildPostItem(post) {
+    var item = document.createElement("li");
+    var time = document.createElement("time");
+    var title = document.createElement("p");
+    var link = document.createElement("a");
+    var renderedTitle = post.title && typeof post.title === "object"
+      ? post.title.rendered
+      : post.title;
+
+    item.className = "post-item";
+
+    time.className = "post-date";
+    time.dateTime = post.date;
+    time.textContent = formatDate(post.date);
+
+    title.className = "post-title";
+
+    link.href = post.link;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = getTitleText(renderedTitle);
+
+    title.appendChild(link);
+    item.appendChild(time);
+    item.appendChild(title);
+    return item;
+  }
+
+  function buildShowMoreButton(limit, posts, container) {
+    var item = document.createElement("li");
+    var button = document.createElement("button");
+    var arrow = document.createElement("span");
+
+    item.className = "posts-more";
+    button.className = "show-more";
+    button.type = "button";
+    button.appendChild(document.createTextNode("More posts "));
+    arrow.className = "arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "\u2192";
+    button.appendChild(arrow);
+
+    button.addEventListener("click", function () {
+      renderFeedPosts(container, posts, posts.length);
+    });
+
+    item.appendChild(button);
+    return item;
+  }
+
+  function renderFeedPosts(container, posts, limit) {
+    var fragment = document.createDocumentFragment();
+    var slice = posts.slice(0, limit);
+
+    slice.forEach(function (post) {
+      fragment.appendChild(buildPostItem(post));
+    });
+
+    if (limit < posts.length) {
+      fragment.appendChild(buildShowMoreButton(limit, posts, container));
+    }
+
+    container.textContent = "";
+    container.appendChild(fragment);
+  }
+
+  function loadPostFeeds() {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-postfeed]"), function (container) {
+      var count = Number(container.getAttribute("data-feed-count") || "4");
+
+      if (!state.posts.length) {
+        container.textContent = "";
+        container.appendChild(buildStatusItem("No posts available right now."));
+        return;
+      }
+
+      renderFeedPosts(container, state.posts, count);
+    });
   }
 
   function renderPromptGrid() {
@@ -316,22 +419,33 @@
     renderTrackPage();
     renderDetailPage();
     renderWorkPage();
+    loadPostFeeds();
   }
 
   function init() {
     if (!document.body) { return; }
+    var shouldLoadPosts = Boolean(document.querySelector("[data-postfeed]"));
 
     if (document.body.dataset.page === "work") {
       setWorkFiltersFromLocation();
     }
 
-    Promise.all([
+    var requests = [
       fetchJson(DATA_PATHS.site),
       fetchJson(DATA_PATHS.items)
-    ])
+    ];
+
+    if (shouldLoadPosts) {
+      requests.push(fetchJson(DATA_PATHS.posts).catch(function () {
+        return [];
+      }));
+    }
+
+    Promise.all(requests)
       .then(function (results) {
         state.site  = results[0];
         state.items = results[1];
+        state.posts = shouldLoadPosts ? results[2] : [];
         render();
       })
       .catch(function (error) {

@@ -15,14 +15,14 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=13" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=14" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#25453f" />
+  <meta name="theme-color" content="#1b1923" />
 </head>
 <body data-page="detail" data-item="tntpstaff-theme" data-nav="work">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -31,14 +31,48 @@
     <header class="site-header">
       <div class="masthead">
         <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-name">Nathan Graham</span>
+          <span class="avatar-wrap">
+            <img
+              src="/images/avatar.png"
+              alt="Nathan Graham"
+              class="avatar"
+              width="64"
+              height="64"
+              loading="eager"
+            />
+            <picture>
+              <source srcset="/images/avatar-fun.webp" type="image/webp" />
+              <img
+                src="/images/avatar-fun.png"
+                alt=""
+                class="avatar-fun"
+                width="64"
+                height="64"
+                loading="lazy"
+                aria-hidden="true"
+              />
+            </picture>
+          </span>
+          <span class="brand-copy">
+            <span class="brand-name">Nathan Graham</span>
+            <span class="brand-tag">Systems, media, and public writing</span>
+          </span>
         </a>
+        <p class="sidebar-role">
+          <strong>Assistant Dean</strong>
+          Center for Media &amp; Technology Solutions,
+          Johns Hopkins University
+        </p>
         <nav class="site-nav" aria-label="Primary">
           <a href="/work/">Work</a>
           <a href="/about/">About</a>
           <a href="/now/">Now</a>
           <a href="/contact/">Contact</a>
+        </nav>
+        <nav class="sidebar-links" aria-label="External links">
+          <a href="https://digitalborn.org" target="_blank" rel="noopener">Digital Born</a>
+          <a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener">LinkedIn</a>
         </nav>
       </div>
     </header>
@@ -143,6 +177,6 @@
     </footer>
   </div>
 
-  <script src="/assets/js/script.js?v=10"></script>
+  <script src="/assets/js/script.js?v=11"></script>
 </body>
 </html>
