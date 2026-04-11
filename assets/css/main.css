@@ -182,7 +182,6 @@ select {
 .brand-copy {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
 }
 
 .brand-name {
@@ -191,12 +190,6 @@ select {
   font-weight: 300;
   line-height: 1.04;
   letter-spacing: -0.02em;
-}
-
-.brand-tag {
-  font-size: 0.82rem;
-  color: var(--sidebar-soft);
-  line-height: 1.4;
 }
 
 .sidebar-role {
