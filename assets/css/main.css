@@ -844,17 +844,6 @@ select {
   letter-spacing: 0.06em;
 }
 
-.practice-map figcaption {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  padding: 1rem var(--s3);
-  border-top: 1px solid var(--paper-3);
-  background: rgba(255, 253, 249, 0.9);
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-}
-
 .work-archive {
   display: grid;
   gap: var(--s5);
@@ -1430,10 +1419,6 @@ select {
   .bird-label__text {
     font-size: 19px;
     letter-spacing: 0.04em;
-  }
-
-  .practice-map figcaption {
-    padding: 0.9rem 1rem;
   }
 
   .work-track .artifact-grid {
