@@ -47,13 +47,6 @@
 
   /* ─── Page helpers ───────────────────────────────────────────────────────── */
 
-  function getCurrentPageKey() {
-    var body = document.body;
-    if (!body) { return "home"; }
-    if (body.dataset.page === "track") { return body.dataset.track; }
-    return body.dataset.page || "home";
-  }
-
   function getCurrentItem() {
     var itemId = document.body && document.body.dataset
       ? document.body.dataset.item : null;
@@ -105,6 +98,16 @@
     var container = document.getElementById(containerId);
     if (!container) { return; }
 
+    if (!items.length) {
+      var emptyMessage = context === "work"
+        ? "No artifacts match these filters."
+        : context === "detail"
+        ? "No related artifacts are available."
+        : "No artifacts are available here yet.";
+      container.innerHTML = '<p class="empty-state">' + emptyMessage + "</p>";
+      return;
+    }
+
     container.innerHTML = items.map(function (item) {
       var url = getItemUrl(item, context);
       var isInternalDetail = Boolean(item.detailUrl && url === item.detailUrl);
@@ -117,8 +120,7 @@
             + escapeHtml(item.title) + "</a></h3>"
         : '<h3 class="artifact-title">' + escapeHtml(item.title) + "</h3>";
 
-      var summary = (item.lensSummary && item.lensSummary.overview)
-        || item.summary || "";
+      var summary = item.summary || "";
 
       var themes = item.themes.map(function (theme) {
         return "<span>" + escapeHtml(theme) + "</span>";
@@ -203,7 +205,7 @@
     return item;
   }
 
-  function buildShowMoreButton(limit, posts, container) {
+  function buildShowMoreButton(posts, container) {
     var item = document.createElement("li");
     var button = document.createElement("button");
     var arrow = document.createElement("span");
@@ -234,7 +236,7 @@
     });
 
     if (limit < posts.length) {
-      fragment.appendChild(buildShowMoreButton(limit, posts, container));
+      fragment.appendChild(buildShowMoreButton(posts, container));
     }
 
     container.textContent = "";
@@ -308,13 +310,20 @@
     return themes.sort(function (a, b) { return a.localeCompare(b); });
   }
 
-  function setWorkFiltersFromLocation() {
+  function setWorkFiltersFromLocation(trackEntries, themeEntries) {
     var params = new URLSearchParams(window.location.search);
-    state.workTrack = params.get("track") || "all";
-    state.workTheme = params.get("theme") || "all";
+    var requestedTrack = params.get("track") || "all";
+    var requestedTheme = params.get("theme") || "all";
+    var validTracks = trackEntries.map(function (entry) { return entry.value; });
+    var validThemes = themeEntries.map(function (entry) { return entry.value; });
+
+    state.workTrack = validTracks.indexOf(requestedTrack) !== -1
+      ? requestedTrack : "all";
+    state.workTheme = validThemes.indexOf(requestedTheme) !== -1
+      ? requestedTheme : "all";
   }
 
-  function updateLocationForWork() {
+  function updateLocationForWork(historyMode) {
     var params = new URLSearchParams(window.location.search);
     if (state.workTrack === "all") { params.delete("track"); }
     else { params.set("track", state.workTrack); }
@@ -322,7 +331,11 @@
     else { params.set("theme", state.workTheme); }
     var next = window.location.pathname
       + (params.toString() ? "?" + params.toString() : "");
-    window.history.replaceState({}, "", next);
+    if (historyMode === "push") {
+      window.history.pushState({}, "", next);
+    } else if (historyMode === "replace") {
+      window.history.replaceState({}, "", next);
+    }
   }
 
   function filteredWorkItems() {
@@ -352,7 +365,8 @@
     container.innerHTML = entries.map(function (entry) {
       var active = entry.value === currentValue ? " is-active" : "";
       return '<button class="filter-chip' + active
-        + '" type="button" data-value="' + escapeHtml(entry.value) + '">'
+        + '" type="button" data-value="' + escapeHtml(entry.value)
+        + '" aria-pressed="' + (entry.value === currentValue ? "true" : "false") + '">'
         + escapeHtml(entry.label) + "</button>";
     }).join("");
     Array.prototype.forEach.call(container.querySelectorAll("button"), function (btn) {
@@ -360,6 +374,25 @@
         onSelect(btn.getAttribute("data-value"));
       });
     });
+  }
+
+  function updateFilterRow(containerId, currentValue) {
+    var container = document.getElementById(containerId);
+    if (!container) { return; }
+    Array.prototype.forEach.call(container.querySelectorAll("button"), function (button) {
+      var isActive = button.getAttribute("data-value") === currentValue;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+  }
+
+  function renderWorkResults(historyMode) {
+    var items = filteredWorkItems();
+    updateFilterRow("work-track-filters", state.workTrack);
+    updateFilterRow("work-theme-filters", state.workTheme);
+    renderArtifactCards("work-grid", items, "work");
+    updateWorkSummary(items);
+    updateLocationForWork(historyMode);
   }
 
   function renderWorkPage() {
@@ -376,43 +409,32 @@
       })
     );
 
+    setWorkFiltersFromLocation(trackEntries, themeEntries);
+
     renderFilterRow("work-track-filters", trackEntries, state.workTrack,
-      function (value) { state.workTrack = value; renderWorkPage(); });
+      function (value) {
+        if (state.workTrack === value) { return; }
+        state.workTrack = value;
+        renderWorkResults("push");
+      });
     renderFilterRow("work-theme-filters", themeEntries, state.workTheme,
-      function (value) { state.workTheme = value; renderWorkPage(); });
+      function (value) {
+        if (state.workTheme === value) { return; }
+        state.workTheme = value;
+        renderWorkResults("push");
+      });
 
-    var items = filteredWorkItems();
-    renderArtifactCards("work-grid", items, "work");
-    updateWorkSummary(items);
-    updateLocationForWork();
-  }
+    renderWorkResults("replace");
 
-  /* ─── Page intro ─────────────────────────────────────────────────────────── */
-
-  function updatePageIntro() {
-    var intro = document.getElementById("page-intro");
-    var pageKey = getCurrentPageKey();
-    if (!intro) { return; }
-
-    if (pageKey === "detail") {
-      var currentItem = getCurrentItem();
-      if (currentItem && currentItem.lensSummary && currentItem.lensSummary.overview) {
-        intro.textContent = currentItem.lensSummary.overview;
-      }
-      return;
-    }
-
-    if (state.site.pageIntroByLens
-        && state.site.pageIntroByLens[pageKey]
-        && state.site.pageIntroByLens[pageKey].overview) {
-      intro.textContent = state.site.pageIntroByLens[pageKey].overview;
-    }
+    window.addEventListener("popstate", function () {
+      setWorkFiltersFromLocation(trackEntries, themeEntries);
+      renderWorkResults();
+    });
   }
 
   /* ─── Init ───────────────────────────────────────────────────────────────── */
 
   function render() {
-    updatePageIntro();
     renderTrackCards();
     renderFeaturedItems();
     renderPromptGrid();
@@ -424,32 +446,39 @@
 
   function init() {
     if (!document.body) { return; }
+    var page = document.body.dataset.page;
+    var usesSiteData = page === "home" || page === "work";
+    var usesItemData = usesSiteData || page === "track" || page === "detail";
     var shouldLoadPosts = Boolean(document.querySelector("[data-postfeed]"));
 
-    if (document.body.dataset.page === "work") {
-      setWorkFiltersFromLocation();
-    }
+    if (!usesItemData && !shouldLoadPosts) { return; }
 
     var requests = [
-      fetchJson(DATA_PATHS.site),
-      fetchJson(DATA_PATHS.items)
+      usesSiteData ? fetchJson(DATA_PATHS.site) : Promise.resolve(null),
+      usesItemData ? fetchJson(DATA_PATHS.items) : Promise.resolve([])
     ];
 
-    if (shouldLoadPosts) {
-      requests.push(fetchJson(DATA_PATHS.posts).catch(function () {
-        return [];
-      }));
-    }
+    requests.push(shouldLoadPosts
+      ? fetchJson(DATA_PATHS.posts).catch(function () { return []; })
+      : Promise.resolve([]));
 
     Promise.all(requests)
       .then(function (results) {
         state.site  = results[0];
         state.items = results[1];
-        state.posts = shouldLoadPosts ? results[2] : [];
+        state.posts = results[2];
         render();
       })
       .catch(function (error) {
         window.console.error(error);
+        Array.prototype.forEach.call(
+          document.querySelectorAll(
+            "#featured-grid, #track-grid, #prompt-grid, #work-grid, #related-grid"
+          ),
+          function (container) {
+            container.innerHTML = '<p class="empty-state">This section could not be loaded.</p>';
+          }
+        );
       });
   }
 
