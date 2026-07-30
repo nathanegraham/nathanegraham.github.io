@@ -298,16 +298,6 @@
     });
   }
 
-  function updateMapCount(trackId, count) {
-    var paddedCount = String(count).padStart(2, "0");
-    var mapCount = document.querySelector('[data-map-count="' + trackId + '"]');
-    var legendCount = document.querySelector('[data-legend-count="' + trackId + '"]');
-    if (mapCount) {
-      mapCount.textContent = paddedCount + (count === 1 ? " artifact" : " artifacts");
-    }
-    if (legendCount) { legendCount.textContent = paddedCount; }
-  }
-
   function renderWorkPage() {
     if (document.body.dataset.page !== "work") { return; }
     var archive = document.getElementById("work-archive");
@@ -341,7 +331,6 @@
 
       archive.appendChild(section);
       renderArtifactCards(gridId, items, "work");
-      updateMapCount(track.id, items.length);
     });
 
     restoreWorkAnchor();

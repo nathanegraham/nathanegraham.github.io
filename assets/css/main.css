@@ -663,7 +663,8 @@ select {
 .bird__body,
 .bird__tail,
 .bird__wing,
-.bird__wind {
+.bird__wind,
+.bird-label__tether {
   vector-effect: non-scaling-stroke;
 }
 
@@ -743,19 +744,35 @@ select {
 
 .flight-bird--projects {
   --bird-color: var(--track-projects);
-  transform: translate(25%, 25%) rotate(-45deg);
+  transform: translate(25%, 25%);
 }
 
 .flight-bird--writing {
   --bird-color: var(--track-writing);
   --flap-speed: 0.68s;
-  transform: translate(78%, 28%) rotate(35deg);
+  transform: translate(78%, 28%);
 }
 
 .flight-bird--music {
   --bird-color: var(--track-music);
   --flap-speed: 0.6s;
-  transform: translate(36%, 75%) rotate(200deg);
+  transform: translate(36%, 75%);
+}
+
+.bird-heading {
+  transform-origin: 0 0;
+}
+
+.bird-heading--projects {
+  transform: rotate(-45deg);
+}
+
+.bird-heading--writing {
+  transform: rotate(35deg);
+}
+
+.bird-heading--music {
+  transform: rotate(200deg);
 }
 
 .flight-bird--writing .bird {
@@ -808,61 +825,23 @@ select {
   opacity: 0.26;
 }
 
-.practice-map__legend {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--paper-3);
-  background: rgba(255, 253, 249, 0.86);
+.bird-label__tether {
+  fill: none;
+  stroke: var(--bird-color);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.5;
 }
 
-.map-legend-link {
-  --map-color: var(--accent);
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.65rem;
-  align-items: center;
-  min-height: 3.7rem;
-  padding: 0.85rem 1rem;
-  border-right: 1px solid var(--paper-3);
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.map-legend-link:last-child {
-  border-right: 0;
-}
-
-.map-legend-link[data-track="projects"] {
-  --map-color: var(--track-projects);
-}
-
-.map-legend-link[data-track="writing"] {
-  --map-color: var(--track-writing);
-}
-
-.map-legend-link[data-track="music"] {
-  --map-color: var(--track-music);
-}
-
-.map-legend-link:hover {
-  color: var(--map-color);
-  background: color-mix(in srgb, var(--map-color) 7%, transparent);
-}
-
-.map-legend-link__dot {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: var(--map-color);
-}
-
-.map-legend-link__count {
-  color: var(--ink-muted);
+.bird-label__text {
+  fill: var(--bird-color);
+  stroke: rgba(255, 253, 249, 0.96);
+  stroke-width: 3px;
+  paint-order: stroke fill;
   font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 .practice-map figcaption {
@@ -1100,85 +1079,169 @@ select {
 
 @keyframes projects-flight {
   0% {
-    transform: translate(13.7%, 52%) rotate(-90deg);
+    transform: translate(13.7%, 52%);
   }
   12.5% {
-    transform: translate(25%, 25%) rotate(-45deg);
+    transform: translate(25%, 25%);
   }
   25% {
-    transform: translate(50%, 17.6%) rotate(0deg);
+    transform: translate(50%, 17.6%);
   }
   37.5% {
-    transform: translate(75%, 25%) rotate(45deg);
+    transform: translate(75%, 25%);
   }
   50% {
-    transform: translate(86.3%, 52%) rotate(90deg);
+    transform: translate(86.3%, 52%);
   }
   62.5% {
-    transform: translate(75%, 78%) rotate(135deg);
+    transform: translate(75%, 78%);
   }
   75% {
-    transform: translate(50%, 84.8%) rotate(180deg);
+    transform: translate(50%, 84.8%);
   }
   87.5% {
-    transform: translate(25%, 78%) rotate(225deg);
+    transform: translate(25%, 78%);
   }
   100% {
-    transform: translate(13.7%, 52%) rotate(270deg);
+    transform: translate(13.7%, 52%);
+  }
+}
+
+@keyframes projects-bank {
+  0% {
+    transform: rotate(-90deg);
+  }
+  12.5% {
+    transform: rotate(-45deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  37.5% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  62.5% {
+    transform: rotate(135deg);
+  }
+  75% {
+    transform: rotate(180deg);
+  }
+  87.5% {
+    transform: rotate(225deg);
+  }
+  100% {
+    transform: rotate(270deg);
   }
 }
 
 @keyframes writing-flight {
   0% {
-    transform: translate(20%, 66%) rotate(-70deg);
+    transform: translate(20%, 66%);
   }
   15% {
-    transform: translate(27%, 35%) rotate(-30deg);
+    transform: translate(27%, 35%);
   }
   30% {
-    transform: translate(50%, 17%) rotate(0deg);
+    transform: translate(50%, 17%);
   }
   45% {
-    transform: translate(78%, 28%) rotate(35deg);
+    transform: translate(78%, 28%);
   }
   58% {
-    transform: translate(85%, 45%) rotate(110deg);
+    transform: translate(85%, 45%);
   }
   72% {
-    transform: translate(64%, 72%) rotate(165deg);
+    transform: translate(64%, 72%);
   }
   86% {
-    transform: translate(34%, 85%) rotate(190deg);
+    transform: translate(34%, 85%);
   }
   94% {
-    transform: translate(15%, 75%) rotate(250deg);
+    transform: translate(15%, 75%);
   }
   100% {
-    transform: translate(20%, 66%) rotate(290deg);
+    transform: translate(20%, 66%);
+  }
+}
+
+@keyframes writing-bank {
+  0% {
+    transform: rotate(-70deg);
+  }
+  15% {
+    transform: rotate(-30deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(35deg);
+  }
+  58% {
+    transform: rotate(110deg);
+  }
+  72% {
+    transform: rotate(165deg);
+  }
+  86% {
+    transform: rotate(190deg);
+  }
+  94% {
+    transform: rotate(250deg);
+  }
+  100% {
+    transform: rotate(290deg);
   }
 }
 
 @keyframes music-flight {
   0% {
-    transform: translate(22.6%, 30%) rotate(0deg);
+    transform: translate(22.6%, 30%);
   }
   24% {
-    transform: translate(55%, 20%) rotate(15deg);
+    transform: translate(55%, 20%);
   }
   40% {
-    transform: translate(78%, 45%) rotate(70deg);
+    transform: translate(78%, 45%);
   }
   57% {
-    transform: translate(70%, 78%) rotate(150deg);
+    transform: translate(70%, 78%);
   }
   75% {
-    transform: translate(36%, 75%) rotate(200deg);
+    transform: translate(36%, 75%);
   }
   90% {
-    transform: translate(15%, 48%) rotate(280deg);
+    transform: translate(15%, 48%);
   }
   100% {
-    transform: translate(22.6%, 30%) rotate(360deg);
+    transform: translate(22.6%, 30%);
+  }
+}
+
+@keyframes music-bank {
+  0% {
+    transform: rotate(0deg);
+  }
+  24% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(70deg);
+  }
+  57% {
+    transform: rotate(150deg);
+  }
+  75% {
+    transform: rotate(200deg);
+  }
+  90% {
+    transform: rotate(280deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -1233,12 +1296,24 @@ select {
     animation: projects-flight 26s linear -8s infinite;
   }
 
+  .bird-heading--projects {
+    animation: projects-bank 26s linear -8s infinite;
+  }
+
   .flight-bird--writing {
     animation: writing-flight 19s linear -3s infinite;
   }
 
+  .bird-heading--writing {
+    animation: writing-bank 19s linear -3s infinite;
+  }
+
   .flight-bird--music {
     animation: music-flight 22s linear -14s infinite;
+  }
+
+  .bird-heading--music {
+    animation: music-bank 22s linear -14s infinite;
   }
 
   .sky-cloud {
@@ -1352,17 +1427,9 @@ select {
     padding: 0.35rem;
   }
 
-  .practice-map__legend {
-    grid-template-columns: 1fr;
-  }
-
-  .map-legend-link {
-    border-right: 0;
-    border-bottom: 1px solid var(--paper-3);
-  }
-
-  .map-legend-link:last-child {
-    border-bottom: 0;
+  .bird-label__text {
+    font-size: 19px;
+    letter-spacing: 0.04em;
   }
 
   .practice-map figcaption {
