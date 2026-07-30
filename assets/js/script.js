@@ -10,9 +10,7 @@
   var state = {
     site:       null,
     items:      [],
-    posts:      [],
-    workTrack:  "all",
-    workTheme:  "all"
+    posts:      []
   };
 
   function fetchJson(path) {
@@ -59,7 +57,7 @@
   function getItemUrl(item) {
     if (item.detailUrl)  { return item.detailUrl; }
     if (item.externalUrl) { return item.externalUrl; }
-    return "/work/?track=" + encodeURIComponent(item.track);
+    return "/work/#" + encodeURIComponent(item.track);
   }
 
   /* ─── Renderers ──────────────────────────────────────────────────────────── */
@@ -70,7 +68,7 @@
 
     if (!items.length) {
       var emptyMessage = context === "work"
-        ? "No artifacts match these filters."
+        ? "No artifacts are available in this track yet."
         : context === "detail"
         ? "No related artifacts are available."
         : "No artifacts are available here yet.";
@@ -102,11 +100,12 @@
         : item.externalUrl
         ? '<a class="artifact-link" href="' + escapeHtml(item.externalUrl)
             + '" target="_blank" rel="noopener">Open artifact</a>'
-        : '<a class="artifact-link" href="/work/?track='
+        : '<a class="artifact-link" href="/work/#'
             + encodeURIComponent(item.track) + '">View related work</a>';
 
       return [
-        '<article class="artifact-card" id="' + escapeHtml(item.id) + '">',
+        '<article class="artifact-card" id="' + escapeHtml(item.id)
+          + '" data-track="' + escapeHtml(item.track) + '">',
         '<p class="artifact-meta">'
           + escapeHtml(item.format) + " / "
           + escapeHtml(item.scale) + " / "
@@ -250,136 +249,94 @@
 
   /* ─── Work page ──────────────────────────────────────────────────────────── */
 
-  function getUniqueThemes() {
-    var seen = {}, themes = [];
-    state.items.forEach(function (item) {
-      item.themes.forEach(function (theme) {
-        if (!seen[theme]) { seen[theme] = true; themes.push(theme); }
-      });
-    });
-    return themes.sort(function (a, b) { return a.localeCompare(b); });
-  }
-
-  function setWorkFiltersFromLocation(trackEntries, themeEntries) {
+  function getLegacyWorkAnchor() {
     var params = new URLSearchParams(window.location.search);
-    var requestedTrack = params.get("track") || "all";
-    var requestedTheme = params.get("theme") || "all";
-    var validTracks = trackEntries.map(function (entry) { return entry.value; });
-    var validThemes = themeEntries.map(function (entry) { return entry.value; });
+    var requestedTrack = params.get("track");
+    var requestedTheme = params.get("theme");
+    var validTrack = state.site.tracks.some(function (track) {
+      return track.id === requestedTrack;
+    });
 
-    state.workTrack = validTracks.indexOf(requestedTrack) !== -1
-      ? requestedTrack : "all";
-    state.workTheme = validThemes.indexOf(requestedTheme) !== -1
-      ? requestedTheme : "all";
+    if (requestedTrack && validTrack) { return requestedTrack; }
+    if (!requestedTheme) { return null; }
+
+    var matchingItem = state.items.find(function (item) {
+      return item.themes.indexOf(requestedTheme) !== -1;
+    });
+    return matchingItem ? matchingItem.id : null;
   }
 
-  function updateLocationForWork(historyMode) {
-    var params = new URLSearchParams(window.location.search);
-    if (state.workTrack === "all") { params.delete("track"); }
-    else { params.set("track", state.workTrack); }
-    if (state.workTheme === "all") { params.delete("theme"); }
-    else { params.set("theme", state.workTheme); }
-    var next = window.location.pathname
-      + (params.toString() ? "?" + params.toString() : "");
-    if (historyMode === "push") {
-      window.history.pushState({}, "", next);
-    } else if (historyMode === "replace") {
-      window.history.replaceState({}, "", next);
+  function restoreWorkAnchor() {
+    var legacyAnchor = getLegacyWorkAnchor();
+    var hashAnchor = null;
+    if (window.location.hash) {
+      try {
+        hashAnchor = decodeURIComponent(window.location.hash.slice(1));
+      } catch (error) {
+        hashAnchor = window.location.hash.slice(1);
+      }
     }
-  }
+    var anchor = legacyAnchor || hashAnchor;
+    if (!anchor) { return; }
 
-  function filteredWorkItems() {
-    return state.items.filter(function (item) {
-      var trackMatch = state.workTrack === "all" || item.track === state.workTrack;
-      var themeMatch = state.workTheme === "all"
-        || item.themes.indexOf(state.workTheme) !== -1;
-      return trackMatch && themeMatch;
-    });
-  }
+    var target = document.getElementById(anchor);
+    if (!target) { return; }
 
-  function updateWorkSummary(items) {
-    var summary = document.getElementById("work-summary");
-    if (!summary) { return; }
-    var parts = ["Showing " + items.length
-      + (items.length === 1 ? " artifact" : " artifacts")];
-    if (state.workTrack !== "all") { parts.push("in " + titleCase(state.workTrack)); }
-    if (state.workTheme !== "all") {
-      parts.push("tagged \u201c" + state.workTheme + "\u201d");
+    if (legacyAnchor) {
+      window.history.replaceState({}, "", window.location.pathname + "#" + anchor);
     }
-    summary.textContent = parts.join(" ");
-  }
-
-  function renderFilterRow(containerId, entries, currentValue, onSelect) {
-    var container = document.getElementById(containerId);
-    if (!container) { return; }
-    container.innerHTML = entries.map(function (entry) {
-      var active = entry.value === currentValue ? " is-active" : "";
-      return '<button class="filter-chip' + active
-        + '" type="button" data-value="' + escapeHtml(entry.value)
-        + '" aria-pressed="' + (entry.value === currentValue ? "true" : "false") + '">'
-        + escapeHtml(entry.label) + "</button>";
-    }).join("");
-    Array.prototype.forEach.call(container.querySelectorAll("button"), function (btn) {
-      btn.addEventListener("click", function () {
-        onSelect(btn.getAttribute("data-value"));
-      });
+    window.requestAnimationFrame(function () {
+      target.scrollIntoView();
     });
   }
 
-  function updateFilterRow(containerId, currentValue) {
-    var container = document.getElementById(containerId);
-    if (!container) { return; }
-    Array.prototype.forEach.call(container.querySelectorAll("button"), function (button) {
-      var isActive = button.getAttribute("data-value") === currentValue;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", isActive ? "true" : "false");
-    });
-  }
-
-  function renderWorkResults(historyMode) {
-    var items = filteredWorkItems();
-    updateFilterRow("work-track-filters", state.workTrack);
-    updateFilterRow("work-theme-filters", state.workTheme);
-    renderArtifactCards("work-grid", items, "work");
-    updateWorkSummary(items);
-    updateLocationForWork(historyMode);
+  function updateMapCount(trackId, count) {
+    var paddedCount = String(count).padStart(2, "0");
+    var mapCount = document.querySelector('[data-map-count="' + trackId + '"]');
+    var legendCount = document.querySelector('[data-legend-count="' + trackId + '"]');
+    if (mapCount) {
+      mapCount.textContent = paddedCount + (count === 1 ? " artifact" : " artifacts");
+    }
+    if (legendCount) { legendCount.textContent = paddedCount; }
   }
 
   function renderWorkPage() {
     if (document.body.dataset.page !== "work") { return; }
+    var archive = document.getElementById("work-archive");
+    if (!archive) { return; }
 
-    var trackEntries = [{ value: "all", label: "All" }].concat(
-      state.site.tracks.map(function (track) {
-        return { value: track.id, label: track.title };
-      })
-    );
-    var themeEntries = [{ value: "all", label: "All" }].concat(
-      getUniqueThemes().map(function (theme) {
-        return { value: theme, label: theme };
-      })
-    );
+    archive.textContent = "";
 
-    setWorkFiltersFromLocation(trackEntries, themeEntries);
-
-    renderFilterRow("work-track-filters", trackEntries, state.workTrack,
-      function (value) {
-        if (state.workTrack === value) { return; }
-        state.workTrack = value;
-        renderWorkResults("push");
+    state.site.tracks.forEach(function (track, index) {
+      var items = state.items.filter(function (item) {
+        return item.track === track.id;
       });
-    renderFilterRow("work-theme-filters", themeEntries, state.workTheme,
-      function (value) {
-        if (state.workTheme === value) { return; }
-        state.workTheme = value;
-        renderWorkResults("push");
-      });
+      var section = document.createElement("section");
+      var gridId = "work-" + track.id + "-grid";
+      var countLabel = items.length + (items.length === 1 ? " artifact" : " artifacts");
 
-    renderWorkResults("replace");
+      section.className = "work-track";
+      section.id = track.id;
+      section.setAttribute("aria-labelledby", track.id + "-heading");
+      section.innerHTML = [
+        '<header class="work-track__header">',
+        "<div>",
+        '<p class="work-track__index">'
+          + String(index + 1).padStart(2, "0") + " / track</p>",
+        '<h3 id="' + escapeHtml(track.id) + '-heading">'
+          + escapeHtml(track.title) + "</h3>",
+        "</div>",
+        '<p class="work-track__count">' + countLabel + "</p>",
+        "</header>",
+        '<div class="artifact-grid" id="' + gridId + '"></div>'
+      ].join("");
 
-    window.addEventListener("popstate", function () {
-      setWorkFiltersFromLocation(trackEntries, themeEntries);
-      renderWorkResults();
+      archive.appendChild(section);
+      renderArtifactCards(gridId, items, "work");
+      updateMapCount(track.id, items.length);
     });
+
+    restoreWorkAnchor();
   }
 
   /* ─── Init ───────────────────────────────────────────────────────────────── */
@@ -420,7 +377,7 @@
         window.console.error(error);
         Array.prototype.forEach.call(
           document.querySelectorAll(
-            "#featured-grid, #work-grid, #related-grid"
+            "#featured-grid, #work-archive, #related-grid"
           ),
           function (container) {
             container.innerHTML = '<p class="empty-state">This section could not be loaded.</p>';

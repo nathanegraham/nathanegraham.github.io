@@ -6,12 +6,12 @@
   <title>Work Index | Nathan Graham</title>
   <meta
     name="description"
-    content="A filterable index of systems work, builds, studio artifacts, and writing."
+    content="An archive of Nathan Graham's systems work, builds, studio artifacts, and writing."
   />
   <meta name="author" content="Nathan Graham" />
   <link rel="canonical" href="https://nathanegraham.github.io/work/" />
   <meta property="og:title" content="Work Index | Nathan Graham" />
-  <meta property="og:description" content="A filterable index of systems work, builds, studio artifacts, and writing." />
+  <meta property="og:description" content="Systems work, builds, studio artifacts, and writing shown as one connected practice." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nathanegraham.github.io/work/" />
   <meta property="og:site_name" content="Nathan Graham" />
@@ -26,7 +26,7 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;500&amp;display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=18" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=19" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -87,44 +87,139 @@
 
     <main id="main-content" class="site-main">
       <section class="page-hero panel">
-        <p class="section-kicker">Work Index</p>
-        <h1>One archive, multiple tracks.</h1>
+        <p class="section-kicker">Work</p>
+        <h1>One practice, many forms.</h1>
         <p class="section-intro">
-          Filter by track or theme to move across systems work, builds, studio artifacts, and writing.
+          Systems, builds, studio experiments, and writing belong to the same practice.
+          The map traces their connections; the complete archive follows.
         </p>
       </section>
 
-      <section class="section">
-        <div class="work-toolbar">
-          <div class="filter-group">
-            <p class="filter-label" id="work-track-label">Track</p>
-            <div
-              class="filter-row"
-              id="work-track-filters"
-              role="group"
-              aria-labelledby="work-track-label"
-            ></div>
-          </div>
-          <div class="filter-group">
-            <p class="filter-label" id="work-theme-label">Theme</p>
-            <div
-              class="filter-row"
-              id="work-theme-filters"
-              role="group"
-              aria-labelledby="work-theme-label"
-            ></div>
-          </div>
+      <section class="section" aria-labelledby="practice-map-heading">
+        <div class="section-header">
+          <p class="section-kicker">Practice Map</p>
+          <h2 id="practice-map-heading">Four modes in continuous exchange.</h2>
         </div>
-        <p
-          class="filter-summary"
-          id="work-summary"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          Showing all artifacts.
-        </p>
-        <div class="artifact-grid" id="work-grid"></div>
+
+        <figure class="practice-map">
+          <svg
+            class="practice-map__svg"
+            viewBox="0 0 760 420"
+            role="img"
+            aria-labelledby="practice-map-title practice-map-description"
+          >
+            <title id="practice-map-title">Map of Nathan Graham's practice</title>
+            <desc id="practice-map-description">
+              Systems, builds, studio work, and writing connect to a shared center
+              and to one another.
+            </desc>
+            <defs>
+              <linearGradient id="practice-gradient" x1="90" y1="60" x2="670" y2="360" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#315e53" />
+                <stop offset="0.34" stop-color="#ad5135" />
+                <stop offset="0.67" stop-color="#9a722b" />
+                <stop offset="1" stop-color="#745d79" />
+              </linearGradient>
+              <path id="route-systems" d="M170 105 C255 105 277 166 315 195" />
+              <path id="route-builds" d="M170 315 C255 315 277 254 315 225" />
+              <path id="route-studio" d="M590 315 C505 315 483 254 445 225" />
+              <path id="route-writing" d="M590 105 C505 105 483 166 445 195" />
+              <path
+                id="route-outer"
+                d="M170 75 C300 20 460 20 590 75 C675 115 690 185 650 210 C690 235 675 305 590 345 C460 400 300 400 170 345 C85 305 70 235 110 210 C70 185 85 115 170 75 Z"
+              />
+            </defs>
+
+            <g class="map-lines" fill="none">
+              <use class="map-line map-line--base" href="#route-systems" />
+              <use class="map-line map-line--base" href="#route-builds" />
+              <use class="map-line map-line--base" href="#route-studio" />
+              <use class="map-line map-line--base" href="#route-writing" />
+              <use class="map-line map-line--outer" href="#route-outer" />
+
+              <use class="map-line map-line--flow map-line--systems" href="#route-systems" />
+              <use class="map-line map-line--flow map-line--builds" href="#route-builds" />
+              <use class="map-line map-line--flow map-line--studio" href="#route-studio" />
+              <use class="map-line map-line--flow map-line--writing" href="#route-writing" />
+              <use
+                class="map-line map-line--flow map-line--cycle"
+                href="#route-outer"
+                stroke="url(#practice-gradient)"
+              />
+            </g>
+
+            <g class="map-orbit" aria-hidden="true">
+              <circle class="map-orbit__dot map-orbit__dot--systems" cx="380" cy="116" r="4" />
+              <circle class="map-orbit__dot map-orbit__dot--builds" cx="474" cy="210" r="4" />
+              <circle class="map-orbit__dot map-orbit__dot--studio" cx="380" cy="304" r="4" />
+              <circle class="map-orbit__dot map-orbit__dot--writing" cx="286" cy="210" r="4" />
+            </g>
+
+            <g class="map-core">
+              <circle class="map-core__halo" cx="380" cy="210" r="86" stroke="url(#practice-gradient)" />
+              <circle class="map-core__shape" cx="380" cy="210" r="70" />
+              <text class="map-core__kicker" x="380" y="200" text-anchor="middle">ONE PRACTICE</text>
+              <text class="map-core__label" x="380" y="229" text-anchor="middle">Work</text>
+            </g>
+
+            <g class="map-node map-node--systems" transform="translate(115 105)">
+              <circle class="map-node__shape" r="60" />
+              <text class="map-node__label" y="-2" text-anchor="middle">Systems</text>
+              <text class="map-node__count" y="21" text-anchor="middle" data-map-count="systems">03 artifacts</text>
+            </g>
+            <g class="map-node map-node--builds" transform="translate(115 315)">
+              <circle class="map-node__shape" r="60" />
+              <text class="map-node__label" y="-2" text-anchor="middle">Builds</text>
+              <text class="map-node__count" y="21" text-anchor="middle" data-map-count="builds">03 artifacts</text>
+            </g>
+            <g class="map-node map-node--studio" transform="translate(645 315)">
+              <circle class="map-node__shape" r="60" />
+              <text class="map-node__label" y="-2" text-anchor="middle">Studio</text>
+              <text class="map-node__count" y="21" text-anchor="middle" data-map-count="studio">03 artifacts</text>
+            </g>
+            <g class="map-node map-node--writing" transform="translate(645 105)">
+              <circle class="map-node__shape" r="60" />
+              <text class="map-node__label" y="-2" text-anchor="middle">Writing</text>
+              <text class="map-node__count" y="21" text-anchor="middle" data-map-count="writing">03 artifacts</text>
+            </g>
+          </svg>
+
+          <nav class="practice-map__legend" aria-label="Jump to work by track">
+            <a class="map-legend-link" data-track="systems" href="#systems">
+              <span class="map-legend-link__dot" aria-hidden="true"></span>
+              <span>Systems</span>
+              <span class="map-legend-link__count" data-legend-count="systems">03</span>
+            </a>
+            <a class="map-legend-link" data-track="builds" href="#builds">
+              <span class="map-legend-link__dot" aria-hidden="true"></span>
+              <span>Builds</span>
+              <span class="map-legend-link__count" data-legend-count="builds">03</span>
+            </a>
+            <a class="map-legend-link" data-track="studio" href="#studio">
+              <span class="map-legend-link__dot" aria-hidden="true"></span>
+              <span>Studio</span>
+              <span class="map-legend-link__count" data-legend-count="studio">03</span>
+            </a>
+            <a class="map-legend-link" data-track="writing" href="#writing">
+              <span class="map-legend-link__dot" aria-hidden="true"></span>
+              <span>Writing</span>
+              <span class="map-legend-link__count" data-legend-count="writing">03</span>
+            </a>
+          </nav>
+
+          <figcaption>
+            Institutional systems set the constraints. Builds test them. Studio work
+            explores their form. Writing makes the relationships legible.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section" aria-labelledby="archive-heading">
+        <div class="section-header">
+          <p class="section-kicker">Complete Archive</p>
+          <h2 id="archive-heading">Everything, without a filter.</h2>
+        </div>
+        <div class="work-archive" id="work-archive"></div>
       </section>
     </main>
 
@@ -145,6 +240,6 @@
     </footer>
   </div>
 
-  <script src="/assets/js/script.js?v=13"></script>
+  <script src="/assets/js/script.js?v=14"></script>
 </body>
 </html>

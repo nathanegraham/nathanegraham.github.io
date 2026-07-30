@@ -6,20 +6,20 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const failures = [];
 const redirectRoutes = new Map([
   ["systems/index.html", {
-    target: "/work/?track=systems",
-    canonical: "https://nathanegraham.github.io/work/?track=systems"
+    target: "/work/#systems",
+    canonical: "https://nathanegraham.github.io/work/"
   }],
   ["builds/index.html", {
-    target: "/work/?track=builds",
-    canonical: "https://nathanegraham.github.io/work/?track=builds"
+    target: "/work/#builds",
+    canonical: "https://nathanegraham.github.io/work/"
   }],
   ["studio/index.html", {
-    target: "/work/?track=studio",
-    canonical: "https://nathanegraham.github.io/work/?track=studio"
+    target: "/work/#studio",
+    canonical: "https://nathanegraham.github.io/work/"
   }],
   ["writing/index.html", {
-    target: "/work/?track=writing",
-    canonical: "https://nathanegraham.github.io/work/?track=writing"
+    target: "/work/#writing",
+    canonical: "https://nathanegraham.github.io/work/"
   }],
   ["now/index.html", {
     target: "/about/#current-focus",
