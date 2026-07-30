@@ -160,6 +160,11 @@ select {
   border-radius: 50%;
 }
 
+.brand:hover .avatar-wrap,
+.brand:focus-visible .avatar-wrap {
+  transform: rotate(-5deg) scale(1.05);
+}
+
 .avatar,
 .avatar-fun {
   width: 64px;
@@ -217,6 +222,7 @@ select {
 }
 
 .site-nav a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 2rem;
@@ -227,9 +233,30 @@ select {
   line-height: 1.35;
 }
 
+.site-nav a::before {
+  position: absolute;
+  top: 50%;
+  left: -0.85rem;
+  width: 5px;
+  height: 5px;
+  margin-top: -2.5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transform: scale(0.3);
+  content: "";
+}
+
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
   color: var(--paper);
+}
+
+.site-nav a:hover::before,
+.site-nav a:focus-visible::before,
+.site-nav a[aria-current="page"]::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .sidebar-links {
@@ -326,6 +353,50 @@ select {
   margin-top: 0.8rem;
   font-size: clamp(2.6rem, 4.8vw, 4rem);
   line-height: 1.03;
+}
+
+/* The three words in the headline are the three categories, so they are also
+   the three doors into the archive. */
+.title-track {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.title-track::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.08em;
+  left: 0;
+  height: 0.05em;
+  border-radius: var(--r-sm);
+  background: var(--track);
+  transform: scaleX(0);
+  transform-origin: left center;
+  content: "";
+}
+
+.title-track--projects {
+  --track: var(--track-projects);
+}
+
+.title-track--writing {
+  --track: var(--track-writing);
+}
+
+.title-track--music {
+  --track: var(--track-music);
+}
+
+.title-track:hover,
+.title-track:focus-visible {
+  color: var(--track);
+}
+
+.title-track:hover::after,
+.title-track:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .page-hero h1 {
@@ -426,13 +497,24 @@ select {
   line-height: 1.34;
 }
 
+/* The rule under a post title draws itself in rather than blinking on. */
 .post-title a {
   color: var(--ink);
   text-decoration: none;
+  background-image: linear-gradient(var(--link), var(--link));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
 }
 
-.post-title a:hover {
+.post-title a:hover,
+.post-title a:focus-visible {
   color: var(--link);
+  background-size: 100% 1px;
+}
+
+.post-item:hover .post-date {
+  color: var(--accent);
 }
 
 .posts-status {
@@ -546,7 +628,23 @@ select {
   inset: 0 0 auto;
   height: 3px;
   background: var(--artifact-accent);
+  opacity: 0.45;
   content: "";
+}
+
+.artifact-card:hover,
+.artifact-card:focus-within {
+  background: color-mix(in srgb, var(--artifact-accent) 4%, #fff);
+}
+
+.artifact-card:hover::before,
+.artifact-card:focus-within::before {
+  opacity: 1;
+}
+
+.artifact-card:hover .artifact-title a,
+.artifact-card:focus-within .artifact-title a {
+  color: var(--artifact-accent);
 }
 
 .artifact-card[data-track="projects"] {
@@ -613,8 +711,19 @@ select {
   text-decoration: none;
 }
 
+.artifact-link::after {
+  display: inline-block;
+  margin-left: 0.35rem;
+  content: "\2192";
+}
+
 .artifact-link:hover {
   color: var(--accent);
+}
+
+.artifact-link:hover::after,
+.artifact-link:focus-visible::after {
+  transform: translateX(0.25rem);
 }
 
 .prompt-chip {
@@ -633,6 +742,13 @@ select {
   color: var(--link);
 }
 
+/* ==========================================================================
+   Practice map — three birds flying the routes drawn for them
+   Motion uses offset-path, so each bird tracks its dotted route exactly and
+   offset-rotate keeps its heading tangent to the curve. The path strings below
+   are copies of the `d` values in work/index.html; keep the two in sync.
+   ========================================================================== */
+
 .practice-map {
   position: relative;
   margin: 0;
@@ -640,9 +756,10 @@ select {
   border: 1px solid var(--paper-3);
   border-radius: var(--r-lg);
   background:
-    radial-gradient(circle at 50% 45%, rgba(213, 166, 74, 0.14), transparent 24%),
-    radial-gradient(circle at 14% 10%, rgba(49, 94, 83, 0.08), transparent 28%),
-    linear-gradient(180deg, #faf5ed 0%, var(--surface) 58%, #edf1ec 100%);
+    radial-gradient(ellipse 46% 40% at 50% 48%, rgba(226, 180, 92, 0.2), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 12% 4%, rgba(49, 94, 83, 0.09), transparent 70%),
+    radial-gradient(ellipse 60% 46% at 92% 96%, rgba(116, 93, 121, 0.08), transparent 70%),
+    linear-gradient(180deg, #f7f0e4 0%, #fffdf9 46%, #eef1ec 100%);
 }
 
 .practice-map__svg {
@@ -651,28 +768,82 @@ select {
   display: block;
   width: 100%;
   height: auto;
-  padding: clamp(0.8rem, 2vw, 1.5rem);
+  padding: clamp(0.5rem, 1.6vw, 1.25rem);
 }
 
-.flight-route,
-.sky-cloud,
-.sky-contour,
-.sky-sun__orbit,
-.sky-sun__glow,
-.sky-sun__core,
-.bird__body,
-.bird__tail,
-.bird__wing,
-.bird__wind,
-.bird-label__tether {
-  vector-effect: non-scaling-stroke;
+/* ── Sky furniture ───────────────────────────────────────────────────────── */
+
+.sky-sun__ring {
+  fill: none;
+  stroke: rgba(160, 112, 32, 0.5);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  transform-origin: 380px 205px;
 }
+
+.sky-sun__ring--inner {
+  stroke: rgba(160, 112, 32, 0.3);
+  stroke-dasharray: 1.4 7;
+}
+
+.sky-sun__disc {
+  stroke: rgba(150, 104, 30, 0.5);
+  stroke-width: 1.4;
+}
+
+.sky-sun__halo {
+  transform-origin: 380px 205px;
+}
+
+.sky-flock__bird {
+  fill: none;
+  stroke: rgba(23, 21, 29, 0.28);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.sky-cloud path {
+  stroke: rgba(23, 21, 29, 0.07);
+  stroke-width: 1;
+}
+
+/* The drift animation supplies translateX; these bases only ever show when
+   motion is switched off, so the sky still reads as a composed scene. */
+.sky-cloud--far {
+  opacity: 0.62;
+  transform: translateX(96px);
+}
+
+.sky-cloud--mid {
+  opacity: 0.8;
+  transform: translateX(556px);
+}
+
+.sky-cloud--near {
+  opacity: 0.95;
+  transform: translateX(288px);
+}
+
+.sky-flock__drift {
+  transform: translateX(150px);
+}
+
+.sky-ridge {
+  fill: rgba(49, 94, 83, 0.05);
+}
+
+.sky-ridge--near {
+  fill: rgba(49, 94, 83, 0.09);
+}
+
+/* ── Routes ──────────────────────────────────────────────────────────────── */
 
 .flight-route {
-  stroke-width: 1.25;
+  stroke-width: 1.5;
   stroke-linecap: round;
-  stroke-dasharray: 1 12;
-  opacity: 0.32;
+  stroke-dasharray: 1.5 11;
+  opacity: 0.38;
 }
 
 .flight-route--projects {
@@ -687,161 +858,227 @@ select {
   stroke: var(--track-music);
 }
 
-.sky-cloud {
-  fill: rgba(255, 253, 249, 0.72);
-  stroke: rgba(23, 21, 29, 0.13);
-  stroke-width: 1;
+.flight-route--lost {
+  stroke: var(--accent);
 }
 
-.sky-cloud--left {
-  transform-origin: 120px 115px;
+/* The 404 sky: one bird, no labels, no links. */
+.practice-map--strip {
+  margin-bottom: var(--s3);
 }
 
-.sky-cloud--right {
-  transform-origin: 630px 316px;
+.practice-map--strip .practice-map__svg {
+  padding: 0;
 }
 
-.sky-contour {
-  fill: none;
-  stroke: rgba(49, 94, 83, 0.17);
-  stroke-width: 1.1;
+.practice-map__note {
+  padding: 0.75rem var(--s3);
+  border-top: 1px solid var(--paper-3);
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.sky-contour--second {
-  opacity: 0.55;
-}
+/* ── Birds ───────────────────────────────────────────────────────────────── */
 
-.sky-sun__orbit {
-  fill: none;
-  stroke: rgba(178, 128, 43, 0.5);
-  stroke-width: 1.25;
-  stroke-dasharray: 1 9;
-  transform-origin: 380px 210px;
-}
-
-.sky-sun__glow {
-  fill: rgba(243, 217, 156, 0.22);
-  stroke: rgba(196, 145, 52, 0.22);
-  stroke-width: 1;
-}
-
-.sky-sun__core {
-  fill: rgba(243, 217, 156, 0.78);
-  stroke: rgba(178, 128, 43, 0.72);
-  stroke-width: 1.3;
-}
-
-.sky-sun__center {
-  fill: rgba(178, 128, 43, 0.8);
-}
-
+/* --bird-zoom is set on the figure so narrow screens can enlarge all three
+   birds at once without flattening their relative sizes. */
 .flight-bird {
   --bird-color: var(--accent);
-  --flap-speed: 0.78s;
-  transform-box: view-box;
-  transform-origin: 0 0;
+  --route: none;
+  --beat: 2.4s;
+  --bird-base: 0.8;
+  --bird-scale: calc(var(--bird-base) * var(--bird-zoom, 1));
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .flight-bird--projects {
   --bird-color: var(--track-projects);
-  transform: translate(25%, 25%);
+  --route: path("M 380 96 C 539 96 668 145 668 205 C 668 265 539 314 380 314 C 221 314 92 265 92 205 C 92 145 221 96 380 96 Z");
+  --beat: 2.6s;
+  --bird-base: 0.86;
 }
 
+/* Wound counter-clockwise on purpose, so this bird crosses the other two
+   head-on instead of trailing them. */
 .flight-bird--writing {
   --bird-color: var(--track-writing);
-  --flap-speed: 0.68s;
-  transform: translate(78%, 28%);
+  --route: path("M 148 248 C 124 350 242 312 392 338 C 542 364 636 318 654 208 C 672 98 550 108 400 86 C 250 64 178 120 148 248 Z");
+  --beat: 2.15s;
 }
 
 .flight-bird--music {
   --bird-color: var(--track-music);
-  --flap-speed: 0.6s;
-  transform: translate(36%, 75%);
+  --route: path("M 380 205 C 420 140 520 120 578 152 C 636 184 630 258 566 274 C 502 290 424 254 380 205 C 336 156 258 120 194 136 C 130 152 124 226 182 258 C 240 290 340 270 380 205 Z");
+  --beat: 1.85s;
+  --bird-base: 0.74;
 }
 
-.bird-heading {
-  transform-origin: 0 0;
+/* The lone bird on the 404 page. */
+.flight-bird--lost {
+  --bird-color: var(--accent);
+  --route: path("M 380 44 C 518 44 630 64 630 88 C 630 112 518 132 380 132 C 242 132 130 112 130 88 C 130 64 242 44 380 44 Z");
+  --beat: 2.3s;
+  --bird-base: 0.74;
 }
 
-.bird-heading--projects {
-  transform: rotate(-45deg);
+.flight-bird--lost .bird-craft {
+  offset-distance: 62%;
 }
 
-.bird-heading--writing {
-  transform: rotate(35deg);
+/* The bird rides the route facing its direction of travel; the tag rides the
+   same route at the same speed but never rotates, so labels stay readable. */
+.bird-craft,
+.bird-tag {
+  offset-path: var(--route);
+  offset-rotate: auto;
 }
 
-.bird-heading--music {
-  transform: rotate(200deg);
+.bird-tag {
+  offset-rotate: 0deg;
 }
 
-.flight-bird--writing .bird {
-  transform: scale(0.88);
+/* Also the still composition when motion is switched off: three birds spread
+   across the sky rather than three birds stacked at the top. */
+.flight-bird--projects .bird-craft,
+.flight-bird--projects .bird-tag {
+  offset-distance: 16%;
 }
 
-.flight-bird--music .bird {
-  transform: scale(0.94);
+.flight-bird--writing .bird-craft,
+.flight-bird--writing .bird-tag {
+  offset-distance: 27%;
 }
 
+.flight-bird--music .bird-craft,
+.flight-bird--music .bird-tag {
+  offset-distance: 58%;
+}
+
+/* Origin 0 0 is the point on the route itself. Scaling from there is stable;
+   a fill-box origin would drift every frame as the wings change the bbox. */
 .bird {
-  transform-origin: center;
+  transform-origin: 0 0;
+  transform: scale(var(--bird-scale));
 }
 
 .bird__body,
 .bird__tail,
-.bird__wing {
+.bird__beak,
+.wing-blade {
   stroke: var(--bird-color);
   stroke-linejoin: round;
-  stroke-width: 1.5;
+  stroke-width: 1.6;
 }
 
 .bird__body {
-  fill: rgba(255, 253, 249, 0.96);
+  fill: #fffdf9;
 }
 
+/* Depth reads through fill weight: far wing darkest, tail lightest. */
 .bird__tail {
-  fill: color-mix(in srgb, var(--bird-color) 13%, white);
+  fill: color-mix(in srgb, var(--bird-color) 11%, #fffdf9);
 }
 
-.bird__wing {
-  fill: color-mix(in srgb, var(--bird-color) 18%, white);
+.bird__beak {
+  fill: color-mix(in srgb, var(--bird-color) 46%, #f0c46a);
+  stroke-width: 1.2;
+}
+
+/* No transform-box here: this group carries an SVG `transform` attribute, and
+   setting a box would re-anchor that attribute's origin and tear the wing off
+   the body. Only the blade inside pivots. */
+.bird__wing--near .wing-blade {
+  fill: color-mix(in srgb, var(--bird-color) 20%, #fffdf9);
+}
+
+.bird__wing--far .wing-blade {
+  fill: color-mix(in srgb, var(--bird-color) 52%, #fffdf9);
+}
+
+.bird__wing--far {
+  opacity: 0.82;
+}
+
+.wing-blade {
   transform-box: fill-box;
-  transform-origin: 22% 76%;
+  transform-origin: 100% 100%;
 }
 
 .bird__eye {
-  fill: var(--bird-color);
+  fill: var(--ink);
 }
 
-.bird__wind {
+.bird__eye-spark {
+  fill: #fffdf9;
+}
+
+.bird-tag__stem {
   fill: none;
   stroke: var(--bird-color);
-  stroke-width: 1.2;
+  stroke-width: 1.4;
   stroke-linecap: round;
-  opacity: 0.42;
+  opacity: 0.45;
 }
 
-.bird__wind--short {
-  opacity: 0.26;
-}
-
-.bird-label__tether {
-  fill: none;
-  stroke: var(--bird-color);
-  stroke-width: 1.2;
-  stroke-linecap: round;
-  opacity: 0.5;
-}
-
-.bird-label__text {
+.bird-tag__text {
   fill: var(--bird-color);
-  stroke: rgba(255, 253, 249, 0.96);
-  stroke-width: 3px;
+  stroke: #fffdf9;
+  stroke-width: 3.6px;
   paint-order: stroke fill;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.06em;
+}
+
+/* Hover or focus a bird and it hangs in place, big enough to click. */
+.flight-bird:hover .bird,
+.flight-bird:focus-visible .bird {
+  transform: scale(calc(var(--bird-scale) * 1.24));
+}
+
+.flight-bird:hover .bird-tag__text,
+.flight-bird:focus-visible .bird-tag__text {
+  letter-spacing: 0.09em;
+}
+
+.flight-bird:hover .bird-tag__stem,
+.flight-bird:focus-visible .bird-tag__stem {
+  opacity: 0.9;
+}
+
+.practice-map__svg:has(.flight-bird--projects:hover) .flight-route--projects,
+.practice-map__svg:has(.flight-bird--projects:focus-visible) .flight-route--projects,
+.practice-map__svg:has(.flight-bird--writing:hover) .flight-route--writing,
+.practice-map__svg:has(.flight-bird--writing:focus-visible) .flight-route--writing,
+.practice-map__svg:has(.flight-bird--music:hover) .flight-route--music,
+.practice-map__svg:has(.flight-bird--music:focus-visible) .flight-route--music {
+  opacity: 0.85;
+  stroke-dasharray: 3 8;
+}
+
+/* Browsers without offset-path get a still, composed sky instead of birds
+   stacked at the origin. */
+@supports not (offset-path: path("M 0 0 L 1 1")) {
+  .flight-bird--projects .bird-craft,
+  .flight-bird--projects .bird-tag {
+    transform: translate(668px, 205px);
+  }
+
+  .flight-bird--writing .bird-craft,
+  .flight-bird--writing .bird-tag {
+    transform: translate(196px, 300px);
+  }
+
+  .flight-bird--music .bird-craft,
+  .flight-bird--music .bird-tag {
+    transform: translate(566px, 274px);
+  }
 }
 
 .work-archive {
@@ -1046,7 +1283,7 @@ select {
 
 @keyframes flight-flow {
   to {
-    stroke-dashoffset: -56;
+    stroke-dashoffset: -54;
   }
 }
 
@@ -1056,191 +1293,107 @@ select {
   }
 }
 
-@keyframes bird-flap {
+@keyframes sun-breathe {
   0%,
   100% {
-    transform: rotate(-8deg);
+    transform: scale(1);
+    opacity: 0.9;
   }
   50% {
-    transform: rotate(17deg) scaleY(0.86);
+    transform: scale(1.06);
+    opacity: 1;
   }
 }
 
-@keyframes projects-flight {
+/* Three beats and a glide — the shape of how a bird actually crosses a sky.
+   The stroke never closes all the way to flat, so the wings stay legible
+   against the tail at every frame. */
+@keyframes wing-beat {
   0% {
-    transform: translate(13.7%, 52%);
+    transform: rotate(24deg) scale(1, 0.94);
   }
-  12.5% {
-    transform: translate(25%, 25%);
+  9% {
+    transform: rotate(-30deg) scale(1, 1.06);
   }
-  25% {
-    transform: translate(50%, 17.6%);
+  20% {
+    transform: rotate(21deg) scale(1, 0.95);
   }
-  37.5% {
-    transform: translate(75%, 25%);
-  }
-  50% {
-    transform: translate(86.3%, 52%);
-  }
-  62.5% {
-    transform: translate(75%, 78%);
-  }
-  75% {
-    transform: translate(50%, 84.8%);
-  }
-  87.5% {
-    transform: translate(25%, 78%);
-  }
-  100% {
-    transform: translate(13.7%, 52%);
-  }
-}
-
-@keyframes projects-bank {
-  0% {
-    transform: rotate(-90deg);
-  }
-  12.5% {
-    transform: rotate(-45deg);
-  }
-  25% {
-    transform: rotate(0deg);
-  }
-  37.5% {
-    transform: rotate(45deg);
-  }
-  50% {
-    transform: rotate(90deg);
-  }
-  62.5% {
-    transform: rotate(135deg);
-  }
-  75% {
-    transform: rotate(180deg);
-  }
-  87.5% {
-    transform: rotate(225deg);
-  }
-  100% {
-    transform: rotate(270deg);
-  }
-}
-
-@keyframes writing-flight {
-  0% {
-    transform: translate(20%, 66%);
-  }
-  15% {
-    transform: translate(27%, 35%);
-  }
-  30% {
-    transform: translate(50%, 17%);
-  }
-  45% {
-    transform: translate(78%, 28%);
-  }
-  58% {
-    transform: translate(85%, 45%);
-  }
-  72% {
-    transform: translate(64%, 72%);
-  }
-  86% {
-    transform: translate(34%, 85%);
-  }
-  94% {
-    transform: translate(15%, 75%);
-  }
-  100% {
-    transform: translate(20%, 66%);
-  }
-}
-
-@keyframes writing-bank {
-  0% {
-    transform: rotate(-70deg);
-  }
-  15% {
-    transform: rotate(-30deg);
-  }
-  30% {
-    transform: rotate(0deg);
-  }
-  45% {
-    transform: rotate(35deg);
-  }
-  58% {
-    transform: rotate(110deg);
-  }
-  72% {
-    transform: rotate(165deg);
-  }
-  86% {
-    transform: rotate(190deg);
-  }
-  94% {
-    transform: rotate(250deg);
-  }
-  100% {
-    transform: rotate(290deg);
-  }
-}
-
-@keyframes music-flight {
-  0% {
-    transform: translate(22.6%, 30%);
-  }
-  24% {
-    transform: translate(55%, 20%);
+  29% {
+    transform: rotate(-28deg) scale(1, 1.05);
   }
   40% {
-    transform: translate(78%, 45%);
+    transform: rotate(18deg) scale(1, 0.96);
   }
-  57% {
-    transform: translate(70%, 78%);
+  49% {
+    transform: rotate(-23deg) scale(1, 1.03);
   }
-  75% {
-    transform: translate(36%, 75%);
+  60% {
+    transform: rotate(4deg) scale(1, 1);
   }
-  90% {
-    transform: translate(15%, 48%);
+  86% {
+    transform: rotate(1deg) scale(1, 1);
   }
   100% {
-    transform: translate(22.6%, 30%);
+    transform: rotate(24deg) scale(1, 0.94);
   }
 }
 
-@keyframes music-bank {
+/* Bodies rise on the downstroke and settle through the glide. */
+@keyframes bird-bob {
   0% {
-    transform: rotate(0deg);
+    transform: translateY(1.4px);
   }
-  24% {
-    transform: rotate(15deg);
+  12% {
+    transform: translateY(-1.6px);
   }
-  40% {
-    transform: rotate(70deg);
+  32% {
+    transform: translateY(-1.4px);
   }
-  57% {
-    transform: rotate(150deg);
+  52% {
+    transform: translateY(-1.1px);
   }
-  75% {
-    transform: rotate(200deg);
-  }
-  90% {
-    transform: rotate(280deg);
+  86% {
+    transform: translateY(1.6px);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translateY(1.4px);
   }
 }
 
-@keyframes cloud-drift {
+@keyframes fly-route {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes cloud-cross {
+  from {
+    transform: translateX(-190px);
+  }
+  to {
+    transform: translateX(830px);
+  }
+}
+
+@keyframes flock-cross {
+  from {
+    transform: translate(-60px, 10px);
+  }
+  to {
+    transform: translate(760px, -22px);
+  }
+}
+
+@keyframes flock-beat {
   0%,
   100% {
-    transform: translateX(-3px);
+    transform: translateY(0);
   }
   50% {
-    transform: translateX(5px);
+    transform: translateY(-1.6px);
   }
 }
 
@@ -1249,7 +1402,10 @@ select {
   .avatar-fun,
   .prompt-chip,
   .action-link,
-  .rail-link {
+  .rail-link,
+  .artifact-card,
+  .artifact-card::before,
+  .post-date {
     transition: opacity 0.16s ease, color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
   }
 
@@ -1261,57 +1417,134 @@ select {
     gap: 0.7rem;
   }
 
-  .flight-route {
-    animation: flight-flow 8s linear infinite;
+  .avatar-wrap {
+    transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .flight-route--writing {
-    animation-direction: reverse;
+  .title-track::after {
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .post-title a {
+    transition: color 0.16s ease, background-size 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .artifact-link::after {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .site-nav a::before {
+    transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .flight-route {
+    animation: flight-flow 9s linear infinite;
   }
 
   .flight-route--music {
-    animation-duration: 11s;
+    animation-duration: 12s;
   }
 
-  .sky-sun__orbit {
-    animation: sun-turn 28s linear infinite;
+  .sky-sun__ring {
+    animation: sun-turn 44s linear infinite;
   }
 
-  .bird__wing {
-    animation: bird-flap var(--flap-speed) ease-in-out infinite;
+  .sky-sun__ring--inner {
+    animation-duration: 32s;
+    animation-direction: reverse;
   }
 
-  .flight-bird--projects {
-    animation: projects-flight 26s linear -8s infinite;
-  }
-
-  .bird-heading--projects {
-    animation: projects-bank 26s linear -8s infinite;
-  }
-
-  .flight-bird--writing {
-    animation: writing-flight 19s linear -3s infinite;
-  }
-
-  .bird-heading--writing {
-    animation: writing-bank 19s linear -3s infinite;
-  }
-
-  .flight-bird--music {
-    animation: music-flight 22s linear -14s infinite;
-  }
-
-  .bird-heading--music {
-    animation: music-bank 22s linear -14s infinite;
+  .sky-sun__halo {
+    animation: sun-breathe 9s ease-in-out infinite;
   }
 
   .sky-cloud {
-    animation: cloud-drift 8s ease-in-out infinite;
+    animation: cloud-cross 92s linear infinite;
   }
 
-  .sky-cloud--right {
-    animation-delay: -4s;
-    animation-duration: 10s;
+  .sky-cloud--far {
+    animation-duration: 150s;
+    animation-delay: -60s;
+  }
+
+  .sky-cloud--mid {
+    animation-duration: 112s;
+    animation-delay: -88s;
+  }
+
+  .sky-cloud--near {
+    animation-duration: 78s;
+    animation-delay: -26s;
+  }
+
+  .sky-flock__drift {
+    animation: flock-cross 130s linear -30s infinite;
+  }
+
+  .sky-flock__bird {
+    animation: flock-beat 0.62s ease-in-out infinite;
+  }
+
+  .sky-flock g:nth-child(2) .sky-flock__bird { animation-delay: -0.14s; }
+  .sky-flock g:nth-child(3) .sky-flock__bird { animation-delay: -0.31s; }
+  .sky-flock g:nth-child(4) .sky-flock__bird { animation-delay: -0.45s; }
+  .sky-flock g:nth-child(5) .sky-flock__bird { animation-delay: -0.22s; }
+
+  .wing-blade {
+    animation: wing-beat var(--beat) cubic-bezier(0.4, 0.02, 0.36, 1) infinite;
+  }
+
+  /* The far wing lags the near one, so the pair rarely lines up flat. */
+  .bird__wing--far .wing-blade {
+    animation-delay: calc(var(--beat) * -0.09);
+  }
+
+  .bird-bob {
+    animation: bird-bob var(--beat) ease-in-out infinite;
+  }
+
+  .bird-craft,
+  .bird-tag {
+    animation: fly-route var(--loop) linear var(--lag) infinite;
+  }
+
+  .flight-bird--projects {
+    --loop: 38s;
+    --lag: -6s;
+  }
+
+  .flight-bird--writing {
+    --loop: 30s;
+    --lag: -8s;
+  }
+
+  .flight-bird--music {
+    --loop: 24s;
+    --lag: -14s;
+  }
+
+  .flight-bird--lost {
+    --loop: 26s;
+    --lag: -3s;
+  }
+
+  .bird,
+  .bird-tag__text,
+  .bird-tag__stem,
+  .flight-route {
+    transition:
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.32s ease,
+      stroke-dasharray 0.32s ease,
+      letter-spacing 0.32s ease;
+  }
+
+  /* Hovering or tabbing to a bird stops it mid-air so it can be clicked. */
+  .flight-bird:hover .bird-craft,
+  .flight-bird:hover .bird-tag,
+  .flight-bird:focus-visible .bird-craft,
+  .flight-bird:focus-visible .bird-tag {
+    animation-play-state: paused;
   }
 }
 
@@ -1412,13 +1645,37 @@ select {
     grid-template-columns: 1fr;
   }
 
-  .practice-map__svg {
-    padding: 0.35rem;
+  /* Full bleed on phones: at gutter width the whole sky renders about 330px
+     across, which leaves the labels around 5px tall. */
+  .practice-map {
+    --bird-zoom: 1.16;
+    margin-inline: calc(var(--s3) * -1);
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
   }
 
-  .bird-label__text {
-    font-size: 19px;
+  .practice-map__svg {
+    padding: 0;
+  }
+
+  .bird-tag__text {
+    font-size: 24px;
+    stroke-width: 7px;
     letter-spacing: 0.04em;
+  }
+
+  .bird-tag__stem {
+    stroke-width: 2.4;
+  }
+
+  .flight-route {
+    stroke-width: 2.6;
+    stroke-dasharray: 2.6 14;
+  }
+
+  .sky-flock__bird {
+    stroke-width: 2;
   }
 
   .work-track .artifact-grid {

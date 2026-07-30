@@ -298,6 +298,30 @@
     });
   }
 
+  /* The birds are SVG anchors, so the browser already jumps to the category on
+     click. This drives the same jump explicitly and moves focus to the section
+     heading, so a keyboard or screen reader lands where the click lands rather
+     than continuing from the map. */
+  function bindPracticeMap() {
+    var links = document.querySelectorAll(".practice-map a[href^='#']");
+
+    Array.prototype.forEach.call(links, function (link) {
+      link.addEventListener("click", function (event) {
+        var id = link.getAttribute("href").slice(1);
+        var target = document.getElementById(id);
+        if (!target) { return; }
+
+        event.preventDefault();
+        window.history.pushState({}, "", "#" + id);
+
+        var heading = document.getElementById(id + "-heading") || target;
+        heading.setAttribute("tabindex", "-1");
+        target.scrollIntoView({ block: "start" });
+        heading.focus({ preventScroll: true });
+      });
+    });
+  }
+
   function renderWorkPage() {
     if (document.body.dataset.page !== "work") { return; }
     var archive = document.getElementById("work-archive");
@@ -333,6 +357,7 @@
       renderArtifactCards(gridId, items, "work");
     });
 
+    bindPracticeMap();
     restoreWorkAnchor();
   }
 
