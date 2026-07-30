@@ -270,10 +270,6 @@ select {
   margin: 0;
 }
 
-.site-footer p + p {
-  margin-top: 0.3rem;
-}
-
 .site-footer a {
   color: var(--ink-muted);
   text-decoration: none;
@@ -292,7 +288,6 @@ select {
 .section-kicker,
 .filter-label,
 .artifact-meta,
-.track-meta,
 .signal-label {
   display: block;
   margin: 0;
@@ -316,7 +311,6 @@ select {
 .story-block h2,
 .detail-meta-card h2,
 .fact-card h2,
-.track-card h3,
 .artifact-title {
   margin: 0;
   font-family: var(--serif);
@@ -339,7 +333,6 @@ select {
   font-size: clamp(1.55rem, 3vw, 2.15rem);
 }
 
-.track-card h3,
 .artifact-title,
 .prose-card h2,
 .story-block h2,
@@ -351,7 +344,6 @@ select {
 .home-lede,
 .section-intro,
 .detail-summary,
-.track-card > p,
 .artifact-card > p,
 .prose-card p,
 .story-block p,
@@ -478,7 +470,6 @@ select {
   background: var(--surface);
 }
 
-.track-grid,
 .artifact-grid,
 .prose-grid,
 .prompt-grid,
@@ -493,10 +484,6 @@ select {
   overflow: hidden;
 }
 
-.track-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .artifact-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -505,7 +492,6 @@ select {
   grid-column: 1 / -1;
 }
 
-.track-grid > .empty-state,
 .artifact-grid > .empty-state,
 .prompt-grid > .empty-state,
 .related-grid > .empty-state {
@@ -536,7 +522,6 @@ select {
   grid-template-columns: 1fr;
 }
 
-.track-card,
 .artifact-card,
 .prose-card,
 .signal-card,
@@ -547,7 +532,6 @@ select {
   background: #fff;
 }
 
-.track-card,
 .artifact-card,
 .prose-card,
 .signal-card,
@@ -558,44 +542,22 @@ select {
   align-content: start;
 }
 
-.track-card .track-title a,
 .artifact-title a {
   color: inherit;
   text-decoration: none;
 }
 
-.track-card .track-title a:hover,
 .artifact-title a:hover {
   color: var(--link);
 }
 
-.track-meta,
 .artifact-meta,
 .signal-label {
   color: var(--ink-muted);
 }
 
-.track-meta span,
 .artifact-track {
   color: var(--accent);
-}
-
-.track-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  margin-top: 0.2rem;
-}
-
-.track-links a {
-  color: var(--link);
-  font-size: 0.86rem;
-  text-decoration: none;
-}
-
-.track-links a:hover {
-  color: var(--accent);
-  text-decoration: underline;
 }
 
 .artifact-themes {
@@ -911,7 +873,6 @@ select {
     font-size: clamp(2.1rem, 12vw, 3rem);
   }
 
-  .track-grid,
   .artifact-grid,
   .signal-grid,
   .prose-grid,

@@ -4,6 +4,32 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const failures = [];
+const redirectRoutes = new Map([
+  ["systems/index.html", {
+    target: "/work/?track=systems",
+    canonical: "https://nathanegraham.github.io/work/?track=systems"
+  }],
+  ["builds/index.html", {
+    target: "/work/?track=builds",
+    canonical: "https://nathanegraham.github.io/work/?track=builds"
+  }],
+  ["studio/index.html", {
+    target: "/work/?track=studio",
+    canonical: "https://nathanegraham.github.io/work/?track=studio"
+  }],
+  ["writing/index.html", {
+    target: "/work/?track=writing",
+    canonical: "https://nathanegraham.github.io/work/?track=writing"
+  }],
+  ["now/index.html", {
+    target: "/about/#current-focus",
+    canonical: "https://nathanegraham.github.io/about/"
+  }],
+  ["contact/index.html", {
+    target: "/about/#contact",
+    canonical: "https://nathanegraham.github.io/about/"
+  }]
+]);
 
 function fail(message) {
   failures.push(message);
@@ -112,11 +138,22 @@ for (const filePath of activeHtmlFiles) {
     fail(rel + ": contains stale Assistant Dean title");
   }
 
-  if (rel === "404.html") {
+  const redirect = redirectRoutes.get(rel);
+
+  if (rel === "404.html" || redirect) {
     if (!/<meta\b[^>]*\bname="robots"[^>]*\bnoindex/i.test(html)) {
       fail(rel + ": missing noindex directive");
     }
-  } else {
+  }
+
+  if (redirect) {
+    if (!html.includes('content="0; url=' + redirect.target + '"')) {
+      fail(rel + ": missing redirect target " + redirect.target);
+    }
+    if (!html.includes('<link rel="canonical" href="' + redirect.canonical + '"')) {
+      fail(rel + ": missing canonical URL " + redirect.canonical);
+    }
+  } else if (rel !== "404.html") {
     const expectedCanonical = "https://nathanegraham.github.io" + pageUrl(filePath);
     if (!html.includes('<link rel="canonical" href="' + expectedCanonical + '"')) {
       fail(rel + ": missing canonical URL " + expectedCanonical);
@@ -154,7 +191,10 @@ if (scriptVersions.size !== 1) {
 }
 
 const expectedSitemapUrls = activeHtmlFiles
-  .filter(function (filePath) { return relative(filePath) !== "404.html"; })
+  .filter(function (filePath) {
+    const rel = relative(filePath);
+    return rel !== "404.html" && !redirectRoutes.has(rel);
+  })
   .map(function (filePath) {
     return "https://nathanegraham.github.io" + pageUrl(filePath);
   })

@@ -5,58 +5,24 @@
       "wp-rest-api-post-getter",
       "crankgpt",
       "books-to-json"
-    ],
-    "prompts": [
-      {
-        "label": "Show me institutional systems work",
-        "href": "/work/?track=systems"
-      },
-      {
-        "label": "Show me publishing infrastructure",
-        "href": "/work/?theme=publishing"
-      },
-      {
-        "label": "Start with AI and interfaces",
-        "href": "/work/?theme=AI"
-      },
-      {
-        "label": "Show me teaching media work",
-        "href": "/work/?theme=teaching%20media"
-      },
-      {
-        "label": "Show me digital humanities work",
-        "href": "/work/?theme=digital%20humanities"
-      },
-      {
-        "label": "Show me utility builds",
-        "href": "/work/?track=builds"
-      }
     ]
   },
   "tracks": [
     {
       "id": "systems",
-      "title": "Systems",
-      "href": "/systems/",
-      "deck": "AI enablement, academic technology, media systems, operational design, and institutional tooling."
+      "title": "Systems"
     },
     {
       "id": "builds",
-      "title": "Builds",
-      "href": "/builds/",
-      "deck": "DIY hardware/software, prototypes, utilities, and bench-scale experiments."
+      "title": "Builds"
     },
     {
       "id": "studio",
-      "title": "Studio",
-      "href": "/studio/",
-      "deck": "Aesthetic technology work, interfaces as form, and experiments in data and computation."
+      "title": "Studio"
     },
     {
       "id": "writing",
-      "title": "Writing",
-      "href": "/writing/",
-      "deck": "Digital Born, digital humanities, software studies, publishing history, notes, and essays."
+      "title": "Writing"
     }
   ]
 }

@@ -56,43 +56,13 @@
     }) || null;
   }
 
-  function getItemUrl(item, context) {
+  function getItemUrl(item) {
     if (item.detailUrl)  { return item.detailUrl; }
     if (item.externalUrl) { return item.externalUrl; }
-    if (context === "track") { return null; }
-    return "/" + item.track + "/#" + item.id;
+    return "/work/?track=" + encodeURIComponent(item.track);
   }
 
   /* ─── Renderers ──────────────────────────────────────────────────────────── */
-
-  function renderTrackCards() {
-    var container = document.getElementById("track-grid");
-    if (!container || document.body.dataset.page !== "home") { return; }
-
-    container.innerHTML = state.site.tracks.map(function (track) {
-      var highlights = state.items
-        .filter(function (item) { return item.track === track.id; })
-        .slice(0, 2)
-        .map(function (item) {
-          var url   = getItemUrl(item, "home");
-          var title = escapeHtml(item.title);
-          return url
-            ? '<a href="' + escapeHtml(url) + '">' + title + "</a>"
-            : "<span>" + title + "</span>";
-        })
-        .join("");
-
-      return [
-        '<article class="track-card" data-track="' + escapeHtml(track.id) + '">',
-        '<p class="track-meta"><span>' + escapeHtml(track.id) + "</span></p>",
-        '<h3 class="track-title"><a href="' + escapeHtml(track.href) + '">'
-          + escapeHtml(track.title) + "</a></h3>",
-        "<p>" + escapeHtml(track.deck) + "</p>",
-        '<div class="track-links">' + highlights + "</div>",
-        "</article>"
-      ].join("");
-    }).join("");
-  }
 
   function renderArtifactCards(containerId, items, context) {
     var container = document.getElementById(containerId);
@@ -109,7 +79,7 @@
     }
 
     container.innerHTML = items.map(function (item) {
-      var url = getItemUrl(item, context);
+      var url = getItemUrl(item);
       var isInternalDetail = Boolean(item.detailUrl && url === item.detailUrl);
       var isExternal = Boolean(
         item.externalUrl && url === item.externalUrl && !isInternalDetail
@@ -132,9 +102,8 @@
         : item.externalUrl
         ? '<a class="artifact-link" href="' + escapeHtml(item.externalUrl)
             + '" target="_blank" rel="noopener">Open artifact</a>'
-        : '<a class="artifact-link" href="/' + escapeHtml(item.track)
-            + "/#" + escapeHtml(item.id) + '">View in '
-            + escapeHtml(titleCase(item.track)) + "</a>";
+        : '<a class="artifact-link" href="/work/?track='
+            + encodeURIComponent(item.track) + '">View related work</a>';
 
       return [
         '<article class="artifact-card" id="' + escapeHtml(item.id) + '">',
@@ -255,25 +224,6 @@
 
       renderFeedPosts(container, state.posts, count);
     });
-  }
-
-  function renderPromptGrid() {
-    var container = document.getElementById("prompt-grid");
-    if (!container || !state.site.home || !state.site.home.prompts) { return; }
-
-    container.innerHTML = state.site.home.prompts.map(function (prompt) {
-      return '<a class="prompt-chip" href="' + escapeHtml(prompt.href) + '">'
-        + escapeHtml(prompt.label) + "</a>";
-    }).join("");
-  }
-
-  function renderTrackPage() {
-    if (document.body.dataset.page !== "track") { return; }
-    var track = document.body.dataset.track;
-    var items = state.items.filter(function (item) {
-      return item.track === track;
-    });
-    renderArtifactCards("track-grid", items, "track");
   }
 
   function renderDetailPage() {
@@ -435,10 +385,7 @@
   /* ─── Init ───────────────────────────────────────────────────────────────── */
 
   function render() {
-    renderTrackCards();
     renderFeaturedItems();
-    renderPromptGrid();
-    renderTrackPage();
     renderDetailPage();
     renderWorkPage();
     loadPostFeeds();
@@ -448,7 +395,7 @@
     if (!document.body) { return; }
     var page = document.body.dataset.page;
     var usesSiteData = page === "home" || page === "work";
-    var usesItemData = usesSiteData || page === "track" || page === "detail";
+    var usesItemData = usesSiteData || page === "detail";
     var shouldLoadPosts = Boolean(document.querySelector("[data-postfeed]"));
 
     if (!usesItemData && !shouldLoadPosts) { return; }
@@ -473,7 +420,7 @@
         window.console.error(error);
         Array.prototype.forEach.call(
           document.querySelectorAll(
-            "#featured-grid, #track-grid, #prompt-grid, #work-grid, #related-grid"
+            "#featured-grid, #work-grid, #related-grid"
           ),
           function (container) {
             container.innerHTML = '<p class="empty-state">This section could not be loaded.</p>';
