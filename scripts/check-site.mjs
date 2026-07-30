@@ -6,15 +6,15 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const failures = [];
 const redirectRoutes = new Map([
   ["systems/index.html", {
-    target: "/work/#systems",
+    target: "/work/#projects",
     canonical: "https://nathanegraham.github.io/work/"
   }],
   ["builds/index.html", {
-    target: "/work/#builds",
+    target: "/work/#projects",
     canonical: "https://nathanegraham.github.io/work/"
   }],
   ["studio/index.html", {
-    target: "/work/#studio",
+    target: "/work/#projects",
     canonical: "https://nathanegraham.github.io/work/"
   }],
   ["writing/index.html", {
@@ -213,6 +213,16 @@ if (!robots.includes("Sitemap: https://nathanegraham.github.io/sitemap.xml")) {
   fail("robots.txt does not advertise sitemap.xml");
 }
 
+const site = JSON.parse(await readFile(path.join(root, "data/site.json"), "utf8"));
+const trackIds = new Set();
+
+for (const track of site.tracks || []) {
+  if (trackIds.has(track.id)) {
+    fail("data/site.json: duplicate track id " + track.id);
+  }
+  trackIds.add(track.id);
+}
+
 const items = JSON.parse(await readFile(path.join(root, "data/items.json"), "utf8"));
 const itemIds = new Set();
 
@@ -228,6 +238,10 @@ for (const item of items) {
     }
   }
 
+  if (!trackIds.has(item.track)) {
+    fail("data/items.json: " + item.id + " uses unknown track " + item.track);
+  }
+
   if (item.detailUrl) {
     const detailPath = path.join(root, item.detailUrl.slice(1), "index.html");
     try {
@@ -241,6 +255,12 @@ for (const item of items) {
     } catch {
       fail("data/items.json: missing detail page " + item.detailUrl);
     }
+  }
+}
+
+for (const trackId of trackIds) {
+  if (!items.some(function (item) { return item.track === trackId; })) {
+    fail("data/site.json: track has no artifacts " + trackId);
   }
 }
 

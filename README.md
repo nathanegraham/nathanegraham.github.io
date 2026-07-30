@@ -5,10 +5,10 @@ Static GitHub Pages site for Nathan Graham.
 ## Current Structure
 
 - `/` homepage for recent writing and selected work
-- `/work/` unified work archive with an animated practice map
+- `/work/` unified Projects, Writing, and Music archive with an animated practice map
 - `/about/` background, current focus, and contact information
 - `/systems/`, `/builds/`, `/studio/`, `/writing/`, `/now/`, and `/contact/` compatibility redirects for old links
-- `/data/site.json` for track order and homepage featured-work settings
+- `/data/site.json` for category order and homepage featured-work settings
 - `/data/items.json` for the artifact inventory
 - `/data/posts.json` for the build-time Digital Born feed snapshot
 - `/assets/css/main.css` and `/assets/js/script.js` for the shared front-end shell

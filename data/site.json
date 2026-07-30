@@ -2,27 +2,23 @@
   "home": {
     "featuredIds": [
       "faculty-studios",
-      "wp-rest-api-post-getter",
       "crankgpt",
-      "books-to-json"
+      "books-to-json",
+      "red-ep"
     ]
   },
   "tracks": [
     {
-      "id": "systems",
-      "title": "Systems"
-    },
-    {
-      "id": "builds",
-      "title": "Builds"
-    },
-    {
-      "id": "studio",
-      "title": "Studio"
+      "id": "projects",
+      "title": "Projects"
     },
     {
       "id": "writing",
       "title": "Writing"
+    },
+    {
+      "id": "music",
+      "title": "Music"
     }
   ]
 }

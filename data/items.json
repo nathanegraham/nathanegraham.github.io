@@ -2,7 +2,7 @@
   {
     "id": "faculty-studios",
     "title": "Building Studios for Faculty",
-    "track": "systems",
+    "track": "projects",
     "format": "essay",
     "scale": "institution",
     "status": "published",
@@ -18,7 +18,7 @@
   {
     "id": "kaltura-api-metadata-interface",
     "title": "Kaltura API Metadata Interface",
-    "track": "systems",
+    "track": "projects",
     "format": "artifact",
     "scale": "tool",
     "status": "published",
@@ -34,7 +34,7 @@
   {
     "id": "excel-post-requests",
     "title": "Excel Web Services and POST Requests",
-    "track": "systems",
+    "track": "projects",
     "format": "essay",
     "scale": "tool",
     "status": "published",
@@ -50,7 +50,7 @@
   {
     "id": "echo-show-poe",
     "title": "Power over Ethernet for Amazon Echo Show 15",
-    "track": "builds",
+    "track": "projects",
     "format": "guide",
     "scale": "object",
     "status": "published",
@@ -66,7 +66,7 @@
   {
     "id": "wp-rest-api-post-getter",
     "title": "WP REST API Post Getter",
-    "track": "builds",
+    "track": "projects",
     "format": "artifact",
     "scale": "tool",
     "status": "published",
@@ -82,7 +82,7 @@
   {
     "id": "lightboard-template",
     "title": "LaTeX Beamer Lightboard Template",
-    "track": "builds",
+    "track": "projects",
     "format": "template",
     "scale": "tool",
     "status": "published",
@@ -98,7 +98,7 @@
   {
     "id": "crankgpt",
     "title": "CrankGPT",
-    "track": "studio",
+    "track": "projects",
     "format": "installation",
     "scale": "object",
     "status": "published",
@@ -114,7 +114,7 @@
   {
     "id": "opensearch-api-autocomplete",
     "title": "OpenSearch API Autocomplete",
-    "track": "studio",
+    "track": "projects",
     "format": "prototype",
     "scale": "tool",
     "status": "published",
@@ -130,7 +130,7 @@
   {
     "id": "tntpstaff-theme",
     "title": "TNTP Staff Theme",
-    "track": "studio",
+    "track": "projects",
     "format": "theme",
     "scale": "object",
     "status": "published",
@@ -189,5 +189,22 @@
     "summary": "A WordPress plugin project focused on ebook publishing and format transformation inside a publishing workflow.",
     "detailUrl": "/work/wp-ebookit/",
     "externalUrl": "https://github.com/nathanegraham/wp_ebookit"
+  },
+  {
+    "id": "red-ep",
+    "title": "Red EP",
+    "track": "music",
+    "format": "EP",
+    "scale": "recording",
+    "status": "released",
+    "themes": [
+      "songwriting",
+      "performance",
+      "recording",
+      "production"
+    ],
+    "summary": "A five-song 2012 EP by Dialect, joining songwriting, performance, recording, and production.",
+    "detailUrl": "/work/red-ep/",
+    "externalUrl": "https://dialectdc.bandcamp.com/album/red-ep"
   }
 ]

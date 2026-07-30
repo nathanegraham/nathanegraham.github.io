@@ -253,6 +253,14 @@
     var params = new URLSearchParams(window.location.search);
     var requestedTrack = params.get("track");
     var requestedTheme = params.get("theme");
+    var legacyTracks = {
+      systems: "projects",
+      builds: "projects",
+      studio: "projects"
+    };
+    if (legacyTracks[requestedTrack]) {
+      requestedTrack = legacyTracks[requestedTrack];
+    }
     var validTrack = state.site.tracks.some(function (track) {
       return track.id === requestedTrack;
     });
@@ -322,7 +330,7 @@
         '<header class="work-track__header">',
         "<div>",
         '<p class="work-track__index">'
-          + String(index + 1).padStart(2, "0") + " / track</p>",
+          + String(index + 1).padStart(2, "0") + " / category</p>",
         '<h3 id="' + escapeHtml(track.id) + '-heading">'
           + escapeHtml(track.title) + "</h3>",
         "</div>",

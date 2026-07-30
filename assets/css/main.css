@@ -15,10 +15,9 @@
   --sidebar: #1b1923;
   --sidebar-soft: rgba(245, 242, 238, 0.76);
   --sidebar-rule: rgba(255, 255, 255, 0.14);
-  --track-systems: #315e53;
-  --track-builds: #ad5135;
-  --track-studio: #9a722b;
+  --track-projects: #315e53;
   --track-writing: #745d79;
+  --track-music: #ad5135;
 
   --serif: "Fraunces", Georgia, serif;
   --sans: "IBM Plex Sans", system-ui, sans-serif;
@@ -550,20 +549,16 @@ select {
   content: "";
 }
 
-.artifact-card[data-track="systems"] {
-  --artifact-accent: var(--track-systems);
-}
-
-.artifact-card[data-track="builds"] {
-  --artifact-accent: var(--track-builds);
-}
-
-.artifact-card[data-track="studio"] {
-  --artifact-accent: var(--track-studio);
+.artifact-card[data-track="projects"] {
+  --artifact-accent: var(--track-projects);
 }
 
 .artifact-card[data-track="writing"] {
   --artifact-accent: var(--track-writing);
+}
+
+.artifact-card[data-track="music"] {
+  --artifact-accent: var(--track-music);
 }
 
 .artifact-card,
@@ -691,20 +686,16 @@ select {
   vector-effect: non-scaling-stroke;
 }
 
-.map-line--systems {
-  stroke: var(--track-systems);
-}
-
-.map-line--builds {
-  stroke: var(--track-builds);
-}
-
-.map-line--studio {
-  stroke: var(--track-studio);
+.map-line--projects {
+  stroke: var(--track-projects);
 }
 
 .map-line--writing {
   stroke: var(--track-writing);
+}
+
+.map-line--music {
+  stroke: var(--track-music);
 }
 
 .map-line--cycle {
@@ -753,20 +744,16 @@ select {
   --map-color: var(--accent);
 }
 
-.map-node--systems {
-  --map-color: var(--track-systems);
-}
-
-.map-node--builds {
-  --map-color: var(--track-builds);
-}
-
-.map-node--studio {
-  --map-color: var(--track-studio);
+.map-node--projects {
+  --map-color: var(--track-projects);
 }
 
 .map-node--writing {
   --map-color: var(--track-writing);
+}
+
+.map-node--music {
+  --map-color: var(--track-music);
 }
 
 .map-node__shape {
@@ -795,27 +782,23 @@ select {
   transform-origin: 380px 210px;
 }
 
-.map-orbit__dot--systems {
-  fill: var(--track-systems);
-}
-
-.map-orbit__dot--builds {
-  fill: var(--track-builds);
-}
-
-.map-orbit__dot--studio {
-  fill: var(--track-studio);
+.map-orbit__dot--projects {
+  fill: var(--track-projects);
 }
 
 .map-orbit__dot--writing {
   fill: var(--track-writing);
 }
 
+.map-orbit__dot--music {
+  fill: var(--track-music);
+}
+
 .practice-map__legend {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--paper-3);
   background: rgba(255, 253, 249, 0.86);
 }
@@ -837,20 +820,16 @@ select {
   border-right: 0;
 }
 
-.map-legend-link[data-track="systems"] {
-  --map-color: var(--track-systems);
-}
-
-.map-legend-link[data-track="builds"] {
-  --map-color: var(--track-builds);
-}
-
-.map-legend-link[data-track="studio"] {
-  --map-color: var(--track-studio);
+.map-legend-link[data-track="projects"] {
+  --map-color: var(--track-projects);
 }
 
 .map-legend-link[data-track="writing"] {
   --map-color: var(--track-writing);
+}
+
+.map-legend-link[data-track="music"] {
+  --map-color: var(--track-music);
 }
 
 .map-legend-link:hover {
@@ -965,6 +944,36 @@ select {
   border: 1px solid var(--paper-3);
   border-radius: var(--r-lg);
   background: var(--surface);
+}
+
+.album-panel {
+  align-self: start;
+  display: grid;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--paper-3);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.album-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-bottom: 1px solid var(--paper-3);
+}
+
+.album-panel figcaption {
+  padding: 0.75rem 1rem;
+  color: var(--ink-muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.music-actions {
+  margin-top: var(--s3);
 }
 
 .detail-meta-list {
@@ -1112,7 +1121,6 @@ select {
     animation: map-flow 7s linear infinite;
   }
 
-  .map-line--builds,
   .map-line--writing {
     animation-direction: reverse;
   }
@@ -1135,16 +1143,12 @@ select {
     animation: map-node-breathe 6s ease-in-out infinite;
   }
 
-  .map-node--builds .map-node__shape {
-    animation-delay: -1.5s;
-  }
-
-  .map-node--studio .map-node__shape {
-    animation-delay: -3s;
-  }
-
   .map-node--writing .map-node__shape {
-    animation-delay: -4.5s;
+    animation-delay: -2s;
+  }
+
+  .map-node--music .map-node__shape {
+    animation-delay: -4s;
   }
 }
 
@@ -1250,15 +1254,16 @@ select {
   }
 
   .practice-map__legend {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
-  .map-legend-link:nth-child(2) {
+  .map-legend-link {
     border-right: 0;
+    border-bottom: 1px solid var(--paper-3);
   }
 
-  .map-legend-link:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--paper-3);
+  .map-legend-link:last-child {
+    border-bottom: 0;
   }
 
   .practice-map figcaption {
