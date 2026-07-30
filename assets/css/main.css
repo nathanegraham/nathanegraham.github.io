@@ -639,20 +639,10 @@ select {
   overflow: hidden;
   border: 1px solid var(--paper-3);
   border-radius: var(--r-lg);
-  background-color: var(--surface);
-  background-image:
-    linear-gradient(rgba(23, 21, 29, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 21, 29, 0.035) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-.practice-map::before {
-  position: absolute;
-  inset: -20% 18% 30%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(169, 79, 52, 0.09), transparent 68%);
-  content: "";
-  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(213, 166, 74, 0.14), transparent 24%),
+    radial-gradient(circle at 14% 10%, rgba(49, 94, 83, 0.08), transparent 28%),
+    linear-gradient(180deg, #faf5ed 0%, var(--surface) 58%, #edf1ec 100%);
 }
 
 .practice-map__svg {
@@ -664,134 +654,158 @@ select {
   padding: clamp(0.8rem, 2vw, 1.5rem);
 }
 
-.map-line {
+.flight-route,
+.sky-cloud,
+.sky-contour,
+.sky-sun__orbit,
+.sky-sun__glow,
+.sky-sun__core,
+.bird__body,
+.bird__tail,
+.bird__wing,
+.bird__wind {
   vector-effect: non-scaling-stroke;
 }
 
-.map-line--base {
-  stroke: var(--paper-3);
-  stroke-width: 1.4;
-}
-
-.map-line--outer {
-  stroke: rgba(23, 21, 29, 0.1);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.map-line--flow {
-  stroke-width: 2.2;
+.flight-route {
+  stroke-width: 1.25;
   stroke-linecap: round;
-  stroke-dasharray: 1 13;
-  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1 12;
+  opacity: 0.32;
 }
 
-.map-line--projects {
+.flight-route--projects {
   stroke: var(--track-projects);
 }
 
-.map-line--writing {
+.flight-route--writing {
   stroke: var(--track-writing);
 }
 
-.map-line--music {
+.flight-route--music {
   stroke: var(--track-music);
 }
 
-.map-line--cycle {
-  stroke: url("#practice-gradient");
-  stroke-width: 1.5;
-  stroke-dasharray: 1 17;
-  opacity: 0.7;
-}
-
-.map-core__halo,
-.map-core__shape,
-.map-node__shape {
-  vector-effect: non-scaling-stroke;
-}
-
-.map-core__halo {
-  fill: none;
-  stroke: url("#practice-gradient");
-  stroke-width: 1.5;
-  stroke-dasharray: 2 8;
-  opacity: 0.72;
-}
-
-.map-core__shape {
-  fill: var(--sidebar);
-  stroke: rgba(255, 255, 255, 0.18);
+.sky-cloud {
+  fill: rgba(255, 253, 249, 0.72);
+  stroke: rgba(23, 21, 29, 0.13);
   stroke-width: 1;
 }
 
-.map-core__kicker {
-  fill: rgba(245, 242, 238, 0.68);
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+.sky-cloud--left {
+  transform-origin: 120px 115px;
 }
 
-.map-core__label {
-  fill: var(--paper);
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 300;
+.sky-cloud--right {
+  transform-origin: 630px 316px;
 }
 
-.map-node {
-  --map-color: var(--accent);
+.sky-contour {
+  fill: none;
+  stroke: rgba(49, 94, 83, 0.17);
+  stroke-width: 1.1;
 }
 
-.map-node--projects {
-  --map-color: var(--track-projects);
+.sky-contour--second {
+  opacity: 0.55;
 }
 
-.map-node--writing {
-  --map-color: var(--track-writing);
-}
-
-.map-node--music {
-  --map-color: var(--track-music);
-}
-
-.map-node__shape {
-  fill: rgba(255, 253, 249, 0.96);
-  stroke: var(--map-color);
-  stroke-width: 1.5;
-}
-
-.map-node__label {
-  fill: var(--ink);
-  font-family: var(--serif);
-  font-size: 23px;
-  font-weight: 300;
-}
-
-.map-node__count {
-  fill: var(--map-color);
-  font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.map-orbit {
+.sky-sun__orbit {
+  fill: none;
+  stroke: rgba(178, 128, 43, 0.5);
+  stroke-width: 1.25;
+  stroke-dasharray: 1 9;
   transform-origin: 380px 210px;
 }
 
-.map-orbit__dot--projects {
-  fill: var(--track-projects);
+.sky-sun__glow {
+  fill: rgba(243, 217, 156, 0.22);
+  stroke: rgba(196, 145, 52, 0.22);
+  stroke-width: 1;
 }
 
-.map-orbit__dot--writing {
-  fill: var(--track-writing);
+.sky-sun__core {
+  fill: rgba(243, 217, 156, 0.78);
+  stroke: rgba(178, 128, 43, 0.72);
+  stroke-width: 1.3;
 }
 
-.map-orbit__dot--music {
-  fill: var(--track-music);
+.sky-sun__center {
+  fill: rgba(178, 128, 43, 0.8);
+}
+
+.flight-bird {
+  --bird-color: var(--accent);
+  --flap-speed: 0.78s;
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+
+.flight-bird--projects {
+  --bird-color: var(--track-projects);
+  transform: translate(25%, 25%) rotate(-45deg);
+}
+
+.flight-bird--writing {
+  --bird-color: var(--track-writing);
+  --flap-speed: 0.68s;
+  transform: translate(78%, 28%) rotate(35deg);
+}
+
+.flight-bird--music {
+  --bird-color: var(--track-music);
+  --flap-speed: 0.6s;
+  transform: translate(36%, 75%) rotate(200deg);
+}
+
+.flight-bird--writing .bird {
+  transform: scale(0.88);
+}
+
+.flight-bird--music .bird {
+  transform: scale(0.94);
+}
+
+.bird {
+  transform-origin: center;
+}
+
+.bird__body,
+.bird__tail,
+.bird__wing {
+  stroke: var(--bird-color);
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.bird__body {
+  fill: rgba(255, 253, 249, 0.96);
+}
+
+.bird__tail {
+  fill: color-mix(in srgb, var(--bird-color) 13%, white);
+}
+
+.bird__wing {
+  fill: color-mix(in srgb, var(--bird-color) 18%, white);
+  transform-box: fill-box;
+  transform-origin: 22% 76%;
+}
+
+.bird__eye {
+  fill: var(--bird-color);
+}
+
+.bird__wind {
+  fill: none;
+  stroke: var(--bird-color);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.42;
+}
+
+.bird__wind--short {
+  opacity: 0.26;
 }
 
 .practice-map__legend {
@@ -1062,41 +1076,119 @@ select {
   margin-top: 0.9rem;
 }
 
-@keyframes map-flow {
+@keyframes flight-flow {
   to {
     stroke-dashoffset: -56;
   }
 }
 
-@keyframes map-cycle {
-  to {
-    stroke-dashoffset: -108;
-  }
-}
-
-@keyframes map-orbit {
+@keyframes sun-turn {
   to {
     transform: rotate(360deg);
   }
 }
 
-@keyframes map-pulse {
+@keyframes bird-flap {
   0%,
   100% {
-    opacity: 0.52;
+    transform: rotate(-8deg);
   }
   50% {
-    opacity: 0.92;
+    transform: rotate(17deg) scaleY(0.86);
   }
 }
 
-@keyframes map-node-breathe {
-  0%,
-  100% {
-    transform: scale(1);
+@keyframes projects-flight {
+  0% {
+    transform: translate(13.7%, 52%) rotate(-90deg);
+  }
+  12.5% {
+    transform: translate(25%, 25%) rotate(-45deg);
+  }
+  25% {
+    transform: translate(50%, 17.6%) rotate(0deg);
+  }
+  37.5% {
+    transform: translate(75%, 25%) rotate(45deg);
   }
   50% {
-    transform: scale(1.035);
+    transform: translate(86.3%, 52%) rotate(90deg);
+  }
+  62.5% {
+    transform: translate(75%, 78%) rotate(135deg);
+  }
+  75% {
+    transform: translate(50%, 84.8%) rotate(180deg);
+  }
+  87.5% {
+    transform: translate(25%, 78%) rotate(225deg);
+  }
+  100% {
+    transform: translate(13.7%, 52%) rotate(270deg);
+  }
+}
+
+@keyframes writing-flight {
+  0% {
+    transform: translate(20%, 66%) rotate(-70deg);
+  }
+  15% {
+    transform: translate(27%, 35%) rotate(-30deg);
+  }
+  30% {
+    transform: translate(50%, 17%) rotate(0deg);
+  }
+  45% {
+    transform: translate(78%, 28%) rotate(35deg);
+  }
+  58% {
+    transform: translate(85%, 45%) rotate(110deg);
+  }
+  72% {
+    transform: translate(64%, 72%) rotate(165deg);
+  }
+  86% {
+    transform: translate(34%, 85%) rotate(190deg);
+  }
+  94% {
+    transform: translate(15%, 75%) rotate(250deg);
+  }
+  100% {
+    transform: translate(20%, 66%) rotate(290deg);
+  }
+}
+
+@keyframes music-flight {
+  0% {
+    transform: translate(22.6%, 30%) rotate(0deg);
+  }
+  24% {
+    transform: translate(55%, 20%) rotate(15deg);
+  }
+  40% {
+    transform: translate(78%, 45%) rotate(70deg);
+  }
+  57% {
+    transform: translate(70%, 78%) rotate(150deg);
+  }
+  75% {
+    transform: translate(36%, 75%) rotate(200deg);
+  }
+  90% {
+    transform: translate(15%, 48%) rotate(280deg);
+  }
+  100% {
+    transform: translate(22.6%, 30%) rotate(360deg);
+  }
+}
+
+@keyframes cloud-drift {
+  0%,
+  100% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(5px);
   }
 }
 
@@ -1117,38 +1209,45 @@ select {
     gap: 0.7rem;
   }
 
-  .map-line--flow {
-    animation: map-flow 7s linear infinite;
+  .flight-route {
+    animation: flight-flow 8s linear infinite;
   }
 
-  .map-line--writing {
+  .flight-route--writing {
     animation-direction: reverse;
   }
 
-  .map-line--cycle {
-    animation: map-cycle 18s linear infinite;
+  .flight-route--music {
+    animation-duration: 11s;
   }
 
-  .map-orbit {
-    animation: map-orbit 24s linear infinite;
+  .sky-sun__orbit {
+    animation: sun-turn 28s linear infinite;
   }
 
-  .map-core__halo {
-    animation: map-pulse 4.5s ease-in-out infinite;
+  .bird__wing {
+    animation: bird-flap var(--flap-speed) ease-in-out infinite;
   }
 
-  .map-node__shape {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: map-node-breathe 6s ease-in-out infinite;
+  .flight-bird--projects {
+    animation: projects-flight 26s linear -8s infinite;
   }
 
-  .map-node--writing .map-node__shape {
-    animation-delay: -2s;
+  .flight-bird--writing {
+    animation: writing-flight 19s linear -3s infinite;
   }
 
-  .map-node--music .map-node__shape {
+  .flight-bird--music {
+    animation: music-flight 22s linear -14s infinite;
+  }
+
+  .sky-cloud {
+    animation: cloud-drift 8s ease-in-out infinite;
+  }
+
+  .sky-cloud--right {
     animation-delay: -4s;
+    animation-duration: 10s;
   }
 }
 
