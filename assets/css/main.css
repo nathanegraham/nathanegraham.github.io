@@ -335,6 +335,7 @@ select {
 .home-title,
 .page-hero h1,
 .detail-hero h1,
+.section-header h1,
 .section-header h2,
 .prose-card h2,
 .story-block h2,
@@ -403,6 +404,8 @@ select {
   font-size: clamp(2.1rem, 4vw, 3rem);
 }
 
+/* A section heading is an h1 when it is the page's only heading, as on Work. */
+.section-header h1,
 .section-header h2 {
   font-size: clamp(1.55rem, 3vw, 2.15rem);
 }
