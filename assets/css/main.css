@@ -125,52 +125,200 @@ button {
    -------------------------------------------------------------------------- */
 
 .sky-canvas {
+  --sky-haze: #dfe8e5;
   position: fixed;
   inset: 0;
   z-index: 2;
   overflow: hidden;
   pointer-events: none;
+  contain: paint;
+  isolation: isolate;
 }
 
-.sky-canvas::before {
+.sky-canvas::after {
   position: absolute;
-  top: clamp(7rem, 14vh, 11rem);
-  right: clamp(-9rem, -7vw, -4rem);
-  width: clamp(17rem, 34vw, 34rem);
-  aspect-ratio: 1;
+  inset: 0;
+  z-index: 5;
   content: "";
-  border: 1px solid rgba(214, 160, 61, 0.36);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, rgba(255, 246, 205, 0.8) 0 10%, rgba(214, 160, 61, 0.18) 10.4% 28%, transparent 28.5%),
-    repeating-radial-gradient(circle, transparent 0 30px, rgba(214, 160, 61, 0.11) 31px 32px);
+  background: radial-gradient(ellipse at 50% 43%, transparent 50%, rgba(43, 52, 80, 0.075) 100%);
 }
 
-.flight-lines {
+.sky-light {
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  opacity: 0.92;
+  background:
+    radial-gradient(circle at 82% 22%,
+      rgba(255, 250, 218, 0.96) 0 3%,
+      rgba(239, 188, 91, 0.32) 9%,
+      rgba(223, 128, 66, 0.1) 23%,
+      transparent 48%),
+    linear-gradient(180deg,
+      transparent 36%,
+      rgba(255, 225, 166, 0.08) 51%,
+      transparent 68%);
+}
+
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(0, var(--parallax-start), 0);
+}
+
+.sky-layer--far {
+  --parallax-start: 1.5vh;
+  --parallax-end: -4vh;
+  z-index: 1;
+}
+
+.sky-layer--middle {
+  --parallax-start: 3vh;
+  --parallax-end: -11vh;
+  z-index: 2;
+}
+
+.sky-layer--near {
+  --parallax-start: 5vh;
+  --parallax-end: -18vh;
+  z-index: 3;
+}
+
+.sky-haze {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.26;
 }
 
-.flight-lines path {
-  fill: none;
-  stroke: var(--lake);
-  stroke-width: 1.4;
-  stroke-dasharray: 3 10;
-  vector-effect: non-scaling-stroke;
+.sky-haze__veil {
+  fill: rgba(255, 250, 240, 0.2);
 }
 
-.ambient-bird {
-  --bird-opacity: 0.2;
+.sky-haze__ridge--back {
+  fill: color-mix(in oklab, var(--lake) 18%, var(--sky-haze));
+  opacity: 0.16;
+}
+
+.sky-haze__ridge--front {
+  fill: color-mix(in oklab, var(--plum) 14%, var(--sky-haze));
+  opacity: 0.13;
+}
+
+.sky-cloud {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(255, 250, 240, 0.36) 0 24%,
+    rgba(255, 250, 240, 0.16) 48%,
+    transparent 72%);
+}
+
+.sky-cloud--high {
+  top: 8vh;
+  left: 7vw;
+  width: clamp(20rem, 38vw, 36rem);
+  height: clamp(7rem, 15vh, 10rem);
+  opacity: 0.48;
+}
+
+.sky-cloud--low {
+  right: 28vw;
+  bottom: 11vh;
+  width: clamp(16rem, 29vw, 28rem);
+  height: clamp(6rem, 13vh, 9rem);
+  opacity: 0.34;
+}
+
+.sky-cloud--near {
+  top: 36vh;
+  right: -11vw;
+  width: clamp(22rem, 42vw, 42rem);
+  height: clamp(9rem, 22vh, 15rem);
+  opacity: 0.18;
+}
+
+.sky-flock {
   position: absolute;
   top: 0;
   left: 0;
   display: block;
-  width: clamp(4.8rem, 7vw, 7.2rem);
-  color: var(--ink);
-  will-change: transform;
+  width: clamp(4rem, 7vw, 6.5rem);
+  color: color-mix(in oklab, var(--lake) 42%, var(--sky-haze));
+  opacity: 0.42;
+  transform: translate3d(62vw, 29vh, 0);
+}
+
+.sky-flock svg {
+  width: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.sky-glint {
+  position: absolute;
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  color: rgba(214, 160, 61, 0.66);
+  opacity: 0.22;
+}
+
+.sky-glint::before,
+.sky-glint::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.sky-glint::before {
+  width: 100%;
+  height: 1px;
+}
+
+.sky-glint::after {
+  width: 1px;
+  height: 100%;
+}
+
+.sky-glint--one {
+  top: 18vh;
+  right: 13vw;
+}
+
+.sky-glint--two {
+  top: 31vh;
+  right: 24vw;
+  scale: 0.72;
+}
+
+.sky-glint--three {
+  right: 9vw;
+  bottom: 23vh;
+  scale: 0.5;
+}
+
+.ambient-bird {
+  --bird-core: var(--vermilion);
+  --bird-light: color-mix(in oklab, var(--bird-core) 62%, #ffd8a4);
+  --bird-shade: color-mix(in oklab, var(--bird-core) 58%, #2b3450);
+  --bird-deep: color-mix(in oklab, var(--bird-core) 42%, #222c46);
+  --bird-rest-opacity: 0.28;
+  --bird-active-opacity: 0.78;
+  --bird-opacity: var(--bird-rest-opacity);
+  --bird-size: clamp(4.2rem, 6vw, 6.4rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: var(--bird-size);
+  transform: var(--bird-static-position);
 }
 
 .ambient-bird__facing,
@@ -182,37 +330,78 @@ button {
 .ambient-bird__art {
   overflow: visible;
   opacity: var(--bird-opacity);
-  filter: drop-shadow(0 7px 8px rgba(23, 25, 30, 0.12));
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bird-deep) 28%, transparent));
 }
 
-.ambient-bird__body,
-.ambient-bird__tail,
-.ambient-bird__wing {
-  fill: currentColor;
+.ambient-bird__tail {
+  fill: var(--bird-shade);
+}
+
+.ambient-bird__wing--far {
+  fill: var(--bird-deep);
 }
 
 .ambient-bird__beak {
-  fill: var(--gold);
+  fill: color-mix(in oklab, var(--gold) 78%, #ffd894);
 }
 
 .ambient-bird__eye {
   fill: var(--paper-bright);
 }
 
+.ambient-bird__pupil {
+  fill: var(--bird-deep);
+}
+
+.ambient-bird__wing {
+  transform-box: fill-box;
+  transform-origin: 76% 82%;
+}
+
+.ambient-bird__wing--near {
+  transform: rotate(14deg) scaleY(1);
+}
+
+.ambient-bird__wing--far {
+  transform: rotate(-4deg) scaleY(-0.88);
+}
+
 .ambient-bird--about {
-  color: var(--vermilion);
+  --bird-core: var(--vermilion);
+  --bird-size: clamp(4.9rem, 6.8vw, 7rem);
+  --bird-rest-opacity: 0.34;
+  --bird-active-opacity: 0.9;
+  --bird-static-position: translate3d(72vw, 17vh, 0) rotate(-4deg) scale(0.86);
 }
 
 .ambient-bird--projects {
-  color: var(--lake);
+  --bird-core: var(--lake);
+  --bird-size: clamp(3.8rem, 5.2vw, 5.5rem);
+  --bird-rest-opacity: 0.28;
+  --bird-active-opacity: 0.74;
+  --bird-static-position: translate3d(18vw, 60vh, 0) rotate(4deg) scale(0.78);
 }
 
 .ambient-bird--writing {
-  color: var(--plum);
+  --bird-core: var(--plum);
+  --bird-size: clamp(4.2rem, 5.8vw, 6rem);
+  --bird-rest-opacity: 0.3;
+  --bird-active-opacity: 0.78;
+  --bird-static-position: translate3d(76vw, 66vh, 0) rotate(-5deg) scale(0.8);
 }
 
 .ambient-bird--music {
-  color: var(--gold);
+  --bird-core: var(--gold);
+  --bird-size: clamp(2.8rem, 3.8vw, 4.2rem);
+  --bird-rest-opacity: 0.34;
+  --bird-active-opacity: 0.64;
+  --bird-static-position: translate3d(54vw, 26vh, 0) rotate(5deg) scale(0.72);
+}
+
+.ambient-bird--music .ambient-bird__art {
+  filter:
+    blur(0.25px)
+    drop-shadow(0 3px 4px color-mix(in srgb, var(--bird-deep) 22%, transparent));
 }
 
 .ambient-bird--projects .ambient-bird__facing,
@@ -224,7 +413,7 @@ body[data-active-section="about"] .ambient-bird--about,
 body[data-active-section="projects"] .ambient-bird--projects,
 body[data-active-section="writing"] .ambient-bird--writing,
 body[data-active-section="music"] .ambient-bird--music {
-  --bird-opacity: 0.72;
+  --bird-opacity: var(--bird-active-opacity);
 }
 
 /* --------------------------------------------------------------------------
@@ -1447,11 +1636,11 @@ main {
    -------------------------------------------------------------------------- */
 
 @keyframes fly-about {
-  0% { transform: translate3d(-12vw, 18vh, 0) rotate(4deg) scale(0.76); }
-  24% { transform: translate3d(22vw, 7vh, 0) rotate(-7deg) scale(0.9); }
-  52% { transform: translate3d(52vw, 21vh, 0) rotate(5deg) scale(1); }
-  76% { transform: translate3d(82vw, 9vh, 0) rotate(-4deg) scale(0.88); }
-  100% { transform: translate3d(112vw, 22vh, 0) rotate(5deg) scale(0.72); }
+  0% { transform: translate3d(-12vw, 18vh, 0) rotate(3deg) scale(0.76); }
+  24% { transform: translate3d(22vw, 7vh, 0) rotate(-5deg) scale(0.9); }
+  52% { transform: translate3d(52vw, 21vh, 0) rotate(4deg) scale(1); }
+  76% { transform: translate3d(82vw, 9vh, 0) rotate(-3deg) scale(0.88); }
+  100% { transform: translate3d(112vw, 22vh, 0) rotate(4deg) scale(0.72); }
 }
 
 @keyframes fly-projects {
@@ -1484,13 +1673,45 @@ main {
 }
 
 @keyframes wing-beat {
-  0%, 100% { transform: rotate(8deg) scaleY(1); }
-  50% { transform: rotate(-34deg) scaleY(0.62); }
+  0%, 100% { transform: rotate(14deg) scaleY(1); }
+  48% { transform: rotate(-26deg) scaleY(0.78); }
 }
 
 @keyframes wing-beat-far {
-  0%, 100% { transform: rotate(-7deg) scaleY(-0.82); }
-  50% { transform: rotate(27deg) scaleY(-0.54); }
+  0%, 100% { transform: rotate(-4deg) scaleY(-0.88); }
+  48% { transform: rotate(20deg) scaleY(-0.66); }
+}
+
+@keyframes sky-parallax {
+  from { transform: translate3d(0, var(--parallax-start), 0); }
+  to { transform: translate3d(0, var(--parallax-end), 0); }
+}
+
+@keyframes flock-drift {
+  0% { transform: translate3d(-12vw, 28vh, 0) scale(0.72); }
+  42% { transform: translate3d(43vw, 20vh, 0) scale(0.9); }
+  100% { transform: translate3d(112vw, 31vh, 0) scale(0.68); }
+}
+
+@keyframes cloud-drift-high {
+  from { transform: translate3d(-4vw, 0, 0) scale(0.96); }
+  to { transform: translate3d(7vw, 1.5vh, 0) scale(1.04); }
+}
+
+@keyframes cloud-drift-low {
+  from { transform: translate3d(3vw, 0, 0) scale(1.03); }
+  to { transform: translate3d(-6vw, -1vh, 0) scale(0.97); }
+}
+
+@keyframes light-breathe {
+  0%, 100% { opacity: 0.86; }
+  46% { opacity: 0.96; }
+}
+
+@keyframes glint {
+  0%, 72%, 100% { opacity: 0.08; transform: rotate(0deg) scale(0.58); }
+  78% { opacity: 0.74; transform: rotate(45deg) scale(1); }
+  84% { opacity: 0.16; transform: rotate(90deg) scale(0.66); }
 }
 
 @keyframes record-turn {
@@ -1504,43 +1725,79 @@ main {
   .music-actions a,
   .project-item::before,
   .project-title a,
-  .ambient-bird__art,
   .avatar-fun,
   .album-cover {
     transition: 180ms ease;
   }
 
+  .ambient-bird__art {
+    transition: opacity 1.4s ease, filter 1.4s ease;
+  }
+
+  .ambient-bird,
+  .sky-cloud,
+  .sky-flock {
+    will-change: transform;
+  }
+
+  .sky-light {
+    animation: light-breathe 23s ease-in-out infinite;
+  }
+
+  .sky-cloud--high {
+    animation: cloud-drift-high 71s ease-in-out -19s infinite alternate;
+  }
+
+  .sky-cloud--low {
+    animation: cloud-drift-low 83s ease-in-out -43s infinite alternate;
+  }
+
+  .sky-cloud--near {
+    animation: cloud-drift-low 97s ease-in-out -61s infinite alternate-reverse;
+  }
+
+  .sky-flock {
+    animation: flock-drift 67s linear -29s infinite;
+  }
+
+  .sky-glint--one {
+    animation: glint 13s ease-in-out -8s infinite;
+  }
+
+  .sky-glint--two {
+    animation: glint 17s ease-in-out -3s infinite;
+  }
+
+  .sky-glint--three {
+    animation: glint 23s ease-in-out -15s infinite;
+  }
+
   .ambient-bird--about {
-    animation: fly-about 24s linear infinite;
+    animation: fly-about 37s linear infinite;
   }
 
   .ambient-bird--projects {
-    animation: fly-projects 31s linear -12s infinite;
+    animation: fly-projects 43s linear -17s infinite;
   }
 
   .ambient-bird--writing {
-    animation: fly-writing 28s linear -19s infinite;
+    animation: fly-writing 47s linear -31s infinite;
   }
 
   .ambient-bird--music {
-    animation: fly-music 36s linear -7s infinite;
+    animation: fly-music 59s linear -11s infinite;
   }
 
   .ambient-bird__bob {
     animation: bird-bob 1.1s ease-in-out infinite;
   }
 
-  .ambient-bird__wing {
-    transform-box: fill-box;
-    transform-origin: 76% 82%;
-  }
-
   .ambient-bird__wing--near {
-    animation: wing-beat 0.72s ease-in-out infinite;
+    animation: wing-beat 0.78s ease-in-out infinite;
   }
 
   .ambient-bird__wing--far {
-    animation: wing-beat-far 0.72s ease-in-out -0.12s infinite;
+    animation: wing-beat-far 0.78s ease-in-out -0.12s infinite;
   }
 
   .project-item:hover::before,
@@ -1580,12 +1837,18 @@ main {
     scroll-behavior: auto;
   }
 
-  .ambient-bird {
-    display: none;
+  .sky-layer {
+    transform: none;
   }
+}
 
-  .flight-lines {
-    opacity: 0.12;
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    .sky-layer {
+      animation: sky-parallax linear both;
+      animation-timeline: scroll(root block);
+      will-change: transform;
+    }
   }
 }
 
@@ -1701,6 +1964,33 @@ main {
 }
 
 @media (max-width: 620px) {
+  .ambient-bird--about {
+    --bird-size: 3.8rem;
+    --bird-active-opacity: 0.78;
+  }
+
+  .ambient-bird--projects {
+    --bird-size: 3.2rem;
+    --bird-active-opacity: 0.68;
+  }
+
+  .ambient-bird--writing {
+    --bird-size: 3.45rem;
+    --bird-active-opacity: 0.7;
+  }
+
+  .ambient-bird--music {
+    --bird-size: 2.45rem;
+  }
+
+  .sky-cloud--near {
+    opacity: 0.12;
+  }
+
+  .sky-glint--three {
+    display: none;
+  }
+
   .topbar {
     min-height: auto;
   }

@@ -32,7 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=32" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=33" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -45,71 +45,141 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div class="sky-canvas" aria-hidden="true">
-    <svg class="flight-lines" viewBox="0 0 1000 700" preserveAspectRatio="none">
-      <path d="M-80 170 C180 12 410 280 670 112 C810 22 940 48 1080 154" />
-      <path d="M-60 520 C180 654 360 374 610 520 C760 608 912 570 1070 420" />
-      <path d="M120 -60 C24 152 258 270 166 486 C116 604 42 648 -20 730" />
-    </svg>
+    <div class="sky-light"></div>
 
-    <span class="ambient-bird ambient-bird--about">
-      <span class="ambient-bird__facing">
-        <svg class="ambient-bird__art" viewBox="-48 -44 98 88">
-          <g class="ambient-bird__bob">
-            <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-            <path class="ambient-bird__body" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-            <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-            <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-            <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
-            <path class="ambient-bird__wing ambient-bird__wing--near" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-          </g>
+    <div class="sky-layer sky-layer--far">
+      <svg class="sky-haze" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
+        <path class="sky-haze__veil" d="M-80 438 C95 372 225 442 382 390 C540 337 675 425 1080 302 L1080 760 L-80 760 Z" />
+        <path class="sky-haze__ridge sky-haze__ridge--back" d="M-80 570 C92 515 190 563 322 505 C446 450 540 536 668 493 C812 445 910 489 1080 418 L1080 760 L-80 760 Z" />
+        <path class="sky-haze__ridge sky-haze__ridge--front" d="M-80 642 C88 594 207 638 354 584 C482 537 598 607 724 560 C852 514 936 555 1080 497 L1080 760 L-80 760 Z" />
+      </svg>
+
+      <span class="sky-flock">
+        <svg viewBox="0 0 110 36">
+          <path d="M4 22 Q12 13 20 22 M37 14 Q44 7 51 14 M69 24 Q78 15 87 24" />
         </svg>
       </span>
-    </span>
 
-    <span class="ambient-bird ambient-bird--projects">
-      <span class="ambient-bird__facing">
-        <svg class="ambient-bird__art" viewBox="-48 -44 98 88">
-          <g class="ambient-bird__bob">
-            <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-            <path class="ambient-bird__body" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-            <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-            <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-            <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
-            <path class="ambient-bird__wing ambient-bird__wing--near" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-          </g>
-        </svg>
+      <span class="ambient-bird ambient-bird--music">
+        <span class="ambient-bird__facing">
+          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
+            <defs>
+              <linearGradient id="bird-body-music" x1="0" y1="0" x2="0.15" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="46%" style="stop-color:var(--bird-core)" />
+                <stop offset="100%" style="stop-color:var(--bird-shade)" />
+              </linearGradient>
+              <linearGradient id="bird-wing-music" x1="0.1" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="100%" style="stop-color:var(--bird-core)" />
+              </linearGradient>
+            </defs>
+            <g class="ambient-bird__bob">
+              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
+              <path class="ambient-bird__body" fill="url(#bird-body-music)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
+              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
+              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
+              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
+              <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
+              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-music)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
+            </g>
+          </svg>
+        </span>
       </span>
-    </span>
+    </div>
 
-    <span class="ambient-bird ambient-bird--writing">
-      <span class="ambient-bird__facing">
-        <svg class="ambient-bird__art" viewBox="-48 -44 98 88">
-          <g class="ambient-bird__bob">
-            <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-            <path class="ambient-bird__body" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-            <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-            <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-            <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
-            <path class="ambient-bird__wing ambient-bird__wing--near" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-          </g>
-        </svg>
-      </span>
-    </span>
+    <div class="sky-layer sky-layer--middle">
+      <span class="sky-cloud sky-cloud--high"></span>
+      <span class="sky-cloud sky-cloud--low"></span>
 
-    <span class="ambient-bird ambient-bird--music">
-      <span class="ambient-bird__facing">
-        <svg class="ambient-bird__art" viewBox="-48 -44 98 88">
-          <g class="ambient-bird__bob">
-            <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-            <path class="ambient-bird__body" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-            <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-            <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-            <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
-            <path class="ambient-bird__wing ambient-bird__wing--near" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-          </g>
-        </svg>
+      <span class="ambient-bird ambient-bird--projects">
+        <span class="ambient-bird__facing">
+          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
+            <defs>
+              <linearGradient id="bird-body-projects" x1="0" y1="0" x2="0.15" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="46%" style="stop-color:var(--bird-core)" />
+                <stop offset="100%" style="stop-color:var(--bird-shade)" />
+              </linearGradient>
+              <linearGradient id="bird-wing-projects" x1="0.1" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="100%" style="stop-color:var(--bird-core)" />
+              </linearGradient>
+            </defs>
+            <g class="ambient-bird__bob">
+              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
+              <path class="ambient-bird__body" fill="url(#bird-body-projects)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
+              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
+              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
+              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
+              <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
+              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-projects)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
+            </g>
+          </svg>
+        </span>
       </span>
-    </span>
+
+      <span class="ambient-bird ambient-bird--writing">
+        <span class="ambient-bird__facing">
+          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
+            <defs>
+              <linearGradient id="bird-body-writing" x1="0" y1="0" x2="0.15" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="46%" style="stop-color:var(--bird-core)" />
+                <stop offset="100%" style="stop-color:var(--bird-shade)" />
+              </linearGradient>
+              <linearGradient id="bird-wing-writing" x1="0.1" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="100%" style="stop-color:var(--bird-core)" />
+              </linearGradient>
+            </defs>
+            <g class="ambient-bird__bob">
+              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
+              <path class="ambient-bird__body" fill="url(#bird-body-writing)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
+              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
+              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
+              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
+              <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
+              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-writing)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
+            </g>
+          </svg>
+        </span>
+      </span>
+    </div>
+
+    <div class="sky-layer sky-layer--near">
+      <span class="sky-cloud sky-cloud--near"></span>
+      <span class="sky-glint sky-glint--one"></span>
+      <span class="sky-glint sky-glint--two"></span>
+      <span class="sky-glint sky-glint--three"></span>
+
+      <span class="ambient-bird ambient-bird--about">
+        <span class="ambient-bird__facing">
+          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
+            <defs>
+              <linearGradient id="bird-body-about" x1="0" y1="0" x2="0.15" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="46%" style="stop-color:var(--bird-core)" />
+                <stop offset="100%" style="stop-color:var(--bird-shade)" />
+              </linearGradient>
+              <linearGradient id="bird-wing-about" x1="0.1" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" style="stop-color:var(--bird-light)" />
+                <stop offset="100%" style="stop-color:var(--bird-core)" />
+              </linearGradient>
+            </defs>
+            <g class="ambient-bird__bob">
+              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
+              <path class="ambient-bird__body" fill="url(#bird-body-about)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
+              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
+              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
+              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
+              <path class="ambient-bird__wing ambient-bird__wing--far" d="M4 -2 C-5 -12 -17 -25 -35 -37 C-27 -22 -15 -8 -5 0 Z" />
+              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-about)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
+            </g>
+          </svg>
+        </span>
+      </span>
+    </div>
   </div>
 
   <header class="topbar">
