@@ -448,7 +448,6 @@ main {
 }
 
 .about-copy h1 {
-  max-width: 16ch;
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(2.2rem, 3.5vw, 3.6rem);
@@ -457,10 +456,66 @@ main {
   line-height: 1;
 }
 
+.hero-role {
+  margin: 0.7rem 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.hero-role__institution {
+  white-space: nowrap;
+}
+
+.hero-role__at {
+  margin-left: 0.2em;
+  color: var(--vermilion-dark);
+  font-family: var(--mono);
+}
+
+.hero-role a,
 .hero-lede a {
   color: var(--ink);
   text-decoration-color: var(--vermilion);
   text-decoration-thickness: 0.08em;
+}
+
+.hero-socials {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+}
+
+.hero-socials a {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 68%, transparent);
+  color: var(--ink);
+  background: rgba(255, 250, 240, 0.48);
+  text-decoration: none;
+}
+
+.hero-socials svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.hero-socials a:last-child svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.hero-socials .social-icon-dot {
+  fill: currentColor;
+  stroke: none;
 }
 
 .hero-lede {
@@ -504,54 +559,6 @@ main {
   color: var(--paper-bright);
   border-color: var(--vermilion);
   background: var(--vermilion);
-}
-
-.about-portrait {
-  position: relative;
-  z-index: 1;
-  grid-column: 10 / 13;
-  align-self: center;
-  justify-self: end;
-  width: min(100%, 13rem);
-  margin: 1.5rem 0 2rem;
-}
-
-.about-portrait::before {
-  position: absolute;
-  top: -0.8rem;
-  right: -0.8rem;
-  bottom: 2.8rem;
-  left: 0.7rem;
-  z-index: -1;
-  content: "";
-  border: 1px solid var(--vermilion);
-  transform: rotate(2.2deg);
-}
-
-.about-portrait__frame {
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background: var(--paper-deep);
-  clip-path: polygon(4% 0, 100% 3%, 97% 96%, 0 100%);
-  box-shadow: 0 2rem 4rem rgba(23, 25, 30, 0.2);
-  transform: rotate(-1.4deg);
-}
-
-.about-portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 54% center;
-  filter: saturate(0.78) contrast(1.04);
-}
-
-.about-portrait figcaption {
-  max-width: 13rem;
-  margin: 0.8rem 0 0 auto;
-  color: var(--ink-muted);
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
@@ -1494,6 +1501,7 @@ main {
 @media (prefers-reduced-motion: no-preference) {
   .anchor-nav a::after,
   .hero-actions a,
+  .hero-socials a,
   .music-actions a,
   .project-item::before,
   .project-title a,
@@ -1547,6 +1555,7 @@ main {
   }
 
   .hero-actions a:hover,
+  .hero-socials a:hover,
   .music-actions a:hover,
   .action-link:hover,
   .prompt-chip:hover {
@@ -1586,17 +1595,8 @@ main {
    -------------------------------------------------------------------------- */
 
 @media (max-width: 1080px) {
-  .about-copy {
-    grid-column: 1 / 9;
-  }
-
   .about-copy h1 {
     font-size: clamp(2.2rem, 4.2vw, 3.25rem);
-  }
-
-  .about-portrait {
-    grid-column: 9 / 13;
-    width: min(100%, 12rem);
   }
 
   .project-item {
@@ -1638,15 +1638,7 @@ main {
   }
 
   .about-copy h1 {
-    max-width: 16ch;
     font-size: clamp(2.15rem, 5vw, 3rem);
-  }
-
-  .about-portrait {
-    grid-column: 4 / 6;
-    justify-self: center;
-    width: min(100%, 11rem);
-    margin: 1.5rem 0 3rem;
   }
 
   .chapter-heading,
@@ -1769,12 +1761,6 @@ main {
     width: 100%;
   }
 
-  .about-portrait {
-    grid-column: 2 / 6;
-    width: min(100%, 9.5rem);
-    margin-left: 0;
-  }
-
   .chapter-heading h2 {
     font-size: clamp(2.9rem, 14vw, 4.4rem);
   }
@@ -1875,6 +1861,7 @@ main {
   .topbar,
   .site-header,
   .hero-actions,
+  .hero-socials,
   .music-actions,
   .landing-footer,
   .site-footer {
