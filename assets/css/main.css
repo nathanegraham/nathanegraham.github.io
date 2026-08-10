@@ -442,7 +442,7 @@ main {
 
 .about-copy {
   z-index: 2;
-  grid-column: 1 / 10;
+  grid-column: 1 / 11;
   align-self: center;
   padding: 2rem 0 3rem;
 }
@@ -473,7 +473,6 @@ main {
   font-family: var(--mono);
 }
 
-.hero-role a,
 .hero-lede a {
   color: var(--ink);
   text-decoration-color: var(--vermilion);
@@ -519,7 +518,7 @@ main {
 }
 
 .hero-lede {
-  max-width: 45rem;
+  max-width: 58rem;
   margin: 1.8rem 0 0;
   color: var(--ink-soft);
   font-size: clamp(1rem, 1.25vw, 1.14rem);
