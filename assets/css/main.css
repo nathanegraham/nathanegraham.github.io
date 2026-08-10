@@ -448,26 +448,26 @@ main {
 }
 
 .about-copy h1 {
-  max-width: 18ch;
+  max-width: 16ch;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 5.2vw, 5.4rem);
+  font-size: clamp(2.2rem, 3.5vw, 3.6rem);
   font-weight: 350;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
+  letter-spacing: -0.045em;
+  line-height: 1;
 }
 
-.about-copy h1 a {
+.hero-lede a {
+  color: var(--ink);
   text-decoration-color: var(--vermilion);
-  text-decoration-thickness: 0.045em;
-  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.08em;
 }
 
 .hero-lede {
-  max-width: 42rem;
-  margin: 2.2rem 0 0;
+  max-width: 45rem;
+  margin: 1.8rem 0 0;
   color: var(--ink-soft);
-  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
   line-height: 1.65;
 }
 
@@ -512,16 +512,16 @@ main {
   grid-column: 10 / 13;
   align-self: center;
   justify-self: end;
-  width: min(100%, 19rem);
-  margin: 2rem 0 3rem;
+  width: min(100%, 13rem);
+  margin: 1.5rem 0 2rem;
 }
 
 .about-portrait::before {
   position: absolute;
-  top: -1.4rem;
-  right: -1.2rem;
-  bottom: 3.2rem;
-  left: 1.2rem;
+  top: -0.8rem;
+  right: -0.8rem;
+  bottom: 2.8rem;
+  left: 0.7rem;
   z-index: -1;
   content: "";
   border: 1px solid var(--vermilion);
@@ -530,6 +530,7 @@ main {
 
 .about-portrait__frame {
   overflow: hidden;
+  aspect-ratio: 4 / 5;
   background: var(--paper-deep);
   clip-path: polygon(4% 0, 100% 3%, 97% 96%, 0 100%);
   box-shadow: 0 2rem 4rem rgba(23, 25, 30, 0.2);
@@ -538,60 +539,18 @@ main {
 
 .about-portrait img {
   width: 100%;
-  min-height: 22rem;
+  height: 100%;
   object-fit: cover;
   object-position: 54% center;
   filter: saturate(0.78) contrast(1.04);
 }
 
 .about-portrait figcaption {
-  max-width: 19rem;
-  margin: 1rem 0 0 auto;
+  max-width: 13rem;
+  margin: 0.8rem 0 0 auto;
   color: var(--ink-muted);
   font-family: var(--mono);
-  font-size: 0.68rem;
-  line-height: 1.5;
-}
-
-.practice-notes {
-  display: grid;
-  grid-column: 1 / 13;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 1rem 0 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.practice-notes > div {
-  display: grid;
-  grid-template-columns: 5rem 1fr;
-  gap: 1rem;
-  padding: 1.3rem clamp(1rem, 2vw, 1.75rem);
-  border-right: 1px solid var(--line);
-}
-
-.practice-notes > div:first-child {
-  padding-left: 0;
-}
-
-.practice-notes > div:last-child {
-  padding-right: 0;
-  border-right: 0;
-}
-
-.practice-notes dt {
-  color: var(--vermilion-dark);
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.practice-notes dd {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: 0.62rem;
   line-height: 1.5;
 }
 
@@ -1632,17 +1591,12 @@ main {
   }
 
   .about-copy h1 {
-    font-size: clamp(2.7rem, 6.6vw, 4.6rem);
+    font-size: clamp(2.2rem, 4.2vw, 3.25rem);
   }
 
   .about-portrait {
     grid-column: 9 / 13;
-    width: min(100%, 17rem);
-  }
-
-  .practice-notes > div {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
+    width: min(100%, 12rem);
   }
 
   .project-item {
@@ -1684,23 +1638,15 @@ main {
   }
 
   .about-copy h1 {
-    max-width: 18ch;
-    font-size: clamp(2.6rem, 7.5vw, 4rem);
+    max-width: 16ch;
+    font-size: clamp(2.15rem, 5vw, 3rem);
   }
 
   .about-portrait {
-    grid-column: 3 / 6;
+    grid-column: 4 / 6;
     justify-self: center;
-    width: min(100%, 16rem);
-    margin: 2rem 0 4rem;
-  }
-
-  .about-portrait img {
-    min-height: 18rem;
-  }
-
-  .practice-notes {
-    grid-column: 1 / 7;
+    width: min(100%, 11rem);
+    margin: 1.5rem 0 3rem;
   }
 
   .chapter-heading,
@@ -1805,7 +1751,7 @@ main {
   }
 
   .about-copy h1 {
-    font-size: clamp(2.25rem, 9.5vw, 3rem);
+    font-size: clamp(1.95rem, 7.8vw, 2.35rem);
   }
 
   .hero-lede {
@@ -1825,29 +1771,8 @@ main {
 
   .about-portrait {
     grid-column: 2 / 6;
-    width: min(100%, 13.5rem);
+    width: min(100%, 9.5rem);
     margin-left: 0;
-  }
-
-  .about-portrait img {
-    min-height: 15rem;
-  }
-
-  .practice-notes {
-    grid-template-columns: 1fr;
-  }
-
-  .practice-notes > div,
-  .practice-notes > div:first-child,
-  .practice-notes > div:last-child {
-    grid-template-columns: 4.5rem 1fr;
-    padding: 1rem 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .practice-notes > div:last-child {
-    border-bottom: 0;
   }
 
   .chapter-heading h2 {
