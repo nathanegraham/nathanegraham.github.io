@@ -5,29 +5,37 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const failures = [];
 const redirectRoutes = new Map([
+  ["work/index.html", {
+    target: "/#projects",
+    canonical: "https://nathanegraham.github.io/"
+  }],
+  ["about/index.html", {
+    target: "/#about",
+    canonical: "https://nathanegraham.github.io/"
+  }],
   ["systems/index.html", {
-    target: "/work/#projects",
-    canonical: "https://nathanegraham.github.io/work/"
+    target: "/#projects",
+    canonical: "https://nathanegraham.github.io/"
   }],
   ["builds/index.html", {
-    target: "/work/#projects",
-    canonical: "https://nathanegraham.github.io/work/"
+    target: "/#projects",
+    canonical: "https://nathanegraham.github.io/"
   }],
   ["studio/index.html", {
-    target: "/work/#projects",
-    canonical: "https://nathanegraham.github.io/work/"
+    target: "/#projects",
+    canonical: "https://nathanegraham.github.io/"
   }],
   ["writing/index.html", {
-    target: "/work/#writing",
-    canonical: "https://nathanegraham.github.io/work/"
+    target: "/#writing",
+    canonical: "https://nathanegraham.github.io/"
   }],
   ["now/index.html", {
-    target: "/about/#current-focus",
-    canonical: "https://nathanegraham.github.io/about/"
+    target: "/#about",
+    canonical: "https://nathanegraham.github.io/"
   }],
   ["contact/index.html", {
-    target: "/about/#contact",
-    canonical: "https://nathanegraham.github.io/about/"
+    target: "/#contact",
+    canonical: "https://nathanegraham.github.io/"
   }]
 ]);
 
