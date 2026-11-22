@@ -2,8 +2,8 @@
   {
     "id": "faculty-studios",
     "title": "Building Studios for Faculty",
-    "track": "projects",
-    "format": "essay",
+    "track": "writing",
+    "format": "post",
     "scale": "institution",
     "status": "published",
     "themes": [
@@ -11,7 +11,7 @@
       "teaching media",
       "operations"
     ],
-    "summary": "A Digital Born essay on building instructional studio infrastructure for faculty work at scale.",
+    "summary": "A Digital Born post on building instructional studio infrastructure for faculty work at scale.",
     "detailUrl": "/work/faculty-studios/",
     "externalUrl": "https://digitalborn.org/building-studios-for-teachers-johns-hopkins-university-instructional-studios/"
   },
@@ -34,8 +34,8 @@
   {
     "id": "excel-post-requests",
     "title": "Excel Web Services and POST Requests",
-    "track": "projects",
-    "format": "essay",
+    "track": "writing",
+    "format": "post",
     "scale": "tool",
     "status": "published",
     "themes": [
@@ -162,7 +162,7 @@
     "id": "books-to-json",
     "title": "Converting Books to JSON",
     "track": "writing",
-    "format": "essay",
+    "format": "post",
     "scale": "tool",
     "status": "published",
     "themes": [

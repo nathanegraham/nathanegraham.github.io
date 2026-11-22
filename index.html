@@ -29,340 +29,177 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap"
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..500;1,400..500&amp;display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="/assets/css/main.css?v=34" />
+  <link rel="stylesheet" href="/assets/css/main.css?v=38" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#f3eee2" />
+  <meta name="theme-color" content="#ffffff" />
 </head>
-<body data-page="home" data-active-section="about">
+<body data-page="home">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <div class="sky-canvas" aria-hidden="true">
-    <div class="sky-light"></div>
-
-    <div class="sky-layer sky-layer--far">
-      <svg class="sky-haze" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
-        <path class="sky-haze__veil" d="M-80 438 C95 372 225 442 382 390 C540 337 675 425 1080 302 L1080 760 L-80 760 Z" />
-        <path class="sky-haze__ridge sky-haze__ridge--back" d="M-80 570 C92 515 190 563 322 505 C446 450 540 536 668 493 C812 445 910 489 1080 418 L1080 760 L-80 760 Z" />
-        <path class="sky-haze__ridge sky-haze__ridge--front" d="M-80 642 C88 594 207 638 354 584 C482 537 598 607 724 560 C852 514 936 555 1080 497 L1080 760 L-80 760 Z" />
-      </svg>
-
-      <span class="sky-flock">
-        <svg viewBox="0 0 110 36">
-          <path d="M4 22 Q12 13 20 22 M37 14 Q44 7 51 14 M69 24 Q78 15 87 24" />
-        </svg>
-      </span>
-
-      <span class="ambient-bird ambient-bird--music">
-        <span class="ambient-bird__facing">
-          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
-            <defs>
-              <linearGradient id="bird-body-music" x1="0" y1="0" x2="0.15" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="46%" style="stop-color:var(--bird-core)" />
-                <stop offset="100%" style="stop-color:var(--bird-shade)" />
-              </linearGradient>
-              <linearGradient id="bird-wing-music" x1="0.1" y1="0" x2="0.4" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="100%" style="stop-color:var(--bird-core)" />
-              </linearGradient>
-            </defs>
-            <g class="ambient-bird__bob">
-              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-              <path class="ambient-bird__wing ambient-bird__wing--far" d="M3 -1 C-7 -13 -19 -27 -35 -37 C-29 -21 -18 -7 -5 1 Z" />
-              <path class="ambient-bird__body" fill="url(#bird-body-music)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
-              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-music)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-            </g>
-          </svg>
-        </span>
-      </span>
-    </div>
-
-    <div class="sky-layer sky-layer--middle">
-      <span class="sky-cloud sky-cloud--high"></span>
-      <span class="sky-cloud sky-cloud--low"></span>
-
-      <span class="ambient-bird ambient-bird--projects">
-        <span class="ambient-bird__facing">
-          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
-            <defs>
-              <linearGradient id="bird-body-projects" x1="0" y1="0" x2="0.15" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="46%" style="stop-color:var(--bird-core)" />
-                <stop offset="100%" style="stop-color:var(--bird-shade)" />
-              </linearGradient>
-              <linearGradient id="bird-wing-projects" x1="0.1" y1="0" x2="0.4" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="100%" style="stop-color:var(--bird-core)" />
-              </linearGradient>
-            </defs>
-            <g class="ambient-bird__bob">
-              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-              <path class="ambient-bird__wing ambient-bird__wing--far" d="M3 -1 C-7 -13 -19 -27 -35 -37 C-29 -21 -18 -7 -5 1 Z" />
-              <path class="ambient-bird__body" fill="url(#bird-body-projects)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
-              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-projects)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-            </g>
-          </svg>
-        </span>
-      </span>
-
-      <span class="ambient-bird ambient-bird--writing">
-        <span class="ambient-bird__facing">
-          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
-            <defs>
-              <linearGradient id="bird-body-writing" x1="0" y1="0" x2="0.15" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="46%" style="stop-color:var(--bird-core)" />
-                <stop offset="100%" style="stop-color:var(--bird-shade)" />
-              </linearGradient>
-              <linearGradient id="bird-wing-writing" x1="0.1" y1="0" x2="0.4" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="100%" style="stop-color:var(--bird-core)" />
-              </linearGradient>
-            </defs>
-            <g class="ambient-bird__bob">
-              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-              <path class="ambient-bird__wing ambient-bird__wing--far" d="M3 -1 C-7 -13 -19 -27 -35 -37 C-29 -21 -18 -7 -5 1 Z" />
-              <path class="ambient-bird__body" fill="url(#bird-body-writing)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
-              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-writing)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-            </g>
-          </svg>
-        </span>
-      </span>
-    </div>
-
-    <div class="sky-layer sky-layer--near">
-      <span class="sky-cloud sky-cloud--near"></span>
-      <span class="sky-glint sky-glint--one"></span>
-      <span class="sky-glint sky-glint--two"></span>
-      <span class="sky-glint sky-glint--three"></span>
-
-      <span class="ambient-bird ambient-bird--about">
-        <span class="ambient-bird__facing">
-          <svg class="ambient-bird__art" viewBox="-48 -46 98 92">
-            <defs>
-              <linearGradient id="bird-body-about" x1="0" y1="0" x2="0.15" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="46%" style="stop-color:var(--bird-core)" />
-                <stop offset="100%" style="stop-color:var(--bird-shade)" />
-              </linearGradient>
-              <linearGradient id="bird-wing-about" x1="0.1" y1="0" x2="0.4" y2="1">
-                <stop offset="0%" style="stop-color:var(--bird-light)" />
-                <stop offset="100%" style="stop-color:var(--bird-core)" />
-              </linearGradient>
-            </defs>
-            <g class="ambient-bird__bob">
-              <path class="ambient-bird__tail" d="M-13 -2 L-40 -14 L-28 0 L-40 13 L-13 4 Z" />
-              <path class="ambient-bird__wing ambient-bird__wing--far" d="M3 -1 C-7 -13 -19 -27 -35 -37 C-29 -21 -18 -7 -5 1 Z" />
-              <path class="ambient-bird__body" fill="url(#bird-body-about)" d="M-18 0 C-15 -7 -7 -10 4 -10 C13 -10 19 -8 23 -5 C27 -9 33 -7 33 -2 C33 2 31 4 28 5 C22 9 15 10 7 10 C-3 10 -13 7 -18 0 Z" />
-              <path class="ambient-bird__beak" d="M31 -1 L45 2 L30 5 Z" />
-              <circle class="ambient-bird__eye" cx="28" cy="-3" r="1.8" />
-              <circle class="ambient-bird__pupil" cx="28.45" cy="-3" r="0.65" />
-              <path class="ambient-bird__wing ambient-bird__wing--near" fill="url(#bird-wing-about)" d="M5 -2 C-4 -15 -12 -31 -25 -42 C-22 -24 -14 -8 -3 2 Z" />
-            </g>
-          </svg>
-        </span>
-      </span>
-    </div>
-  </div>
-
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a class="wordmark" href="#about" aria-label="Nathan Graham, back to About">
-        <span class="wordmark__avatar">
-          <img src="/images/avatar.webp?v=2" alt="" width="44" height="44" />
-        </span>
-        <span>Nathan Graham</span>
+  <div class="page">
+    <header class="masthead">
+      <a class="mark" href="#about" aria-label="Nathan Graham, back to top">
+        <img src="/images/avatar.webp?v=2" alt="" width="36" height="36" />
       </a>
-
-      <nav class="anchor-nav" aria-label="Primary navigation">
-        <a href="#about" data-section-link="about" aria-current="location">About</a>
-        <a href="#projects" data-section-link="projects">Projects</a>
-        <a href="#writing" data-section-link="writing">Writing</a>
-        <a href="#music" data-section-link="music">Music</a>
+      <nav class="contents-nav" aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+        <a href="#music">Music</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main-content">
-    <section class="landing-section about-section" id="about" data-section="about" aria-labelledby="about-heading">
-      <div class="section-inner about-layout">
-        <div class="about-copy">
-          <p class="chapter-label"><span>00</span> About</p>
+    <main id="main-content">
+      <section class="title-page" id="about" aria-labelledby="about-heading">
+        <div class="twig" aria-hidden="true">
+          <svg viewBox="0 0 260 120" width="260" height="120" focusable="false">
+            <path class="twig__limb" d="M0 78 C60 78 120 74 170 64 C205 57 232 50 252 45.5 L252.4 46.6 C232 51.6 205 59.2 170 66.4 C120 76.6 60 81 0 81 Z" />
+            <path class="twig__sprig" d="M96 76 C99 63 110 55 121 42 M109 57 C115 55 121 56 127 51 M103 66 C100 60 100 55 95 50" />
+            <path class="twig__sprig" d="M146 70 C157 78 170 82 184 93 M166 81 C172 80 177 83 183 80" />
+            <path class="twig__sprig" d="M226 52 C233 45 238 38 248 32 M236 43 C240 43 243 45 247 43" />
+          </svg>
+          <span class="perch" data-perch></span>
+          <span class="cardinal" data-cardinal>
+            <svg viewBox="-22 -22 44 36" width="44" height="36" focusable="false">
+              <g class="cardinal__figure">
+                <path class="cardinal__tail" d="M-9 0 L-22 10.5 L-19.5 13.5 L-6 6 Z" />
+                <path class="cardinal__body" d="M7 -9 C11 -4 10 5 3 8 C-2 10 -8 8 -11 3 C-12 -3 -7 -10 0 -12 Z" />
+                <circle class="cardinal__body" cx="4.5" cy="-11.5" r="5.2" />
+                <path class="cardinal__crest" d="M0.2 -13.2 L1.4 -21 L7.6 -15.6 Z" />
+                <path class="cardinal__mask" d="M8.2 -13.6 C10 -12.6 10.1 -9.6 8.6 -8.2 C7.3 -9.4 7.1 -12.2 8.2 -13.6 Z" />
+                <path class="cardinal__beak" d="M9.2 -12.7 L14.4 -10.6 L9.3 -8.8 Z" />
+                <path class="cardinal__wing cardinal__wing--folded" d="M-8 -4 C-3 -8 4 -6 5 -1 C2 4 -4 6 -11 4.5 C-10 1 -9.5 -1.5 -8 -4 Z" />
+                <path class="cardinal__wing cardinal__wing--open" d="M-7 -3 C-9 -12 -11 -19 -9 -25 C-1 -19 4 -11 6 -3 Z" />
+                <path class="cardinal__legs" d="M1 8 L1.4 12 M-2.6 8 L-2.2 12" />
+              </g>
+            </svg>
+          </span>
+        </div>
+
+        <div class="title-page__body">
           <h1 id="about-heading">Nathan Graham</h1>
-          <p class="hero-role">
-            Associate Dean, Media &amp; Technology
-            <span class="hero-role__institution">
-              <span class="hero-role__at">@</span>
-              Johns Hopkins Engineering
-            </span>
-          </p>
-          <nav class="hero-socials" aria-label="Contact and social profiles">
-            <a href="mailto:nathan.graham@jhu.edu" aria-label="Email Nathan Graham" title="Email Nathan Graham">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="m4 7 8 6 8-6" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener" aria-label="Nathan Graham on LinkedIn" title="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M8 10v7M8 7v.01M12 17v-7M12 13.2c.7-2.1 4-2.3 4 1V17" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/nathangraham/" target="_blank" rel="noopener" aria-label="Nathan Graham on Instagram" title="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle class="social-icon-dot" cx="17.4" cy="6.7" r=".8" />
-              </svg>
-            </a>
-            <a href="https://github.com/nathanegraham" target="_blank" rel="noopener" aria-label="Nathan Graham on GitHub" title="GitHub">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 2.8a9.3 9.3 0 0 0-2.9 18.1c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.3-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.6 4.9.4.3.7 1 .7 1.9v2.7c0 .3.2.6.7.5A9.3 9.3 0 0 0 12 2.8Z" />
-              </svg>
-            </a>
-          </nav>
-          <p class="hero-lede">
+          <p class="role">Associate Dean, Media &amp; Technology at Johns Hopkins Engineering</p>
+          <p class="bio">
             At the <a href="https://engineering.jhu.edu/cmts/">Center for Media &amp; Technology Solutions</a>,
             I lead technology and media operations. At home, I build things, make music, and
             write poetry. In my research, I recover publishing histories and develop new ways
             of studying literary culture.
           </p>
-          <div class="hero-actions" aria-label="Start exploring">
-            <a href="#projects">See projects <span aria-hidden="true">&darr;</span></a>
-          </div>
+          <ul class="links" aria-label="Contact and profiles">
+            <li><a href="mailto:nathan.graham@jhu.edu">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/nathangraham/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="landing-section projects-section" id="projects" data-section="projects" aria-labelledby="projects-heading">
-      <div class="section-inner">
-        <header class="chapter-heading">
-          <p class="chapter-label" aria-hidden="true"><span>01</span></p>
-          <div>
-            <h2 id="projects-heading">Projects</h2>
-          </div>
-        </header>
-
-        <div class="project-index" id="project-index" aria-live="polite">
-          <p class="loading-note">Loading projects...</p>
+      <section class="entry" id="projects" aria-labelledby="projects-heading">
+        <span class="perch" data-perch></span>
+        <h2 class="entry__label" id="projects-heading">Projects</h2>
+        <div class="entry__body">
+          <ol class="rows" id="project-index" aria-live="polite">
+            <li class="loading-note">Loading projects&hellip;</li>
+          </ol>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="landing-section writing-section" id="writing" data-section="writing" aria-labelledby="writing-heading">
-      <div class="section-inner">
-        <header class="chapter-heading">
-          <p class="chapter-label" aria-hidden="true"><span>02</span></p>
-          <div>
-            <h2 id="writing-heading">Writing</h2>
-          </div>
-        </header>
-
-        <div class="writing-layout">
-          <div class="writing-feed">
-            <div class="writing-feed__heading">
+      <section class="entry" id="writing" aria-labelledby="writing-heading">
+        <span class="perch" data-perch></span>
+        <h2 class="entry__label" id="writing-heading">Writing</h2>
+        <div class="entry__body">
+          <div class="group">
+            <div class="group__head">
               <h3>From Digital Born</h3>
-              <a href="https://digitalborn.org" target="_blank" rel="noopener">Visit the publication <span aria-hidden="true">&nearr;</span></a>
+              <a href="https://digitalborn.org" target="_blank" rel="noopener">digitalborn.org</a>
             </div>
-            <ol class="writing-list" data-postfeed data-feed-count="6" aria-live="polite" aria-label="Writing from Digital Born">
-              <li class="posts-status">Loading writing...</li>
+            <ol class="rows rows--tight" data-postfeed data-feed-count="6" aria-live="polite" aria-label="Writing from Digital Born">
+              <li class="posts-status">Loading writing&hellip;</li>
             </ol>
           </div>
 
-          <aside class="poetry-ledger" aria-labelledby="poetry-heading">
-            <p class="ledger-note">Published as Nathan Elijah Graham</p>
-            <h3 id="poetry-heading">Poetry, in print</h3>
-            <ol>
-              <li>
-                <span class="poetry-year">2009</span>
-                <div>
-                  <cite>The Antioch Review</cite>
-                  <a href="https://studylib.net/doc/8888372/cumulative-index--vol.-1" target="_blank" rel="noopener">Death in Laurinburg, North Carolina</a>
-                </div>
+          <div class="group" aria-labelledby="poetry-heading">
+            <div class="group__head">
+              <h3 id="poetry-heading">Poetry, in print</h3>
+              <span class="aside">published as Nathan Elijah Graham</span>
+            </div>
+            <ol class="rows rows--tight">
+              <li class="row">
+                <a class="row__title" href="https://studylib.net/doc/8888372/cumulative-index--vol.-1" target="_blank" rel="noopener">Death in Laurinburg, North Carolina</a>
+                <span class="row__dots" aria-hidden="true"></span>
+                <span class="row__meta row__meta--plain"><cite>The Antioch Review</cite>, 2009</span>
               </li>
-              <li>
-                <span class="poetry-year">2010</span>
-                <div>
-                  <cite>Bellingham Review</cite>
-                  <a href="https://www.newpages.com/blog/magazines/magazine-reviews/the-bellingham-review-2010-08/" target="_blank" rel="noopener">Around Here</a>
-                  <a href="https://web.archive.org/web/20100528053850/http://www.wwu.edu/bhreview/archive62.shtml" target="_blank" rel="noopener">The Farmer in This Field</a>
-                </div>
+              <li class="row">
+                <a class="row__title" href="https://www.newpages.com/blog/magazines/magazine-reviews/the-bellingham-review-2010-08/" target="_blank" rel="noopener">Around Here</a>
+                <span class="row__dots" aria-hidden="true"></span>
+                <span class="row__meta row__meta--plain"><cite>Bellingham Review</cite>, 2010</span>
               </li>
-              <li>
-                <span class="poetry-year">2009</span>
-                <div>
-                  <cite>Bayou Magazine, Issue 51</cite>
-                  <span>Take It Back</span>
-                </div>
+              <li class="row">
+                <a class="row__title" href="https://web.archive.org/web/20100528053850/http://www.wwu.edu/bhreview/archive62.shtml" target="_blank" rel="noopener">The Farmer in This Field</a>
+                <span class="row__dots" aria-hidden="true"></span>
+                <span class="row__meta row__meta--plain"><cite>Bellingham Review</cite>, 2010</span>
+              </li>
+              <li class="row">
+                <span class="row__title">Take It Back</span>
+                <span class="row__dots" aria-hidden="true"></span>
+                <span class="row__meta row__meta--plain"><cite>Bayou Magazine</cite>, Issue 51, 2009</span>
               </li>
             </ol>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="landing-section music-section" id="music" data-section="music" aria-labelledby="music-heading">
-      <div class="section-inner music-layout">
-        <header class="chapter-heading chapter-heading--music">
-          <p class="chapter-label" aria-hidden="true"><span>03</span></p>
-          <div>
-            <h2 id="music-heading">Music</h2>
-          </div>
-        </header>
-
-        <div class="record-stage">
-          <div class="vinyl" aria-hidden="true">
-            <span class="vinyl__label">DIALECT</span>
-          </div>
-          <figure class="album-cover">
-            <img src="/images/red-ep-cover.jpg" alt="Dialect Red EP album cover with black trees and a red bird." width="1200" height="1200" loading="lazy" />
-          </figure>
-        </div>
-
-        <div class="music-copy">
-          <p class="release-line"><span>Dialect</span> Red EP <span>2012</span></p>
-          <p>
-            The same impulse behind the projects and writing appears here in another form:
-            work made through close listening, iteration, and other people.
-          </p>
-          <div class="music-actions">
-            <a href="https://dialectdc.bandcamp.com/album/red-ep" target="_blank" rel="noopener">Listen on Bandcamp <span aria-hidden="true">&nearr;</span></a>
-            <a href="https://music.youtube.com/playlist?list=OLAK5uy_lfxlelXY6eojL7sp2eroHYzVcmI5bfco8" target="_blank" rel="noopener">Listen on YouTube Music <span aria-hidden="true">&nearr;</span></a>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="landing-footer" id="contact">
-    <div class="section-inner landing-footer__inner">
-      <p>Nathan Graham <span>Associate Dean, builder, writer, musician.</span></p>
-      <nav aria-label="External links">
-        <a href="https://digitalborn.org" target="_blank" rel="noopener">Digital Born</a>
-        <a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a>
+      <section class="entry" id="music" aria-labelledby="music-heading">
+        <span class="perch" data-perch></span>
+        <h2 class="entry__label" id="music-heading">Music</h2>
+        <div class="entry__body">
+          <ol class="rows">
+            <li class="row">
+              <a class="row__title" href="/work/red-ep/"><cite>Red EP</cite></a>
+              <span class="row__dots" aria-hidden="true"></span>
+              <span class="row__meta">Dialect, 2012</span>
+            </li>
+          </ol>
+          <div class="record">
+            <figure class="record__cover">
+              <img src="/images/red-ep-cover.jpg" alt="Dialect Red EP album cover: black ink trees on white, with a small red cardinal on a branch." width="1200" height="1200" loading="lazy" />
+            </figure>
+            <div>
+              <p class="record__copy">
+                The same impulse behind the projects and writing appears here in another form:
+                work made through close listening, iteration, and other people.
+              </p>
+              <p class="record__links">
+                <a href="https://dialectdc.bandcamp.com/album/red-ep" target="_blank" rel="noopener">Bandcamp</a>
+                <a href="https://music.youtube.com/playlist?list=OLAK5uy_lfxlelXY6eojL7sp2eroHYzVcmI5bfco8" target="_blank" rel="noopener">YouTube Music</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="colophon" id="contact">
+      <p class="colophon__links">
+        <a href="mailto:nathan.graham@jhu.edu">Email</a>
         <a href="https://www.linkedin.com/in/negraham" target="_blank" rel="noopener">LinkedIn</a>
-      </nav>
-    </div>
-  </footer>
+        <a href="https://www.instagram.com/nathangraham/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://github.com/nathanegraham" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://digitalborn.org" target="_blank" rel="noopener">Digital Born</a>
+      </p>
+      <p class="colophon__note">
+        Set in EB Garamond. The cardinal is borrowed from the cover of Dialect&rsquo;s <cite>Red EP</cite>.
+      </p>
+    </footer>
+  </div>
 
-  <script src="/assets/js/script.js?v=18"></script>
+  <script src="/assets/js/script.js?v=22"></script>
 </body>
 </html>
